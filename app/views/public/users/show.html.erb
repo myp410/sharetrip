@@ -1,7 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-6 m-3">
       <%= render 'info', user: current_user %>
+    </div>
+    <div class="col-6">
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-right">
+          <%= link_to new_post_path do %>
+            <i class="fa-solid fa-circle-plus", class="hover", style="color:gray; font-size: 30px;"></i>
+          <% end %>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          
+        </div>
+      </div>
     </div>
   </div>
 </div>
