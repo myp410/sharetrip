@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+
   end
 
   def show
@@ -10,4 +11,8 @@ class Public::PostsController < ApplicationController
 
   def edit
   end
+  
+  private
+  
+  
 end

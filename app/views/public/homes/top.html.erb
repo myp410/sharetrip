@@ -1,2 +1,71 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12 col-md-12">
+
+      <div class="container">
+        <div class="top_slide text-center">
+          <ul class="p-0 slider">
+            <li class="slider-item slider-item01"></li>
+            <li class="slider-item slider-item02"></li>
+            <li class="slider-item slider-item03"></li>
+          </ul>
+          <p class="top_text">
+            <span>旅行ルート共有コミュニティサイト</span><br>
+            このサイトは、旅行好きのためのコミュニティサイトになります。<br>
+            会員でない方も一部機能の使用はできますが、<br>
+            全ての機能を使用するためには会員登録が必要です。
+          </p>
+        </div>
+
+        <script>
+          $('.slider').slick({
+          autoplay: true,
+          autoplaySpeed: 3000,
+          speed: 1500,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          dots: true,
+          });
+        </script>
+      </div>
+    </div>  
+  </div>
+  <div class="row d-flex justify-content-center align-items-center mt-3">
+    <h2>おすすめな理由</h2>
+    <div class="container d-flex mt-3">
+      <div class="col-5">
+        <%= image_tag "logo.png", :size => '400x460', class:"mt-2" %>
+      </div>
+      <div class="col-7 justify-content-center text-center">
+        <p>このアプリのおすすめポイントは以下の通りです！</p>
+        <ul>
+          <li>無料</li>
+          <li>多種多様な機能</li>
+        </ul>
+        <p>あなたの旅行のお供に最適なアプリケーションです。</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="col-5">
+        <%= image_tag "logo.png", :size => '400x460', class:"mt-2" %>
+      </div>
+      <div class="col-7 ">
+        <span class="badge badge-pill badge-primary", style="font-size:30px;">無料</span>
+        <p>無料で使い放題！</p>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="col-7 ">
+        <span class="badge badge-pill badge-primary", style="font-size:30px;">機能が豊富</span>
+        <p>さまざまな機能が使用可能</p>
+      </div>
+      <div class="col-5">
+        <%= image_tag "logo.png", :size => '400x460', class:"mt-2" %>
+      </div>
+    </div>
+  </div>
+</div>
