@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   #before_action :ensure_correct_user, only: %i[edit update unsubscribe withdraw]
+  before_action :ensure_guest_user, only: [:edit]
   def show
     @posts = Post.all
   end
@@ -40,4 +41,11 @@ class Public::UsersController < ApplicationController
     #return if user == current_user #trueならここで処理を終了
     #redirect_to users_my_page_path(current_user) #falseならこの処理になる
   #end
+  
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.guest_user
+      redirect_to users_mypage_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません"
+    end
+  end  
 end
