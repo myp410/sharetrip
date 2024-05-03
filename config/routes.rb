@@ -13,7 +13,7 @@ devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
     root to: "homes#top"
     get 'about' => "homes#about", as: "about"
     get "users/my_page" => "users#show", as: "users_my_page"
-    get "users/information/edit" => "users#edit"
+    get "users/information/edit" => "users#edit", as: "users_information_edit"
     patch "users/information" => "users#update"
     get 'users/unsubscribe'
     patch 'users/withdraw'

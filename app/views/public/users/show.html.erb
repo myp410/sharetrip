@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6 m-3">
+      <h2 class="m-3">プロフィール</h2>
       <%= render 'info', user: current_user %>
     </div>
     <div class="col-6">
@@ -17,8 +18,11 @@
         </div>
       </div>
       <div class="row">
+        <h2 class="m-3">投稿一覧</h2>
+      </div>
+      <div class="row">
         <div class="col-12">
-          
+          <%= render 'public/posts/index', posts: @posts %>
         </div>
       </div>
     </div>

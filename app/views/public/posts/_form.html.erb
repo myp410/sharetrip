@@ -1,5 +1,5 @@
 <%= form_with model: post, local: true do |f| %>
-  <div class="row">
+  <div class="row m-3">
     <table class="table table-borderless mx-auto">
       <tr class="form-group">
         <th><%= f.label :title, "タイトル" %></th>
@@ -7,7 +7,7 @@
       </tr>
       <tr class="form-group">
         <th><%= f.label :body, "詳細" %></th>
-        <td><%= f.text_field :title, placeholder: "詳細", size: "30", class: "form-control" %></td>
+        <td><%= f.text_field :body, placeholder: "詳細", size: "30", class: "form-control" %></td>
       </tr>
       <tr class="form-group">
         <th><%= f.label :start_date, "開始日" %></th>

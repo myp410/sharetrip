@@ -26,15 +26,15 @@
           </div>
         <% elsif user_signed_in? %>
           <div class="mt-2 d-flex justify-content-end text-white header-button">
-            <%= link_to 'マイページ', "#", class: "btn " %>
-            <%= link_to '投稿一覧', "#", class: "btn " %>
-            <%= link_to '新規投稿', "#", class: "btn " %>
+            <%= link_to 'マイページ', users_my_page_path , class: "btn " %>
+            <%= link_to '投稿一覧', posts_path, class: "btn " %>
+            <%= link_to '新規投稿', new_post_path, class: "btn " %>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn " %>
           </div>
         <% else %>
           <div class="mt-2 d-flex justify-content-end text-white header-button">
             <%= link_to 'About', about_path, class: "btn " %>
-            <%= link_to '投稿一覧', "#", class: "btn " %>
+            <%= link_to '投稿一覧', posts_path, class: "btn " %>
             <%= link_to '新規登録', new_user_registration_path, class: "btn " %>
             <%= link_to 'ログイン', new_user_session_path, class: "btn" %>
           </div>

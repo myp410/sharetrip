@@ -1,2 +1,10 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2 class="m-3">タイムライン</h2>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= render 'index',posts: @posts %>
+    </div>
+  </div>
+</div>

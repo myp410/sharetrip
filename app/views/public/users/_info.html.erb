@@ -16,7 +16,7 @@
 
 <div class='row'>
   <% unless current_user != user %>
-      <%= link_to users_information_edit_path(user), class: "btn btn-outline-secondary btn-block" do %>
+      <%= link_to users_information_edit_path, class: "btn btn-outline-secondary btn-block" do %>
         <i class="fa-solid fa-user-gear"></i>
       <% end %>  
   <% end %>
