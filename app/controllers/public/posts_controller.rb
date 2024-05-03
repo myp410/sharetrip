@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post), notice: "新規投稿に成功しました"
     else
       @posts = Post.all
-      render 'index', alert: "投稿に失敗しました"
+      render 'new'
     end  
   end
 
