@@ -1,0 +1,28 @@
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th>開始時間</th>
+      <th><p>~</p></th>
+      <th>終了時間</th>
+      <th>タイトル</th>
+      <th>場所</th>
+      <th width="35%">詳細</th>
+    </tr>
+  </thead>
+  <tbody >
+    <% itineraries.each do |itinerary| %>
+    <tr>
+      <td><%= itinerary.start_time.strftime( "%H:%M" ) %></td>
+      <td><p>~</p></td>
+      <td><%= itinerary.finish_time.strftime( "%H:%M" ) %></td>
+      <td><%= itinerary.place %></td>
+      <td>
+        <%= link_to post_path(post), class: "text-black" do %>
+          <%= itinerary.title %>
+        <% end %>
+      </td>
+      <td width="35%"><%= itinerary.body %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

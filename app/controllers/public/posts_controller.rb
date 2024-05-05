@@ -20,6 +20,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @itinerary = Itinerary.new
+    @itineraries = Itinerary.all
   end
 
   def edit
