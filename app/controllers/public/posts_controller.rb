@@ -20,8 +20,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @new_itinerary = Itinerary.new
-    @itineraries = Itinerary.order(start_time: :asc)
+    @itinerary = Itinerary.new
+    @itineraries = @post.itineraries.order(start_time: :asc)
   end
 
   def edit

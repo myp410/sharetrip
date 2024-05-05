@@ -1,2 +1,49 @@
-<h1>Public::Itineraries#show</h1>
-<p>Find me in app/views/public/itineraries/show.html.erb</p>
+<div class="container">
+  <div class="row m-3">
+    <h2>旅程詳細</h2>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover text-center">
+        
+        <tr>
+          <th>時間</th>
+          <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
+          <td>~</td>
+          <td><%= @itinerary.finish_time.strftime( "%H:%M" ) %></td>
+        </tr>
+        <tr>
+          <th>タイトル</th>
+          <td colspan="3"><%= @itinerary.title %></td>
+        </tr>
+        <tr>
+          <th>場所</th>
+          <td colspan="3"><%= @itinerary.place %></td>
+        </tr>
+        <tr>
+          <th>詳細</th>
+          <td colspan="3"><%= @itinerary.body %></td>
+        </tr>
+        
+      </table>
+      <% if @itinerary.post.user == current_user %> 
+      <div class="container m-3">
+        <div class="row d-flex">
+          <div class="col m-3">
+            <%= link_to "編集", edit_post_itinerary_path(@itinerary.post_id, @itinerary.id), class: "btn btn-block btn-info" %>
+          </div>
+          <div class="col m-3">
+            <%= link_to "削除", post_itinerary_path(@itinerary.post_id, @itinerary.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <div class="container">
+        <div class="row">
+          <p>URL掲載場所</p>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>  
+

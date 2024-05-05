@@ -1,3 +1,4 @@
+<%= link_to '全て削除する', post_itineraries_destroy_all_path(post_id: post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
 <table class="table table-hover text-center">
   <thead>
     <tr>
@@ -17,13 +18,12 @@
       <td><p>~</p></td>
       <td><%= itinerary.finish_time.strftime( "%H:%M" ) %></td>
       <td>
-        <%= link_to post_itinerary_path(itinerary), class: "text-black" do %>
+        <%= link_to post_itinerary_path(itinerary.post_id, itinerary.id), class: "text-black" do %>
           <%= itinerary.title %>
         <% end %>
       </td>
       <td><%= itinerary.place %></td>
-      <td><%= link_to "編集", edit_post_itinerary_path(itinerary) %></td>
-      <td><%= link_to "削除", post_itinerary_path(itinerary), method: :destroy %></td>
+      <td><%= link_to "削除", post_itinerary_path(itinerary.post_id, itinerary.id), method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
