@@ -3,11 +3,15 @@
     <table class="table table-borderless mx-auto">
       <tr class="form-group">
         <th><%= f.label :title, "タイトル" %></th>
-        <td><%= f.text_field :title, placeholder: "タイトル", size: "30", class: "form-control" %></td>
+        <td><%= f.text_field :title, placeholder: "タイトル", class: "form-control" %></td>
       </tr>
       <tr class="form-group">
         <th><%= f.label :body, "詳細" %></th>
         <td><%= f.text_field :body, placeholder: "詳細", size: "30", class: "form-control" %></td>
+      </tr>
+      <tr class="form-group">
+        <th><%= f.label :place, "場所" %></th>
+        <td><%= f.text_field :place, placeholder: "場所", size: "30", class: "form-control" %></td>
       </tr>
       <tr class="form-group">
         <th><%= f.label :start_time, "開始時間" %></th>
@@ -15,9 +19,11 @@
         <th><%= f.label :finish_time, "終了時間" %></th>
         <td><%= f.time_select(:finish_time, {class: "form-control",id:"start_time", prompt: '--', time_separator: ':', ignore_data: true}) %></td>
       </tr>
+      
     </table>
   </div>
   <div class="d-grid col-2 mx-auto">
+    <%= f.hidden_field :post_id, value: post.id %>
     <% if f.object.new_record? %>
       <%= f.submit "新規登録", class: "py-2 px-4 btn btn-success submit-btn" %>
     <% else %>

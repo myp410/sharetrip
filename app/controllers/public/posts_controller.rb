@@ -20,8 +20,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @itinerary = Itinerary.new
-    @itineraries = Itinerary.all
+    @new_itinerary = Itinerary.new
+    @itineraries = Itinerary.order(start_time: :asc)
   end
 
   def edit
@@ -44,12 +44,14 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+
   
   private
   
   def post_params
     params.require(:post).permit(:title, :body, :start_date, :finish_date, :status)
   end
+
   
   def is_matching_login_user
     post = Post.find(params[:id])
