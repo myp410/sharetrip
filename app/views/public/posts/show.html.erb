@@ -6,6 +6,13 @@
     <div class="col-4">
       <table class="table table-hover text-center">
         <tr>
+          <td colspan="2"><%= image_tag @post.user.get_profile_image %></td>
+        </tr>
+        <tr>
+          <th>投稿者</th>
+          <td><%= @post.user.name %></td>
+        </tr>
+        <tr>
           <th>開始日</th>
           <td><%= @post.start_date %></td>
         </tr>
@@ -22,14 +29,16 @@
           <td><%= @post.body %></td>
         </tr>
       </table>
+      <% if @post.user == current_user %> 
       <div class="container">
         <div class="row m-3">
-          <%= link_to '編集する', edit_post_path, class: "btn btn-block btn-info" %>
+          <%= link_to '編集する', edit_post_path(@post), class: "btn btn-block btn-info" %>
         </div>
         <div class="row m-3">
-          <%= link_to '削除する', post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+          <%= link_to '削除する', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
         </div>
       </div>
+      <% end %>
     </div>
     <div class="col-7 offset-1">
       <p>タイムスケジュール導入箇所</p>

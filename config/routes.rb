@@ -6,7 +6,7 @@ devise_for :users, skip: [:passwords], controllers: {
 }
 
 devise_scope :user do
-  post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  post "users/guest_sign_in" => "public/sessions#guest_sign_in"
 end
  
 devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {

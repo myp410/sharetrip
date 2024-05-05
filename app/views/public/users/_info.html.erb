@@ -16,7 +16,9 @@
 
 <div class='row'>
   <% if current_user == user && !user.guest_user? %>
-      <%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+      <%= link_to users_information_edit_path(user), class: "btn btn-outline-secondary btn-block users_information_edit_#{user.id}" do %>
+        <i class="fa-solid fa-user-gear"></i>
+      <% end %>  
   <% elsif !user.guest_user? %>  
     <%#= render "relationships/btn", user: user, options: { class: ""} %>
   <% end %>

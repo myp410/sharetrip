@@ -4,6 +4,24 @@ header {
   background-color: #3399FF;
 }
 
+body { 
+  background-color: #FFF5EE;
+}
+
 footer {
   background-color: #C0C0C0;
 }
+
+.header-btn {
+  background: #FFCC66;
+  border-radius: 0px;
+  color: #fff;
+  margin: 0 7px;
+}
+
+.header-btn:hover {
+  background: #FF9933;
+  text-decoration: none;
+  color: #fff;
+}
+

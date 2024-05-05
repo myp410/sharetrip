@@ -17,18 +17,17 @@
           </tr>
           <tr>
             <td></td>
-            <% if devise_mapping.rememberable? %>
-              <td class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </td>
-            <% end %>
+            <td>
+              <div class="active">
+                <%= f.submit "ログイン", class: "btn btn-success w-50 " %>
+              </div>
+            </td>
           </tr>
           <tr>
             <td></td>
             <td>
-              <div class="active">
-                <%= f.submit "ログイン", class: "btn btn-success w-50 " %>
+              <div class="row">
+                <%= link_to "ゲストログイン（閲覧用）",users_guest_sign_in_path, class: "btn btn-secondary btn-sm mb-3 sign_in", method: :post %>
               </div>
             </td>
           </tr>
@@ -37,13 +36,10 @@
     </div>
   </div>
   <div class="row">
-    <%= link_to "ゲストログイン（閲覧用）",users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-  </div>
-  <div class="row">
     <h2 class="col mt-4">初めての方はこちら</h2>
   </div>
-  <div class="row justify-content-center">
-    <%= link_to "新規登録",new_user_registration_path %>
+  <div class="row justify-content-center mb-4">
+    <%= link_to "新規登録",new_user_registration_path ,class: "btn btn-success"%>
   </div>
 </div>
 

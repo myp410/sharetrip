@@ -1,16 +1,27 @@
 <table class="table table-hover text-center">
   <thead>
     <tr>
+      <th>投稿者</th>
       <th>開始日</th>
       <th><p>~</p></th>
       <th>終了日</th>
       <th>タイトル</th>
-      <th width="45%">詳細</th>
+      <th width="35%">詳細</th>
     </tr>
   </thead>
   <tbody >
     <% posts.each do |post| %>
     <tr>
+      <td class="align-middle">
+        <div class="row">
+          <div class="text-center">
+            <%= image_tag post.user.get_profile_image, size: '64x36', style: "object-fit: contain;" %>
+          </div>
+          <div class="text-center">
+            <%= post.user.name %>
+          </div>
+        </div>
+      </td>
       <td><%= post.start_date %></td>
       <td><p>~</p></td>
       <td><%= post.finish_date %></td>
@@ -19,7 +30,7 @@
           <%= post.title %>
         <% end %>
       </td>
-      <td width="45%"><%= post.body %></td>
+      <td width="35%"><%= post.body %></td>
     </tr>
     <% end %>
   </tbody>

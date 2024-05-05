@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "新規投稿に成功しました"
     else
-      @posts = Post.all
+      flash.now[:alert] = "投稿の保存に失敗しました。以下の内容を確認してください"
       render 'new'
     end  
   end
