@@ -65,14 +65,14 @@ ActiveRecord::Schema.define(version: 2024_05_05_040504) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "title", null: false
-    t.text "body"
+    t.text "body", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "start_date", null: false
     t.date "finish_date", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
