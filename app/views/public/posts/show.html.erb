@@ -10,7 +10,11 @@
         </tr>
         <tr>
           <th>投稿者</th>
-          <td><%= @post.user.name %></td>
+          <td>
+            <%= link_to users_my_page_path do %>
+             <%= @post.user.name %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th>開始日</th>
