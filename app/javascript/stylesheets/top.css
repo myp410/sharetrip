@@ -1,87 +1,47 @@
-.slider {
-  position:relative;
-  z-index: 1;
-}
 
-.slider-item {
-    width: 100vh;
-    height: 500px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-.slider-item01 {
-  background-image: url("../../assets/images/kusatu.jpeg");
-  background-size:  cover;
-}
 
-.slider-item02 {
-  background-image: url(../../assets/images/hokkaido.jpeg);
-  background-size:  cover;
-}
-
-.slider-item03 {
+.main-visual {
   background-image: url(../../assets/images/kanazawa.jpeg);
-  background-size:  cover;
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
 }
 
+.main-visual-content {
+  width: 60%;
+  height: 500px;
+  background-color: gold;
+  background-color: rgba( 0,0,0,0.5);
+  text-align: center;
+  padding-top: 105px;
+}
 
+.main-visual-name {
+  margin-top: 30px;
+  color: #fff;
+  line-height: 64px;
+  font-weight: bold;
+  font-size: 26px;
+  vertical-align: bottom;
+}
 
-.top_text{
-  margin-top: 100px;
-  padding: 16px;
-  position: absolute;
-  color: white;
-  z-index: 3;
-  top: 0%;
-  left: 40%;
-  -webkit-transform: translate(-30%, 0%);
+.main-visual-text {
+  color: #fff;
   text-shadow: 2px 2px 2px black;
   text-align: center;
   font-size: 18px;
   letter-spacing: 0.1em;
-  background-color: rgba(105,130,111,0.7);
+  padding: 16px;
 }
 
-.top_text span{
-  line-height: 64px;
-  font-weight: bold;
-  font-size: 32px;
-  vertical-align: bottom;
-}
 
-/*.main-visual {*/
-/*  background-image: url(../../assets/images/kanazawa.jpeg);*/
-/*  width: 100%;*/
-/*  height: 300px;*/
-/*  background-size: cover;*/
-/*  background-position: center;*/
+/*@media (max-width: 767px) {*/
+
+/*  .top_text{*/
+/*    margin-top: 100px;*/
+/*    padding: 8px;*/
+/*    font-size: 12px;*/
+/*  }*/
+
 /*}*/
-
-/*.main-visual-content {*/
-/*  width: 40%;*/
-/*  height: 300px;*/
-/*  background-color: gold;*/
-/*  background-color: rgba( 0,0,0,0.5);*/
-/*  text-align: center;*/
-/*  padding-top: 105px;*/
-/*}*/
-
-/*.main-visual-text {*/
-/*  color: #fff;*/
-/*}*/
-
-/*.main-visual-name {*/
-/*  margin-top: 30px;*/
-/*  color: #fff;*/
-/*}*/
-
-@media (max-width: 767px) {
-
-  .top_text{
-    margin-top: 100px;
-    padding: 8px;
-    font-size: 12px;
-  }
-
-}
