@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'post_comments/index'
+    get 'post_comments/edit'
+  end
 devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -14,6 +18,7 @@ devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+get "search" => "public/searches#search"
 
 
   scope module: :public do
@@ -27,6 +32,7 @@ devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
     resources :posts, only:[:new, :index, :create, :show, :update, :edit, :destroy] do
       delete 'itineraries/destroy_all' => "itineraries#destroy_all"
       resources :itineraries, only: [:show, :create, :edit, :update, :destroy]
+      resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
     end
   end
 

@@ -4,7 +4,7 @@
     <div class="col">
       <h2>会員情報編集</h2>
         <div class="mx-auto">
-        <%= form_with model: @user,url: users_information_path(id: current_user.id), method: :patch do |f| %>
+        <%= form_with model: @user,url: users_information_path, method: :patch do |f| %>
           <table class="table table-borderless">
             <tr>
               <th>アカウント名</th>
