@@ -40,7 +40,7 @@ class Public::UsersController < ApplicationController
   
   def ensure_correct_user
     user = User.find(params[:id])
-    return if user.id == current_user.id #trueならここで処理を終了
+    return if user == current_user #trueならここで処理を終了
     redirect_to users_my_page_path(current_user) #falseならこの処理になる
   end
   
