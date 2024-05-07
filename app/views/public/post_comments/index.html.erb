@@ -5,7 +5,7 @@
     </div>
     <div class="col-7 offset-1">
       <h3 class="m-3">コメント投稿フォーム</h3>
-      <%= form_with model: @new_comment ,url: post_post_comments_path, method: :post, local: true do |f| %>
+      <%= form_with model: [@post, @new_comment] ,url: post_post_comments_path, method: :post, local: true do |f| %>
       <table class="table">
         <tr>
           <th>コメント</th>
@@ -26,6 +26,7 @@
               <tr>
                 <th>投稿者</th>
                 <th>コメント</th>
+                <th colspan="2"></th>
               </tr>
               <% @post_comments.each do |post_comment| %>
               <tr>
@@ -35,7 +36,10 @@
                   <% end %>  
                 </td>
                 <td><%= post_comment.comment %></td>
+                <% if post_comment.user == current_user %>
                 <td><%= link_to "編集", edit_post_post_comment_path(id: post_comment.id) %></td>
+                <td><%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %></td>
+                <% end %>
               </tr>
               <% end %>
             </table>
