@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render 'public/posts/index_bar', post: @post %>
+    </div>
+    <div class="col-7 offset-1">
+      <h3 class="m-3">コメント投稿フォーム</h3>
+      <%= form_with model: [@post, @new_comment] ,url: post_post_comments_path, method: :post, local: true do |f| %>
+      <table class="table">
+        <tr>
+          <th>コメント</th>
+          <td><%= f.text_field :comment, placeholder: "コメントをここへ" ,class: "form-control" %></td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="col-12 mx-auto p-1">
+          <%= f.submit "コメント投稿", class: "btn btn-success" %>
+        </div>
+      </div>
+      <% end %>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <table class="table">
+              <tr>
+                <th>投稿者</th>
+                <th>コメント</th>
+                <th colspan="2"></th>
+              </tr>
+              <% @post_comments.each do |post_comment| %>
+              <tr>
+                <td>
+                  <%= link_to users_my_page_path(post_comment.user) do %>
+                    <%= post_comment.user.name %>
+                  <% end %>  
+                </td>
+                <td><%= post_comment.comment %></td>
+                <% if post_comment.user == current_user %>
+                <td><%= link_to "編集", edit_post_post_comment_path(id: post_comment.id) %></td>
+                <td><%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %></td>
+                <% end %>
+              </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render 'public/posts/index_bar', post: @post %>
+    </div>
+    <div class="col-7 offset-1">
+      <h3 class="m-5">コメントの編集</h3>
+      <%= form_with model: [@post, @post_comment] ,url: post_post_comment_path, method: :patch, local: true do |f| %>
+      <table class="table">
+        <tr>
+          <th>コメント</th>
+          <td><%= f.text_field :comment, placeholder: "コメントをここへ" ,class: "form-control" %></td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="col-12 mx-auto p-1">
+          <%= f.submit "編集を保存", class: "btn btn-success" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
