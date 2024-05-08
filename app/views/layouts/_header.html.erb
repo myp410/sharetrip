@@ -39,6 +39,9 @@
             <%= link_to 'ログイン', new_user_session_path, class: "btn header-btn" %>
           </div>
         <% end %>
+        <div class="search text-right m-2">
+          <%= render 'public/searches/search' %>
+        </div>
       </div>  
     </div>
   </div>

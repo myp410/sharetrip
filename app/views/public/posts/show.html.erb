@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row m-3">
-    <h2>旅程詳細</h2>
+    <h2>投稿詳細</h2>
   </div>
   <div class="row">
     <div class="col-4">
@@ -16,6 +16,11 @@
       </div>
       <div class="row mt-3">
         <% if @itineraries.present? %>
+          <div class="row m-3">
+            <% if post.user == current_user %>
+              <%= link_to '全て削除する', post_itineraries_destroy_all_path(post_id: post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
+            <% end %>
+          </div>
           <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries %>
         <% else %>
           <div class="col justift-content-center">

@@ -20,6 +20,14 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [100, 100]).processed
   end
   
+  def self.looks(word)
+    if word == ""
+      User.all
+    else
+      User.where('name LIKE ?', "%#{word}%")
+    end
+  end  
+  
   GUEST_USER_EMAIL = "guest@example.com"
   
     def self.guest
@@ -32,4 +40,6 @@ class User < ApplicationRecord
     def guest_user?
       email == GUEST_USER_EMAIL
     end   
+    
+
 end

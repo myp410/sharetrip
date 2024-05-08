@@ -7,5 +7,13 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :start_date, presence: true
   validates :finish_date, presence: true
+  
+  def self.looks(word)
+    if word == ""
+      Post.all
+    else
+      Post.where('title LIKE ?', "%#{word}%")
+    end
+  end  
 
 end
