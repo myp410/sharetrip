@@ -1,7 +1,9 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: %i[edit update unsubscribe withdraw]
+  # before_action :ensure_correct_user, only: %i[edit update unsubscribe withdraw]
   before_action :ensure_guest_user, only: [:edit]
+  before_action :move_to_index, only: %i[edit update unsubscribe withdraw]
+  
   def show
     @user = User.find(current_user.id)
     @posts = @user.posts
@@ -38,10 +40,16 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :email, :is_active)
   end
   
+
   def ensure_correct_user
     user = User.find(params[:id])
     return if user == current_user #trueならここで処理を終了
     redirect_to users_my_page_path(current_user) #falseならこの処理になる
+
+  def move_to_index
+    unless user_signed_in? #userがサインインしてない場合
+      redirect_to action: :index
+    end
   end
   
   def ensure_guest_user
