@@ -6,9 +6,10 @@ class Public::PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
+    tags = params[:post][:tag_id].split(',')
     if @post.save
+      @post.save_tags(tags)
       redirect_to post_path(@post), notice: "新規投稿に成功しました"
     else
       flash.now[:alert] = "投稿の保存に失敗しました。以下の内容を確認してください"
@@ -24,17 +25,21 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @itinerary = Itinerary.new
     @itineraries = @post.itineraries.order(start_time: :asc)
+    @tags = @post.tags.pluck(:name).join(',')
   end
 
   def edit
     is_matching_login_user
     @post = Post.find(params[:id])
+    @tags = @post.tags.pluck(:name).join(',') #nameを引き出してくれる
   end
   
   def update
     is_matching_login_user
     @post = Post.find(params[:id])
+    tags = params[:post][:tag_id].split(',')
     if @post.update(post_params)
+      @post.update_tags(tags)
       redirect_to post_path(@post), notice: "投稿を更新しました"
     else 
       render 'edit' , alert: "投稿の更新に失敗しました"
