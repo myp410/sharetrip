@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
 
-  namespace :public do
-    get 'post_comments/index'
-    get 'post_comments/edit'
-  end
 devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -35,6 +31,13 @@ get "search" => "public/searches#search"
       resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
     end
   end
+  
+  namespace :admin do 
+    resources :users, only: [:index, :edit, :show, :update]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:index, :destroy]
+    end
+  end 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

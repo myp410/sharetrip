@@ -8,6 +8,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @posts = @user.posts
   end
+  
 
   def edit
     @user = User.find(current_user.id)
@@ -41,10 +42,11 @@ class Public::UsersController < ApplicationController
   end
   
 
-  def ensure_correct_user
-    user = User.find(params[:id])
-    return if user == current_user #trueならここで処理を終了
-    redirect_to users_my_page_path(current_user) #falseならこの処理になる
+  # def ensure_correct_user
+  #   user = User.find(params[:id])
+  #   return if user == current_user #trueならここで処理を終了
+  #   redirect_to users_my_page_path(current_user) #falseならこの処理になる
+  # end  
 
   def move_to_index
     unless user_signed_in? #userがサインインしてない場合

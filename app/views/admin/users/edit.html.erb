@@ -1,0 +1,41 @@
+<div class="container px-1 py-2">
+  <%= render 'layouts/errors', obj: @user %>
+  <div class="row">
+    <div class="col">
+      <h2>会員情報編集</h2>
+        <div class="mx-auto">
+        <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
+          <table class="table table-borderless">
+            <tr>
+              <th>アカウント名</th>
+              <td><%= f.text_field :name, autofocus: true, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th>自己紹介</th>
+              <td><%= f.text_field :introduction, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th>会員ステータス</th>
+              <td>
+                <%= f.radio_button :is_active, "true" %>
+                <%= f.label :is_active_true, "有効" %>
+                <%= f.radio_button :is_active, "false" %>
+                <%= f.label :is_active_false, "退会" %>
+              </td>
+            </tr>
+          </table>
+          <div class="row">
+            <div class="col-12 col-md-5 p-1">
+              <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

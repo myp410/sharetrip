@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 2024_05_07_044810) do
     t.integer "post_id"
     t.string "title", null: false
     t.text "body"
-    t.time "start_time", null: false
-    t.time "finish_time"
+    t.datetime "start_time", null: false
+    t.datetime "finish_time"
     t.string "place"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
