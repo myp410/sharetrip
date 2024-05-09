@@ -5,8 +5,8 @@
   <tr>
     <th>投稿者</th>
     <td>
-      <%= link_to admin_user_path do %>
-       <%= post.user.name %>
+      <%= link_to admin_user_path(post.user) do %>
+        <%= post.user.name %>
       <% end %>
     </td>
   </tr>

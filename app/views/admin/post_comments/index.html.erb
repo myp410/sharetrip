@@ -1,2 +1,21 @@
-<h1>Admin::PostComments#index</h1>
-<p>Find me in app/views/admin/post_comments/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render 'admin/posts/index_bar', post: @post %>
+    </div>
+    <div class="col">
+      <table class"table">
+        <tr>
+          <th>投稿日時</th>
+          <th>コメント</th>
+        </tr>
+        <% @post_comments.each do |post_comment| %>
+        <tr>
+          <td><%= post_comment.create_at %></td>
+          <td><%= post_comment.comment %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
