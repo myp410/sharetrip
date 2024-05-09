@@ -27,6 +27,10 @@
     <td><%= post.body %></td>
   </tr>
   <tr>
+    <th>いいね数</th>
+    <td><%= post.favorites.count %></td>
+  </tr>
+  <tr>
     <th>コメント数</th>
     <td>
       <p><%= post.post_comments.count %> コメント</p>

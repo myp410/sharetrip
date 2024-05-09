@@ -29,6 +29,7 @@ get "search" => "public/searches#search"
       delete 'itineraries/destroy_all' => "itineraries#destroy_all"
       resources :itineraries, only: [:show, :create, :edit, :update, :destroy]
       resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
+      resource :favorites, only: [:create, :destroy] #urlにID含めない
     end
   end
   
