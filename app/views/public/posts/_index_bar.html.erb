@@ -31,6 +31,16 @@
     <td><%= post.favorites.count %></td>
   </tr>
   <tr>
+    <th>タグ</th>
+    <td>
+      <% post_tags.each do |tag| %>
+        <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light" do%>
+          <i class="fa-solid fa-tag"></i><%= tag.name %>
+        <% end %>  
+      <% end %>
+    </td>
+  </tr>
+  <tr>
     <th>コメント数</th>
     <td>
       <p><%= post.post_comments.count %> コメント</p>

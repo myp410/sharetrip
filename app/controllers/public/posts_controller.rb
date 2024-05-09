@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
   
   def create
     @post = current_user.posts.new(post_params)
-    tags = params[:post][:tag_id].split(',')
+    tags = params[:post][:name].split(',')
     if @post.save
       @post.save_tags(tags)
       redirect_to post_path(@post), notice: "新規投稿に成功しました"
@@ -26,6 +26,7 @@ class Public::PostsController < ApplicationController
     @itinerary = Itinerary.new
     @itineraries = @post.itineraries.order(start_time: :asc)
     @tags = @post.tags.pluck(:name).join(',')
+    @post_tags = @post.tags
   end
 
   def edit
@@ -37,7 +38,7 @@ class Public::PostsController < ApplicationController
   def update
     is_matching_login_user
     @post = Post.find(params[:id])
-    tags = params[:post][:tag_id].split(',')
+    tags = params[:post][:name].split(',')
     if @post.update(post_params)
       @post.update_tags(tags)
       redirect_to post_path(@post), notice: "投稿を更新しました"
@@ -49,9 +50,15 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to posts_path
   end
-
+  
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts
+  end
   
   private
   
