@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  protect_from_forgery
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update]
   def new
     @post = Post.new

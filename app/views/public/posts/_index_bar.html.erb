@@ -6,7 +6,7 @@
     <th>投稿者</th>
     <td>
       <%= link_to users_my_page_path do %>
-       <%= post.user.name %>
+        <%= post.user.name %>
       <% end %>
     </td>
   </tr>
@@ -37,7 +37,7 @@
 
 
 <div class="container">
-  <% if post.user == current_user %> 
+  <% if post.user == current_user %>
   <div class="row m-3">
     <%= link_to '編集する', edit_post_path(post), class: "btn btn-block btn-info" %>
   </div>

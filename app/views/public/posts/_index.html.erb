@@ -1,6 +1,7 @@
 <table class="table table-hover text-center">
   <thead>
     <tr>
+      <th>投稿日時</th>
       <th>投稿者</th>
       <th>開始日</th>
       <th><p>~</p></th>
@@ -12,6 +13,7 @@
   <tbody >
     <% posts.each do |post| %>
     <tr>
+      <td><%= post.created_at.to_s(:datetime_jp) %></td>
       <td class="align-middle">
         <div class="row">
           <div class="text-center">

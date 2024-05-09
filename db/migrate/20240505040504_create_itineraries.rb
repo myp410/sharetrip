@@ -4,8 +4,8 @@ class CreateItineraries < ActiveRecord::Migration[6.1]
       t.references :post, foreign_key: true
       t.string :title, null: false
       t.text :body
-      t.time :start_time, null: false
-      t.time :finish_time
+      t.datetime :start_time, null: false
+      t.datetime :finish_time
       t.string :place 
 
       t.timestamps
