@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>プロフォール画像</th>
+      <th>アカウント名</th>
+      <th>自己紹介</th>
+      <th>会員ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= image_tag(user.get_profile_image) %></td>
+        <td>
+          <%= link_to admin_user_path(user) do %>
+            <%= user.name %>
+          <% end %>
+        </td>
+        <td><%= user.introduction %></td>
+        <td>
+          <% if user.is_active %>
+            <div class="text-success"><b>有効</b></div>
+          <% else %>
+            <div class="text-secondary"><b>退会</b></div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 m-3">
+      <h2 class="m-3">ユーザー情報</h2>
+      <div class="text-center">
+        <%= image_tag @user.get_profile_image %>
+      </div>
+      <table class="table table-border">
+        <tr>
+          <th>ID</th>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th>アカウント名</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>紹介文</th>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <% if @user.is_active %>
+              <div class="text-success"><b>有効</b></div>
+            <% else %>
+              <div class="text-secondary"><b>退会</b></div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="row">
+        <%= link_to edit_admin_user_path, class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fa-solid fa-user-gear"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-6">
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="container">
+      <div class="row">
+        <h2 class="m-3">投稿一覧</h2>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <%= render 'admin/posts/index', posts: @posts %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
