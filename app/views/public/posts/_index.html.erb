@@ -8,7 +8,7 @@
       <th>終了日</th>
       <th>タイトル</th>
       <th>いいね</th>
-      <th width="35%">詳細</th>
+      <th>タグ</th>
     </tr>
   </thead>
   <tbody >
@@ -34,7 +34,13 @@
         <% end %>
       </td>
       <td><%= render 'public/favorites/btn', post: post %></td>
-      <td width="35%"><%= post.body %></td>
+      <td>
+        <% post.tags.each do |tag| %>
+          <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light" do%>
+            <i class="fa-solid fa-tag"></i><%= tag.name %>
+          <% end %> 
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

@@ -17,20 +17,26 @@
         <th><%= f.label :finish_date, "終了日" %></th>
         <td><%= f.date_field :finish_date, class: "form-control" %></td>
       </tr>
+      <tr class="form-group">
+        <th><%= f.label :name, "タグ" %></th>
+        <td>
+          <%= f.text_field :name, value: tags, placeholder: ",で区切ると複数タブ登録可能", class: 'form-control' %>
+        </td>
+      </tr>
     </table>
   </div>
   <div class="container col-2 mx-auto">
-    <div class="row d-flex justify-content-between">
+    <div class="row justify-content-between">
       <% if f.object.new_record? %>
         <div class="col">
           <%= f.submit "新規登録", class: "py-2 px-4 btn btn-success submit-btn" %>
         </div>
       <% else %>
-        <div class="col-10">
+        <div class="col">
           <%= f.submit "変更を保存", class: "py-2 px-4 btn btn-success submit-btn" %>
         </div>
-        <div class="col-2 ">
-          <%= button_to '削除する', users_my_page_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+        <div class="col">
+          <%= link_to '削除する', post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %>
         </div>
       <% end %>
     </div>

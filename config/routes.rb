@@ -15,6 +15,7 @@ devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
 }
 
 get "search" => "public/searches#search"
+get "search_tag" => "public/posts#search_tag"
 
 
   scope module: :public do

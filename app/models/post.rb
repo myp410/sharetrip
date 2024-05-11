@@ -11,6 +11,8 @@ class Post < ApplicationRecord
   validates :start_date, presence: true
   validates :finish_date, presence: true
   
+
+  
   def self.looks(word)
     if word == ""
       Post.all
@@ -53,7 +55,8 @@ class Post < ApplicationRecord
       end  
     end  
   end
-  
+
   enum status: { published: 0, draft: 1,  unpublished: 2 }
+
 
 end
