@@ -11,6 +11,8 @@ class Post < ApplicationRecord
   validates :start_date, presence: true
   validates :finish_date, presence: true
   
+
+  
   def self.looks(word)
     if word == ""
       Post.all
