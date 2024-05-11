@@ -1,7 +1,7 @@
 class Public::PostCommentsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
-    @post_comments = @post.post_comments
+    @post_comments = @post.post_comments.page(params[:page])
     @new_comment = PostComment.new
   end
   
