@@ -3,6 +3,7 @@
 <table class="table table-hover text-center">
   <thead>
     <tr>
+      <th>日程</th>
       <th>開始時間</th>
       <th><p>~</p></th>
       <th>終了時間</th>
@@ -15,6 +16,7 @@
   <tbody >
     <% itineraries.each do |itinerary| %>
     <tr>
+      <td><%= itinerary.what_day %></td>
       <td><%= itinerary.start_time.strftime( "%H:%M" ) %></td>
       <td><p>~</p></td>
       <td><%= itinerary.finish_time.strftime( "%H:%M" ) %></td>
