@@ -26,6 +26,11 @@ get "search_tag" => "public/posts#search_tag"
     patch "users/information" => "users#update"
     get 'users/unsubscribe'
     patch 'users/withdraw'
+    resources :users, only: [] do
+      resources :relationships, only: [:create, :destroy]
+        get "followings" => "relationships#followings", as: "followings"
+        get "followers" => "relationships#followers", as: "followers"
+    end
     resources :posts, only:[:new, :index, :create, :show, :update, :edit, :destroy] do
       delete 'itineraries/destroy_all' => "itineraries#destroy_all"
       resources :itineraries, only: [:show, :create, :edit, :update, :destroy]
