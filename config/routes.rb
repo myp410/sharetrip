@@ -21,7 +21,7 @@ get "search_tag" => "public/posts#search_tag"
   scope module: :public do
     root to: "homes#top"
     get 'about' => "homes#about", as: "about"
-    get "users/my_page" => "users#show", as: "users_my_page"
+    get "users/my_page/:id" => "users#show", as: "users_my_page"
     get "users/information/edit" => "users#edit", as: "users_information_edit"
     patch "users/information" => "users#update"
     get 'users/unsubscribe'
