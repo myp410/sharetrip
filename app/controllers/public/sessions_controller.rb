@@ -32,7 +32,7 @@ class Public::SessionsController < Devise::SessionsController
   end
   
   def after_sign_in_path_for(resource)
-    users_my_page_path
+    users_my_page_path(@user)
   end
   
   def after_sign_out_path_for(resource)
