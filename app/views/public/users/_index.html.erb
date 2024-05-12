@@ -12,6 +12,9 @@
         <td><%= image_tag(user.get_profile_image) %></td>
         <td><%= user.name %></td>
         <td><%= user.introduction %></td>
+        <td>follows: <%= user.followings.count %></td>
+        <td>followers: <%= user.followers.count %></td>
+        <td><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } </td>
       </tr>
     <% end %>
   </tbody>

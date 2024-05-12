@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   before_action :move_to_index, only: %i[edit update unsubscribe withdraw]
   
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
   end
   

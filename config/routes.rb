@@ -21,11 +21,16 @@ get "search_tag" => "public/posts#search_tag"
   scope module: :public do
     root to: "homes#top"
     get 'about' => "homes#about", as: "about"
-    get "users/my_page" => "users#show", as: "users_my_page"
+    get "users/my_page/:id" => "users#show", as: "users_my_page"
     get "users/information/edit" => "users#edit", as: "users_information_edit"
     patch "users/information" => "users#update"
     get 'users/unsubscribe'
     patch 'users/withdraw'
+    resources :users, only: [] do
+      resources :relationships, only: [:create, :destroy]
+        get "followings" => "relationships#followings", as: "followings"
+        get "followers" => "relationships#followers", as: "followers"
+    end
     resources :posts, only:[:new, :index, :create, :show, :update, :edit, :destroy] do
       delete 'itineraries/destroy_all' => "itineraries#destroy_all"
       resources :itineraries, only: [:show, :create, :edit, :update, :destroy]

@@ -12,6 +12,14 @@
     <th>紹介文</th>
     <td><%= user.introduction %></td>
   </tr>
+  <tr>
+    <th>follows</th>
+    <td><%= link_to user.followings.count, user_followings_path(user) %></td>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+  </tr>
 </table>
 
 <div class='row'>
@@ -20,7 +28,7 @@
         <i class="fa-solid fa-user-gear"></i>
       <% end %>
   <% elsif !user.guest_user? %>
-    <%#= render "relationships/btn", user: user, options: { class: ""} %>
+    <%= render "public/relationships/btn", user: user, options: { class: ""} %>
   <% end %>
 </div>
 
