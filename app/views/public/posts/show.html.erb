@@ -33,7 +33,7 @@
           </div>
           <div class="row">
             <% if params[:search_day].present? %>
-              <% @search.each do |s| %>
+              <% @search.first(1).each do |s| %>
                 <span>絞り込み：<%= s.what_day %>日目</span>
                 <%= render 'public/itineraries/index', post: @post, itineraries: @search %>
               <% end %>

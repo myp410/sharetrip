@@ -5,7 +5,7 @@
     <th>コメント</th>
     <th colspan="2"></th>
   </tr>
-  <% post.post_comments.each do |post_comment| %>
+  <% post_comments.each do |post_comment| %>
   <tr>
     <td><%= post_comment.created_at.to_s(:datetime_jp) %></td>
     <td>

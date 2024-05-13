@@ -1,14 +1,20 @@
 <table class="table">
   <tr>
     <th>投稿日時</th>
+    <th>コメント投稿者</th>
     <th>コメント</th>
     <th></th>
   </tr>
   <% post_comments.each do |post_comment| %>
   <tr>
     <td><%= post_comment.created_at.to_s(:datetime_jp) %></td>
+    <td>
+      <%= link_to admin_user_path(post_comment.user) do %>
+        <%= post_comment.user.name %>
+      <% end %> 
+    </td>
     <td><%= post_comment.comment %></td>
-    <td><%= link_to "削除",post_post_comments_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary"%></td>
+    <td><%= link_to "削除",admin_post_post_comments_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary"%></td>
   </tr>
   <% end %>
 </table>

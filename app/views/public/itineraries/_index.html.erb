@@ -27,7 +27,7 @@
       </td>
       <td><%= itinerary.place %></td>
       <td>
-        <% if post.user == current_user %>
+        <% if itinerary.post.user == current_user %>
           <%= link_to "削除", post_itinerary_path(itinerary.post_id, itinerary.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
         <% end %>
       </td>

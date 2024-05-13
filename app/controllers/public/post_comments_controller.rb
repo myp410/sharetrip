@@ -16,20 +16,25 @@ class Public::PostCommentsController < ApplicationController
 
   def edit
     @post = Post.find(params[:post_id])
+    @post_tags = @post.tags
     @post_comment = PostComment.find(params[:id])
   end
 
   def update
-    post_comment = PostComment.find(params[:id])
-    if post_comment.update(post_comment_params)
+    @post = Post.find(params[:post_id])
+    @post_comment = PostComment.find(params[:id])
+    if @post_comment.update(post_comment_params)
       flash[:notice] =  "コメントの更新に成功しました"
+      redirect_to post_post_comments_path(@post)
     else
-      flash.now[:alert] = "コメントの更新に失敗しました"
+      @post_tags = @post.tags
       render 'edit'
     end
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
+    @post_comments = @post.post_comments
     @post_comment = PostComment.find(params[:id])
     @post_comment.destroy
   end
