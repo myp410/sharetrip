@@ -41,7 +41,9 @@
         <% end %>
         <div class="search text-right m-2">
           <% if user_signed_in? %>
-          <%= render 'public/searches/search' %>
+            <%= render 'public/searches/search' %>
+          <% elsif admin_signed_in? %>
+            <%= render 'admin/searches/search' %>
           <% end %>
         </div>
       </div>  

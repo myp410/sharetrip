@@ -12,9 +12,9 @@ class Public::SearchesController < ApplicationController
     elsif @model == "Itinerary"
       @itineraries = Itinerary.looks(params[:word]).page(params[:page])
     elsif @model == "PostComment"
-      @post_comment = PostComment.looks(params[:word]).page(params[:page])
+      @post_comments = PostComment.looks(params[:word]).page(params[:page])
     else
-      @tag = Tag.looks(params[:word]).page(params[:page])
+      @tags = Tag.looks(params[:word]).page(params[:page])
     end
   end  
       
