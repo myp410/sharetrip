@@ -33,12 +33,14 @@
           <%= post.title %>
         <% end %>
       </td>
-      <td><%= render 'public/favorites/btn', post: post %></td>
+      <td id="favorite_buttons_<%= post.id %>">
+        <%= render 'public/favorites/btn', post: post %>
+      </td>
       <td>
         <% post.tags.each do |tag| %>
           <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light" do%>
             <i class="fa-solid fa-tag"></i><%= tag.name %>
-          <% end %> 
+          <% end %>
         <% end %>
       </td>
     </tr>
