@@ -18,17 +18,29 @@
         <% if @itineraries.present? %>
           <div class="row m-3 d-flex">
             <% if @post.user == current_user %>
-              <%= link_to '全て削除する', post_itineraries_destroy_all_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
+              <div class="col">
+                <%= link_to '全て削除する', post_itineraries_destroy_all_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
+              </div>
             <% end %>
-            <%= form_tag({controller:"posts",action: "show"}, method: :get) do %>
-              <%= select_tag :search_day, options_for_select(1..@duration), {include_blank: "日程選択"}, class: 'custom-select' %>
-              <%= submit_tag "絞り込み" %>
-            <% end %>
+            <div class="col d-flex">
+              <%= form_tag({ controller: "posts", action: "show" }, method: :get) do %>
+                <div class="d-flex">
+                  <%= select_tag :search_day, options_for_select(1..@duration, include_blank: "日程選択"), class: 'custom-select', style: 'width: 100px;' %>
+                  <%= submit_tag "絞り込み", class: 'ml-2' %>
+                </div>
+              <% end %>
+            </div>
           </div>
-          <% @search.each do |s| %>
-            <p><%= s.what_day %>日目</p>
-            <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries %>
-          <% end %>  
+          <div class="row">
+            <% if params[:search_day].present? %>
+              <% @search.each do |s| %>
+                <span>絞り込み：<%= s.what_day %>日目</span>
+                <%= render 'public/itineraries/index', post: @post, itineraries: @search %>
+              <% end %>
+            <% else %>
+              <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries %>
+            <% end %>  
+          </div>
         <% else %>
           <div class="col justift-content-center">
             <p>旅程がありません</p>
