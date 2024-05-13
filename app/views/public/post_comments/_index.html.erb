@@ -1,0 +1,23 @@
+<table class="table">
+  <tr>
+    <th>投稿日時</th>
+    <th>投稿者</th>
+    <th>コメント</th>
+    <th colspan="2"></th>
+  </tr>
+  <% post_comments.each do |post_comment| %>
+  <tr>
+    <td><%= post_comment.created_at.to_s(:datetime_jp) %></td>
+    <td>
+      <%= link_to users_my_page_path(post_comment.user) do %>
+        <%= post_comment.user.name %>
+      <% end %>  
+    </td>
+    <td><%= post_comment.comment %></td>
+    <% if post_comment.user == current_user %>
+      <td><%= link_to "編集", edit_post_post_comment_path(id: post_comment.id) %></td>
+      <td><%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

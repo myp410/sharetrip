@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table ">
+        <% if @model == "User" %>
+          <h2>"<%= @word %>"のユーザー検索結果</h2>
+          <%= render 'admin/users/index', users: @users %>
+        <% elsif @model == "Post" %>
+          <h2>"<%= @word %>"の投稿検索結果</h2>
+          <%= render 'admin/posts/index', posts: @posts %>
+
+        <% else %>
+          <h2>"<%= @word %>"のコメント検索結果</h2>
+          <%= render 'admin/post_comments/index', post_comments: @post_comments %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
