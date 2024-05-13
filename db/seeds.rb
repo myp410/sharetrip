@@ -53,19 +53,24 @@ end
 20.times do |n|
   start_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
   finish_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
-  
+
   while start_time >= finish_time
     start_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
 　　finish_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
   end
-  
+
+  post = Post.find(Random.rand(1..5))
+  duration = (post.finish_date - post.start_date).to_i + 1
+  what_day = Random.rand(1..duration)
+
   Itinerary.create(
-    post_id: Random.rand(1..5) ,
+    post_id: post.id,
     title: "test#{n + 1}",
     place: "test_place#{n + 1}",
     start_time: start_time,
     finish_time: finish_time,
-    body: "test_body#{n + 1}"
+    body: "test_body#{n + 1}",
+    what_day: what_day
   )
 end
 

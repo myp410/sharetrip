@@ -23,10 +23,13 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @itinerary = Itinerary.new
-    @itineraries = @post.itineraries.order(start_time: :asc)
+    @duration = (@post.finish_date - @post.start_date).to_i + 1
+    @itinerary = @post.itineraries.build
+    @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc)
     @tags = @post.tags.pluck(:name).join(',')
     @post_tags = @post.tags
+    @search_day = params[:search_day]
+    @search = @itineraries.where(what_day: @search_day)
   end
 
   def edit

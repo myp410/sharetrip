@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2024_05_12_004741) do
     t.datetime "start_time", null: false
     t.datetime "finish_time"
     t.string "place"
+    t.integer "what_day", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_itineraries_on_post_id"

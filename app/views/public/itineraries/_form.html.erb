@@ -14,6 +14,12 @@
         <td><%= f.text_field :place, placeholder: "場所", size: "30", class: "form-control" %></td>
       </tr>
       <tr class="form-group">
+        <th><%= f.label :what_day, "日程" %></th>
+        <td class="d-flex flex-row">
+          <%= f.select :what_day, options_for_select(1..duration), {include_blank: "日程選択"}, class: 'custom-select' %>
+        </td>
+      </tr>
+      <tr class="form-group">
         <th><%= f.label :start_time, "開始時間" %></th>
         <td><%= f.time_select(:start_time, {class: "form-control",id:"start_time", prompt: '--', time_separator: ':', ignore_data: true}) %></td>
         <th><%= f.label :finish_time, "終了時間" %></th>

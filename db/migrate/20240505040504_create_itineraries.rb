@@ -7,6 +7,7 @@ class CreateItineraries < ActiveRecord::Migration[6.1]
       t.datetime :start_time, null: false
       t.datetime :finish_time
       t.string :place 
+      t.integer :what_day, null: false
 
       t.timestamps
     end
