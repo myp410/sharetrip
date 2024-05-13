@@ -1,4 +1,5 @@
 class Public::PostCommentsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @post = Post.find(params[:post_id])
     @post_comments = @post.post_comments.page(params[:page])
