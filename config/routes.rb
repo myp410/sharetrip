@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
 devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -38,6 +37,7 @@ get "admin/search" => "admin/searches#search"
       resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
       resource :favorites, only: [:create, :destroy] #urlにID含めない
     end
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy]
   end
   
   namespace :admin do 
@@ -45,6 +45,7 @@ get "admin/search" => "admin/searches#search"
     resources :posts, only: [:index, :show, :destroy] do
       resources :post_comments, only: [:index, :destroy]
     end
+    resources :groups, only: [:index, :show, :edit, :update, :destroy]
   end 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
