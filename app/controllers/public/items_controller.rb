@@ -1,8 +1,8 @@
 class Public::ItemsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
-    @item = @post.items.build(post_id: @post.id)
     @items = @post.items
+    @item = Item.new
     @tags = @post.tags.pluck(:name).join(',')
     @post_tags = @post.tags
   end
