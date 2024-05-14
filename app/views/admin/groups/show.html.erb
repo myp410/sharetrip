@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 m-3">
+      <h2 class="m-3">オーナー情報</h2>
+      <div class="text-center">
+        <%= image_tag @owner.get_profile_image %>
+      </div>
+      <table class="table table-border">
+        <tr>
+          <th>ID</th>
+          <td><%= @owner.id %></td>
+        </tr>
+        <tr>
+          <th>アカウント名</th>
+          <td><%= @owner.name %></td>
+        </tr>
+        <tr>
+          <th>紹介文</th>
+          <td><%= @owner.introduction %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @owner.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <% if @owner.is_active %>
+              <div class="text-success"><b>有効</b></div>
+            <% else %>
+              <div class="text-secondary"><b>退会</b></div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-6">
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="container">
+      <div class="row">
+        <h2 class="m-3">グループ詳細</h2>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>グループ名</th>
+                <th>紹介文</th>
+                <th>グループステータス</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= @group.name %></td>
+                <td><%= @group.introduction %></td>
+                <td>
+                  <% if @group.is_active %>
+                    <div class="text-success"><b>有効</b></div>
+                  <% else %>
+                    <div class="text-secondary"><b>停止</b></div>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to '編集', edit_admin_group_path(@group), class: "btn btn-sm btn-success" %>
+                </td>
+                <td>
+                  <%= link_to '削除', admin_group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

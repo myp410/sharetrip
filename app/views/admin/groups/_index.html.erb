@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>登録日</th>
+      <th>グループ名</th>
+      <th>紹介文</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% groups.each do |group| %>
+      <tr>
+        <td><%= group.created_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to group.name, admin_group_path(group) %></td>
+        <td><%= group.introduction %></td>
+        <td>
+          <% if group.is_active %>
+            <div class="text-success"><b>有効</b></div>
+          <% else %>
+            <div class="text-secondary"><b>停止</b></div>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "編集", edit_admin_group_path(group), class: "btn btn-sm btn-success" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
