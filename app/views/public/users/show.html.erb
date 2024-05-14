@@ -15,10 +15,17 @@
   <div class="row">
     <div class="container">
       <div class="row">
-        <div class="col-12 text-right">
-          <%= link_to new_post_path do %>
-            <i class="fa-solid fa-square-plus" style="color:gray; font-size: 30px;"></i>
-          <% end %>  
+        <div class="col d-flex justify-content-end">
+          <div>
+            <%= link_to new_post_path do %>
+              <i class="fa-solid fa-square-plus" style="color:gray; font-size: 30px;"></i>
+            <% end %>  
+          </div>
+          <div class="ml-3">
+            <%= link_to 'グループを作成する', new_group_path %>
+            |
+            <%= link_to 'グループ一覧', groups_path %>
+          </div>
         </div>
       </div>
       <div class="row">

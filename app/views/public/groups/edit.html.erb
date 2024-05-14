@@ -1,2 +1,9 @@
-<h1>Public::Groups#edit</h1>
-<p>Find me in app/views/public/groups/edit.html.erb</p>
+<div class="container">
+  <h2 class="m-3">グループ編集</h2>
+  <div class="row">
+    <div class="col">
+      <%= render 'layouts/errors', obj: @group %>
+      <%= render 'form', group: @group %>
+    </div>
+  </div>
+</div>

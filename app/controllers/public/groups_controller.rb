@@ -6,7 +6,7 @@ class Public::GroupsController < ApplicationController
   end
   
   def create
-    @group = Group.new
+    @group = Group.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
       redirect_to groups_path, notice: "グループの作成に成功しました"
@@ -21,6 +21,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @owner = User.find(@group.owner_id)
   end
 
   def edit

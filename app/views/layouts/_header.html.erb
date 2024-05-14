@@ -21,7 +21,7 @@
           <div class="row text-white text-center justify-content-end header-button">
             <%= link_to 'ユーザー一覧', admin_users_path, class: "col-4 col-xl-2 btn header-btn mb-2" %>
             <%= link_to '投稿一覧', admin_posts_path, class: "col-4 col-xl-2 btn header-btn mb-2" %>
-            <%= link_to 'グループ一覧', "#", class: "col-3 col-xl-2 btn header-btn mb-2" %>
+            <%= link_to 'グループ一覧', admin_groups_path, class: "col-3 col-xl-2 btn header-btn mb-2" %>
             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "col-3 col-xl-2 btn header-btn mb-2" %>
           </div>
         <% elsif user_signed_in? %>
