@@ -21,6 +21,9 @@
               <div class="col">
                 <%= link_to '全て削除する', post_itineraries_destroy_all_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
               </div>
+              <div class="col">
+                <%= link_to '持ち物一覧', post_items_path(@post) %>
+              </div>
             <% end %>
             <div class="col d-flex">
               <%= form_tag({ controller: "posts", action: "show" }, method: :get) do %>
@@ -39,7 +42,7 @@
               <% end %>
             <% else %>
               <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries %>
-            <% end %>  
+            <% end %>
           </div>
         <% else %>
           <div class="col justift-content-center">
