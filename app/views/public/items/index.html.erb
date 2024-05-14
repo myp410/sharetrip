@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
+    </div>
+    <div class="col-7 offset-1">
+      <h2 class="m-3">持ち物リスト</h2>
+      <div class="row">
+        <% if @post.user == current_user %>
+          <%= render 'layouts/errors', obj: @item %>
+          <%= form_with(model: [@post, @item], local: true) do |f| %>
+            <div class="row m-3">
+              <table class="table table-borderless mx-auto">
+                <tr class="form-group">
+                  <th><%= f.label :name, "持ち物名" %></th>
+                  <td><%= f.text_field :name, placeholder: "持ち物名", class: "form-control" %></td>
+                </tr>
+              </table>
+            </div>
+            <div class="d-grid col-2 mx-auto">
+              <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.submit "新規登録", class: "py-2 px-4 btn btn-success submit-btn" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="row mt-3">
+        <% if @items.present? %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>持ち物名</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @items.each do |item| %>
+                <tr>
+                  <td><%= check_box_tag '', '', item.have, {'data-id' => item.id, 'data-post_id' => item.post_id } %> </td>
+                  <td><%= item.name %></td>
+                  <td>
+                    <%= link_to "削除", post_item_path(item.post_id,item.id), method: :delete, class: "btn btn-danger" %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <script>
+            $(function(){
+              $('input[type=checkbox]').click(function(){//クリックされた時の処理
+                var idPost = $(this).data('post_id'),//data属性の値を取得するために、dataメソッドを使用
+                  idItem = $(this).data('id');
+                $.post('/post/' + idPost + '/items/' + idItem + '/toggle'); //取得したIDを使用して、JavaScriptの$.postメソッドを使ってサーバーにデータを送信。引数にはURLを指定
+              });
+            });
+          </script>
+        <% else %>
+          <div class="col justift-content-center">
+            <p>持ち物がありません</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

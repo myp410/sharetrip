@@ -1,5 +1,6 @@
 class Public::ItinerariesController < ApplicationController
   before_action :ensure_correct_user, only: %i[create edit update destroy destroy_all]
+  before_action :authenticate_user!
   
   def show
     @itinerary = Itinerary.find(params[:id])
