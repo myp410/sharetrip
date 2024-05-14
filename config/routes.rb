@@ -42,16 +42,18 @@ get "admin/search" => "admin/searches#search"
       resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
       resource :favorites, only: [:create, :destroy] #urlにID含めない
     end
-    resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+      resource :group_users, only: [:create, :destroy]
+    end
   end
-  
-  namespace :admin do 
+
+  namespace :admin do
     resources :users, only: [:index, :edit, :show, :update]
     resources :posts, only: [:index, :show, :destroy] do
       resources :post_comments, only: [:index, :destroy]
     end
     resources :groups, only: [:index, :show, :edit, :update, :destroy]
-  end 
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
