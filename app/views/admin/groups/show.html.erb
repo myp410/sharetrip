@@ -52,6 +52,7 @@
                 <th>紹介文</th>
                 <th>グループステータス</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -69,7 +70,7 @@
                   <%= link_to '編集', edit_admin_group_path(@group), class: "btn btn-sm btn-success" %>
                 </td>
                 <td>
-                  <%= link_to '削除', admin_group_path(@group), class: "btn btn-sm btn-danger" %>
+                  <%= link_to '削除', admin_group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
                 </td>
               </tr>
             </tbody>
