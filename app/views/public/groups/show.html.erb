@@ -20,6 +20,7 @@
               <tr>
                 <th>グループ名</th>
                 <th>紹介文</th>
+                <th>メンバー</th>
                 <th></th>
               </tr>
             </thead>
@@ -27,11 +28,22 @@
               <tr>
                 <td><%= @group.name %></td>
                 <td><%= @group.introduction %></td>
-                <% if @group.owner_id == current_user.id %>
-                  <td>
+                <td>
+                  <% @group.users.each do |user| %>
+                    <li style="list-style:none;"><%= user.name %></li>
+                  <% end %>  
+                </td>
+                <td>
+                  <% if @group.owner_id == current_user.id %>
                     <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
-                  </td>
-                <% end %>  
+                  <% else %>
+                    <% if @group.include_user?(current_user) %>
+                      <%= link_to "グループから退会する", group_group_users_path(@group), method: :delete, class: "btn btn-danger" %>
+                    <% else %>
+                      <%= link_to "グループに参加する", group_group_users_path(@group), method: :post, class: "btn btn-success" %>
+                    <% end %>  
+                  <% end %>  
+                </td>
               </tr>
             </tbody>
           </table>

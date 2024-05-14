@@ -5,4 +5,7 @@ class Group < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   
+  def include_user?(user)
+    group_users.exists?(user_id: user.id)
+  end
 end

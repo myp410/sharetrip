@@ -50,6 +50,7 @@
               <tr>
                 <th>グループ名</th>
                 <th>紹介文</th>
+                <th>メンバー</th>
                 <th>グループステータス</th>
                 <th></th>
                 <th></th>
@@ -59,6 +60,11 @@
               <tr>
                 <td><%= @group.name %></td>
                 <td><%= @group.introduction %></td>
+                <td>
+                  <% @group.users.each do |user| %>
+                    <li style="list-style:none;"><%= user.name %></li>
+                  <% end %> 
+                </td>
                 <td>
                   <% if @group.is_active %>
                     <div class="text-success"><b>有効</b></div>
