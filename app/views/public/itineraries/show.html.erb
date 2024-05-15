@@ -39,9 +39,11 @@
       </div>
       <% end %>
       <div class="container">
-        <div class="row">
-          <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
-        </div>
+        <% if @itinerary.post.user == current_user %>
+          <div class="row">
+            <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
+          </div>
+        <% end %>
         <div class="row">
           <% if @articles.present? %>
           <div class="csrd">
