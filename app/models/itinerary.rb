@@ -1,5 +1,6 @@
 class Itinerary < ApplicationRecord
   belongs_to :post
+  has_many :articles, dependent: :destroy
   
   validates :title, presence: true
   validates :start_time, presence: true

@@ -4,6 +4,8 @@ class Public::ItinerariesController < ApplicationController
   
   def show
     @itinerary = Itinerary.find(params[:id])
+    @article = Article.new
+    @articles = @itinerary.articles
   end
   
   def create

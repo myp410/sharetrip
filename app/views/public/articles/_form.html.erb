@@ -1,0 +1,18 @@
+<%= form_with(model: [itinerary, article], local: true) do |f| %>
+  <div class="row m-3">
+    <table class="table table-borderless mx-auto">
+      <tr class="form-group">
+        <th><%= f.label :title, "タイトル" %></th>
+        <td><%= f.text_field :title, placeholder: "タイトル", class: "form-control" %></td>
+      </tr>
+      <tr class="form-group">
+        <th><%= f.label :link, "リンク" %></th>
+        <td><%= f.text_field :link, placeholder: "リンク", class: "form-control" %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="d-grid col-2 mx-auto">
+    <%= f.hidden_field :itinerary_id, value: itinerary.id %>
+    <%= f.submit "新規登録", class: "py-2 px-4 btn btn-success submit-btn" %>
+  </div>
+<% end %>
