@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-12">
       <table class="table table-hover text-center">
-        
+
         <tr>
           <th>時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
@@ -24,9 +24,9 @@
           <th>詳細</th>
           <td colspan="3"><%= @itinerary.body %></td>
         </tr>
-        
+
       </table>
-      <% if @itinerary.post.user == current_user %> 
+      <% if @itinerary.post.user == current_user %>
       <div class="container m-3">
         <div class="row d-flex">
           <div class="col m-3">
@@ -43,14 +43,23 @@
           <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
         </div>
         <div class="row">
-          <% @articles.each do |article| %>
-            <%= link_to article.link do %>
-              <%= article.title %>
-            <% end %>
+          <% if @articles.present? %>
+          <div class="csrd">
+            <div class="card-body">
+              <% @articles.each do |article| %>
+                <%= link_to article.link do %>
+                  <%= article.title %>
+                <% end %>
+                <%= link_to "削除", post_itinerary_article_path(@post, @itinerary, article), method: :delete ,class:"btn btn-danger" %>
+              <% end %>
+            </div>
+          </div>
+
+          <% else %>
           <% end %>
         </div>
       </div>
     </div>
-  </div>  
-</div>  
+  </div>
+</div>
 

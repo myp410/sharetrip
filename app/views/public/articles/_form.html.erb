@@ -1,4 +1,4 @@
-<%= form_with(model: [post, itinerary, article], local: true) do |f| %>
+<%= form_with(model: [post, itinerary, article], url: post_itinerary_articles_path(post_id: post.id, itinerary_id: itinerary.id) , local: true) do |f| %>
   <div class="row m-3">
     <table class="table table-borderless mx-auto">
       <tr class="form-group">
