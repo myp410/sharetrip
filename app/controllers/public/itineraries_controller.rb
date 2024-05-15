@@ -52,7 +52,7 @@ class Public::ItinerariesController < ApplicationController
   private
   
   def itinerary_params
-    params.require(:itinerary).permit(:post_id, :title, :body, :start_time, :finish_time, :place)
+    params.require(:itinerary).permit(:post_id, :title, :body, :start_time, :finish_time, :place, :what_day)
   end  
   
   def ensure_correct_user
