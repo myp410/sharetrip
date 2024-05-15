@@ -23,6 +23,34 @@
           <%= f.text_field :name, value: tags, placeholder: ",で区切ると複数タブ登録可能", class: 'form-control' %>
         </td>
       </tr>
+      <tr>
+        <th></th>
+        <td>
+          <% if post.persisted? %>
+            <% if post.draft? %>
+              <%= f.radio_button :status, "draft" %>
+              <%= f.label :status_draft, "下書き保存" %>
+              <%= f.radio_button :status, "published" %>
+              <%= f.label :status_published, "公開する" %> 
+            <% elsif post.unpublished? %>
+              <%= f.radio_button :status, "unpublished" %>
+              <%= f.label :status_unpublished, "非公開にする" %>
+              <%= f.radio_button :status, "published" %>
+              <%= f.label :status_published, "公開する" %> 
+            <% else %>
+              <%= f.radio_button :status, "unpublished" %>
+              <%= f.label :status_unpublished, "非公開にする" %>
+              <%= f.radio_button :status, "published" %>
+              <%= f.label :status_published, "公開する" %> 
+            <% end %>
+          <% else %>
+              <%= f.radio_button :status, "draft" %>
+              <%= f.label :status_draft, "下書き保存" %>
+              <%= f.radio_button :status, "published" %>
+              <%= f.label :status_published, "公開する" %> 
+          <% end %>
+        </td>
+      </tr>
     </table>
   </div>
   <div class="container col-2 mx-auto">

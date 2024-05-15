@@ -33,7 +33,30 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <%= render 'public/posts/index', posts: @posts %>
+          <div class="tabs d-flex justify-content-between align-items-center">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#published">公開中</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#draft">下書き</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#unpublished">非公開</a>
+              </li>
+            </ul>
+          </div> 
+          <div class="tab-content">
+            <div id="published" class="tab-pane fade show active">
+              <%= render "public/posts/index", posts: @published_posts %>
+            </div>
+            <div id="draft" class="tab-pane fade">
+              <%= render "public/posts/index", posts: @draft_posts %>
+            </div>
+            <div id="unpublished" class="tab-pane fade">
+              <%= render "public/posts/index", posts: @unpublished_posts %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
