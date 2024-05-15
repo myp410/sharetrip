@@ -34,7 +34,9 @@ get "admin/search" => "admin/searches#search"
     post '/post/:post_id/items/:id/toggle' => "items#toggle"
     resources :posts, only:[:new, :index, :create, :show, :update, :edit, :destroy] do
       delete 'itineraries/destroy_all' => "itineraries#destroy_all"
-      resources :itineraries, only: [:show, :create, :edit, :update, :destroy]
+      resources :itineraries, only: [:show, :create, :edit, :update, :destroy] do
+        resources :articles, only: [:create, :destroy]
+      end
       resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
       resource :favorites, only: [:create, :destroy] #urlにID含めない
       resources :items ,only: [:index, :create, :destroy]
