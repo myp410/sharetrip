@@ -7,6 +7,9 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
+    @published_posts = @user.posts.published.order(created_at: :desc).page(params[:page])
+    @unpublished_posts = @user.posts.unpublished.order(created_at: :desc).page(params[:page])
+    @draft_posts = @user.posts.draft.order(created_at: :desc).page(params[:page])
   end
   
 
