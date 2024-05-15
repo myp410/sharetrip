@@ -40,14 +40,13 @@
       <% end %>
       <div class="container">
         <div class="row">
-          <%= render "public/articles/form", itinerary: @itinerary, article: @article %>
+          <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
         </div>
         <div class="row">
           <% @articles.each do |article| %>
             <%= link_to article.link do %>
               <%= article.title %>
             <% end %>
-
           <% end %>
         </div>
       </div>
