@@ -2,13 +2,20 @@
   <h2>チャットルーム</h2>
   <div class="row">
     <div class="col">
-      <div id='messages' data-room_id="<%= @room.id %>">
-        <%= render "public/messages/messages", collection: @messages %>
-      </div>
-      <form>
-        <%= label_tag :content, 'Say something:' %>
-        <input type="text" data-behavior="room_speaker">
-      </form>
+      <% if @messages.present? %>
+        <% @messages.each do |message| %>
+          <% current_user.id == message.user.id %>
+          <p><%= message.user.name %></p>
+          <p><%= message.content %></p>
+        <% end %>
+      <% end %>  
     </div>
+  </div>
+  <div class="row">
+    <%= form_with(model: @message, url: group_rooms_messages_path(@group, @room), local: true) do |f| %>
+      <%= f.text_field :content, placeholder: "メッセージを入力してください",size: 50, class: "form-text-field" %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.submit "送信", class: "form-submit" %>
+    <% end %>  
   </div>
 </div>

@@ -45,6 +45,14 @@
                   <% end %>  
                 </td>
               </tr>
+              <tr>
+                <% if @group.include_user?(current_user) %>
+                  <%= form_with(model: [@group, @room],local: true) do |f| %>
+                    <%= f.hidden_field :group_id, value: @group.id %>
+                    <%= f.submit "チャットルームへ",class: "btn btn-primary" %>
+                  <% end %>  
+                <% end %>
+              </tr>
             </tbody>
           </table>
         </div>

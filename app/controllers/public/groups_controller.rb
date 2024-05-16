@@ -22,6 +22,7 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @owner = User.find(@group.owner_id)
+    @room = Room.new
   end
 
   def edit

@@ -14,7 +14,6 @@ devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-mount ActionCable.server => '/cable'
 get "search" => "public/searches#search"
 get "search_tag" => "public/posts#search_tag"
 get "admin/search" => "admin/searches#search"
@@ -47,7 +46,8 @@ get "admin/search" => "admin/searches#search"
     resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :group_users, only: [:create, :destroy]
       resource :rooms, only: [:show, :create] do
-        resources :messages, only: [:index, :create]
+        resources :messages, only: [:create]
+      
       end
     end
 
