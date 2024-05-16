@@ -2,7 +2,13 @@
   <h2>チャットルーム</h2>
   <div class="row">
     <div class="col">
-      <%= render "public/messages/messages", collection: @messages %>
+      <div id='messages' data-room_id="<%= @room.id %>">
+        <%= render "public/messages/messages", collection: @messages %>
+      </div>
+      <form>
+        <%= label_tag :content, 'Say something:' %>
+        <input type="text" data-behavior="room_speaker">
+      </form>
     </div>
   </div>
 </div>

@@ -43,10 +43,14 @@ get "admin/search" => "admin/searches#search"
       resource :favorites, only: [:create, :destroy] #urlにID含めない
       resources :items ,only: [:index, :create, :destroy]
     end
+    #グループ一覧の表示
     resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :group_users, only: [:create, :destroy]
+      resource :rooms, only: [:show, :create] do
+        resources :messages, only: [:index, :create]
+      end
     end
-    resources :rooms, only: [:show]
+
   end
 
   namespace :admin do
