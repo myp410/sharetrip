@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -13,6 +14,7 @@ devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+mount ActionCable.server => '/cable'
 get "search" => "public/searches#search"
 get "search_tag" => "public/posts#search_tag"
 get "admin/search" => "admin/searches#search"
@@ -43,8 +45,8 @@ get "admin/search" => "admin/searches#search"
     end
     resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :group_users, only: [:create, :destroy]
-      resources :group_posts, only: [:index, :create, :destroy]
     end
+    resources :rooms, only: [:show]
   end
 
   namespace :admin do
