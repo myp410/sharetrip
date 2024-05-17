@@ -5,7 +5,7 @@
       <%= render 'public/users/info', user: @owner %>
     </div>
     <div class="col-6">
-      
+
     </div>
   </div>
   <div class="row">
@@ -31,7 +31,7 @@
                 <td>
                   <% @group.users.each do |user| %>
                     <li style="list-style:none;"><%= user.name %></li>
-                  <% end %>  
+                  <% end %>
                 </td>
                 <td>
                   <% if @group.owner_id == current_user.id %>
@@ -41,9 +41,21 @@
                       <%= link_to "グループから退会する", group_group_users_path(@group), method: :delete, class: "btn btn-danger" %>
                     <% else %>
                       <%= link_to "グループに参加する", group_group_users_path(@group), method: :post, class: "btn btn-success" %>
-                    <% end %>  
-                  <% end %>  
+                    <% end %>
+                  <% end %>
                 </td>
+              </tr>
+              <tr>
+                <% if @room.present? %>
+                  <%= link_to "チャットルームへ",group_rooms_path(@group, @room), class: "btn btn-primary" %>
+                <% else %>  
+                  <% if @group.include_user?(current_user)  %>
+                    <%= form_with(model: [@group, @room],local: true) do |f| %>
+                      <%= f.hidden_field :group_id, value: @group.id %>
+                      <%= f.submit "チャットルームへ",class: "btn btn-primary" %>
+                    <% end %>
+                  <% end %>
+                <% end %>  
               </tr>
             </tbody>
           </table>

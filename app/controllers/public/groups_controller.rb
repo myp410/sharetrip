@@ -8,6 +8,7 @@ class Public::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+    @group.users << current_user
     if @group.save
       redirect_to groups_path, notice: "グループの作成に成功しました"
     else
@@ -22,6 +23,7 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @owner = User.find(@group.owner_id)
+    @room = Room.new
   end
 
   def edit
