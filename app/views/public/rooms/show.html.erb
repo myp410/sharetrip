@@ -1,15 +1,29 @@
 <div class="container">
-  <h2>チャットルーム</h2>
+  <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @group.name %> のチャットルーム</h2>
   <div class="row">
     <div class="col">
-      <% if @messages.present? %>
+      <div class="message">
+        <% if @messages.present? %>
         <% @messages.each do |message| %>
-          <% current_user.id == message.user.id %>
-          <p><%= message.user.name %></p>
-          <p><%= message.content %></p>
+          <% if current_user.id == message.user.id %>
+          
+            <%= render "public/messages/message", message: message %>
+          <% else %>
+            <div class="left-container d-flex">
+              <span><%= message.user.name %></span>
+            </div>
+            <div class="left-container d-flex">
+              <%= image_tag message.user.get_profile_image, size: '30x30', style: 'border-radius: 50%' %>
+              <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;"><%= message.content %></span></p>
+            </div>
+          <% end %>  
         <% end %>
       <% end %>  
+      </div>
     </div>
+  </div>
+  <div class="row">
+    <%= render 'layouts/errors', obj: @message %>
   </div>
   <div class="row">
     <%= form_with(model: @message, url: group_rooms_messages_path(@group, @room), local: true) do |f| %>
