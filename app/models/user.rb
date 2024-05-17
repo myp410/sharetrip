@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -13,14 +13,15 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
+
   has_many :messages ,dependent: :destroy
-  
+
   has_one_attached :profile_image
-  
+
   validates :email, presence: true
   validates :name, presence: true
   #validates :is_active, presence: true ←is_activeがfalseの場合にもバリデーションがかかってしまう
-  
+
   def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -28,39 +29,39 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [100, 100]).processed
   end
-  
+
   def self.looks(word)
     if word == ""
       User.all
     else
       User.where('name LIKE ?', "%#{word}%")
     end
-  end  
-  
+  end
+
   def follow(user)
     active_relationships.create(followed_id: user.id)
-  end  
-  
+  end
+
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy
-  end  
-  
+  end
+
   def following?(user)
     followings.include?(user)
   end
-  
+
   GUEST_USER_EMAIL = "guest@example.com"
-  
+
     def self.guest
       find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
         user.password = SecureRandom.urlsafe_base64
         user.name = "guestuser"
       end
     end
-    
+
     def guest_user?
       email == GUEST_USER_EMAIL
-    end   
-    
+    end
+
 
 end
