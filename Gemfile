@@ -63,6 +63,9 @@ gem 'kaminari','~> 1.2.1'
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'enum_help'
 gem 'jquery-rails'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth', '~> 1.9.1'
 
 
 group :production do

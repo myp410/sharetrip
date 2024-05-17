@@ -31,6 +31,14 @@
               </div>
             </td>
           </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="row">
+                <%= link_to "LINEでログイン",user_line_omniauth_authorize_path, class: "btn btn-secondary btn-sm mb-3 sign_in", method: :post %>
+              </div>
+            </td>
+          </tr>
         </table>
        <% end %>
     </div>

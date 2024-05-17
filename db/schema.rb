@@ -181,6 +181,8 @@ ActiveRecord::Schema.define(version: 2024_05_16_040349) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_active", default: true, null: false
     t.text "introduction"
+    t.string "provider"
+    t.string "uid"
     t.string "name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
