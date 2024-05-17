@@ -1,40 +1,45 @@
 <div class="container">
-  <div class="row">
-    <h2 class="col mt-4">ログイン</h2>
-  </div>  
-  <div class="row">
-    <div class="mx-auto">
-　　　　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-        <table class="table table-borderless mt-4 mx-auto">
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %></td>
-          </tr>
-          <tr>
-            <th>パスワード</th>
-            <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class="active">
-                <%= f.submit "ログイン", class: "btn btn-success w-50 " %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class="row">
-                <%= link_to "ゲストログイン（閲覧用）",users_guest_sign_in_path, class: "btn btn-secondary btn-sm mb-3 sign_in", method: :post %>
-              </div>
-            </td>
-          </tr>
-        </table>
-       <% end %>
+  
+    <div class="form-new bg-orange">
+      <div class="row">
+        <h2 class="col mt-4">ログイン</h2>
+      </div>  
+      <div class="row">
+        <div class="mx-auto">
+    　　　　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= render "public/shared/error_messages", resource: resource %>
+            <table class="table table-borderless mt-4 mx-auto">
+              <tr>
+                <th>メールアドレス</th>
+                <td><%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %></td>
+              </tr>
+              <tr>
+                <th>パスワード</th>
+                <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <div class="active">
+                    <%= f.submit "ログイン", class: "btn btn-success w-50 " %>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <div class="row">
+                    <%= link_to "ゲストログイン（閲覧用）",users_guest_sign_in_path, class: "btn btn-secondary btn-sm mb-3 sign_in", method: :post %>
+                  </div>
+                </td>
+              </tr>
+            </table>
+           <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+    
+  
   <div class="row">
     <h2 class="col mt-4">初めての方はこちら</h2>
   </div>
