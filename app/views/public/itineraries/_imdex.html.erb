@@ -1,0 +1,27 @@
+<div class="container-fluid d-flex flex-column">
+  <% itineraries.each do |itinerary| %>
+    <div class="card row m-2 d-flex" style="width: 100%;">
+      <%= link_to post_itinerary_path(itinerary.post_id, itinerary.id), class: "stretched-link text-dark " do %>
+        <div class="card-body d-flex">
+          <div class="itinerary-left col-md-4">
+            <div class="d-flex flex-column">
+              <span><%= itinerary.what_day %></span>
+              <p class="small"><%= itinerary.start_time.strftime("%H:%M") %></p>
+            </div>
+          </div>
+          <div class="itinerary-right col-md-8">
+            <h5 class="card-title"><%= itinerary.title %></h5>
+            <p><i class="fa-solid fa-location-dot"></i><%= itinerary.place %></p>
+            <% if itinerary.post.user == current_user %>
+              <div class="trash">
+                <%= link_to post_itinerary_path(itinerary.post_id, itinerary.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>  
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>  
+</div>

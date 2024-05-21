@@ -3,7 +3,7 @@
     <table class="table table-borderless mx-auto">
       <tr class="form-group">
         <th><%= f.label :title, "タイトル" %></th>
-        <td><%= f.text_field :title, placeholder: "タイトル", size: "30", class: "form-control" %></td>
+        <td><%= f.text_field :title, autofocus: "true", placeholder: "タイトル", size: "30", class: "form-control" %></td>
       </tr>
       <tr class="form-group">
         <th><%= f.label :body, "詳細" %></th>
@@ -31,23 +31,23 @@
               <%= f.radio_button :status, "draft" %>
               <%= f.label :status_draft, "下書き保存" %>
               <%= f.radio_button :status, "published" %>
-              <%= f.label :status_published, "公開する" %> 
+              <%= f.label :status_published, "公開する" %>
             <% elsif post.unpublished? %>
               <%= f.radio_button :status, "unpublished" %>
               <%= f.label :status_unpublished, "非公開にする" %>
               <%= f.radio_button :status, "published" %>
-              <%= f.label :status_published, "公開する" %> 
+              <%= f.label :status_published, "公開する" %>
             <% else %>
               <%= f.radio_button :status, "unpublished" %>
               <%= f.label :status_unpublished, "非公開にする" %>
               <%= f.radio_button :status, "published" %>
-              <%= f.label :status_published, "公開する" %> 
+              <%= f.label :status_published, "公開する" %>
             <% end %>
           <% else %>
               <%= f.radio_button :status, "draft" %>
               <%= f.label :status_draft, "下書き保存" %>
               <%= f.radio_button :status, "published" %>
-              <%= f.label :status_published, "公開する" %> 
+              <%= f.label :status_published, "公開する" %>
           <% end %>
         </td>
       </tr>

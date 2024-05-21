@@ -14,7 +14,7 @@
         <% else %>
         <% end %>
       </div>
-      <div class="row mt-3">
+      <div class="row mt-3 flex-column">
         <% if @itineraries.present? %>
           <div class="row m-3 d-flex">
             <% if @post.user == current_user %>
@@ -38,10 +38,10 @@
             <% if params[:search_day].present? %>
               <% @search.first(1).each do |s| %>
                 <span>絞り込み：<%= s.what_day %>日目</span>
-                <%= render 'public/itineraries/index', post: @post, itineraries: @search %>
+                <%= render 'public/itineraries/imdex', post: @post, itineraries: @search %>
               <% end %>
             <% else %>
-              <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries %>
+              <%= render 'public/itineraries/imdex', post: @post, itineraries: @itineraries %>
             <% end %>
           </div>
         <% else %>

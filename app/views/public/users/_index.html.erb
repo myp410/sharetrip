@@ -1,28 +1,28 @@
 <% if users.exists? %>
-<table class="table">
-  <thead>
-    <tr>
-      <th>プロフォール画像</th>
-      <th>アカウント名</th>
-      <th>自己紹介</th>
-      <th>フォロー数</th>
-      <th>フォロワー数</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="d-flex flex-wrap">
     <% users.each do |user| %>
-      <tr>
-        <td><%= image_tag(user.get_profile_image) %></td>
-        <td><%= user.name %></td>
-        <td><%= user.introduction %></td>
-        <td><%= user.followings.count %></td>
-        <td><%= user.followers.count %></td>
-        <td><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="card m-2" style="width: calc(25% - 1rem);">
+        <%= link_to users_my_page_path(user), class: "stretched-link text-dark" do %>
+          <div class="card-body">
+            <div class="card-title text-center p-2" style="background-color:#D8BfD8;">
+              <div><%= image_tag(user.get_profile_image) %></div>
+              <h6 class="mt-2"><%= user.name %></h6>
+            </div>
+            <div class="card-content">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <%= user.introduction %>
+                </li>
+                <li class="list-group-item">
+                  <%= user.followings.count %>フォロー  <%= user.followers.count %>フォロワー
+                </li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>  
+  </div>
 <% else %>  
   <p class="m-5">ユーザーはいません</p>
 <% end %> 

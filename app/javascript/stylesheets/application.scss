@@ -36,22 +36,22 @@ footer {
 
 .bg-user {
   background: #FFFAFA;
-  padding: 30px 70px;
   margin: 20px 0;
   border: solid 1px #D2B48C;
 }
 
 //post
 .card .card-body {
-    background:linear-gradient(
-        to right,
-        #FFEBCD,
-        #FFEBCD 33%,
-        transparent 66%,
-        transparent) 100% 0 / 300% 100%;
-    transition:background-position 0.3s;
+  background:linear-gradient(
+      to right,
+      #FFEBCD,
+      #FFEBCD 33%,
+      transparent 66%,
+      transparent) 100% 0 / 300% 100%;
+  transition:background-position 0.3s;
 }
  
 .card .card-body:hover {
-    background-position:0 0;
+  background-position:0 0;
 }
+

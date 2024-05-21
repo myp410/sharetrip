@@ -1,67 +1,70 @@
-<table class="table table-hover text-center">
-  <tr>
-    <td colspan="2"><%= image_tag post.user.get_profile_image %></td>
-  </tr>
-  <tr>
-    <th>投稿者</th>
-    <td>
-      <%= link_to users_my_page_path(post.user) do %>
-        <%= post.user.name %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>開始日</th>
-    <td><%= post.start_date %></td>
-  </tr>
-  <tr>
-    <th>終了日</th>
-    <td><%= post.finish_date %></td>
-  </tr>
-  <tr>
-    <th>公開ステータス</th>
-    <td><%= post.status_i18n %></td>
-  </tr>
-  <tr>
-    <th>タイトル</th>
-    <td><%= post.title %></td>
-  </tr>
-  <tr>
-    <th>詳細</th>
-    <td><%= post.body %></td>
-  </tr>
-  <tr>
-    <th>いいね</th>
-    <td id="favorite_buttons_<%= post.id %>">
-      <%= render 'public/favorites/btn', post: post %>
-    </td>
-  </tr>
-  <tr>
-    <th>タグ</th>
-    <td>
-      <% post_tags.each do |tag| %>
-        <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light" do%>
-          <i class="fa-solid fa-tag"></i><%= tag.name %>
+<div class="bg-user ">
+  <table class="table text-center">
+    <tr>
+      <td colspan="2"><%= image_tag post.user.get_profile_image %></td>
+    </tr>
+    <tr>
+      <th>投稿者</th>
+      <td>
+        <%= link_to users_my_page_path(post.user) , class: "text-dark" do %>
+          <%= post.user.name %>
         <% end %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>コメント数</th>
-    <td id="comment_counter">
-      <%= render "public/post_comments/counter", post: post %>
-    </td>
-  </tr>
-</table>
-
-
-<div class="container">
-  <% if post.user == current_user %>
-  <div class="row m-3">
-    <%= link_to '編集する', edit_post_path(post), class: "btn btn-block btn-info" %>
+      </td>
+    </tr>
+    <tr>
+      <th>開始日</th>
+      <td><%= post.start_date %></td>
+    </tr>
+    <tr>
+      <th>終了日</th>
+      <td><%= post.finish_date %></td>
+    </tr>
+    <tr>
+      <th>公開ステータス</th>
+      <td><%= post.status_i18n %></td>
+    </tr>
+    <tr>
+      <th>タイトル</th>
+      <td><%= post.title %></td>
+    </tr>
+    <tr>
+      <th>詳細</th>
+      <td><%= post.body %></td>
+    </tr>
+    <tr>
+      <th>いいね</th>
+      <td id="favorite_buttons_<%= post.id %>">
+        <%= render 'public/favorites/btn', post: post %>
+      </td>
+    </tr>
+    <tr>
+      <th>タグ</th>
+      <td>
+        <% post_tags.each do |tag| %>
+          <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light text-dark" do%>
+            <i class="fa-solid fa-tag"></i><%= tag.name %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>コメント数</th>
+      <td id="comment_counter">
+        <%= render "public/post_comments/counter", post: post %>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <div class="container">
+    <% if post.user == current_user %>
+    <div class="row m-3">
+      <%= link_to '編集する', edit_post_path(post), class: "btn btn-block btn-info" %>
+    </div>
+    <div class="row m-3">
+      <%= link_to '削除する', post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+    </div>
+    <% end %>
   </div>
-  <div class="row m-3">
-    <%= link_to '削除する', post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
-  </div>
-  <% end %>
+  
 </div>
