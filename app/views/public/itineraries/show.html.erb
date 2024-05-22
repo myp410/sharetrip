@@ -41,16 +41,51 @@
         </div>
       </div>
       <% end %>
+      
+      
+      
       <div class="container">
-        <% if @post.user == current_user %>
-          <div class="row" id="article-form">
-            <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
+        <div class="row">
+          <div class="col">
+            <div class="tabs d-flex justify-content-between align-items-center">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#price">費用</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#article">参考記事</a>
+                </li>
+              </ul>
+            </div> 
+            <div class="tab-content">
+              <div id="price" class="tab-pane fade show active">
+                <% if @post.user == current_user %>
+                  <div class="row" id="price-form">
+                    <%= render "public/prices/form", post: @post, itinerary: @itinerary, price: @price %>
+                  </div>
+                <% end %>
+                <div class="row" id="price-index">
+                  <%= render "public/prices/index", post: @post, itinerary: @itinerary, prices: @prices %>
+                </div>
+              </div>
+              <div id="article" class="tab-pane fade">
+                <% if @post.user == current_user %>
+                  <div class="row" id="article-form">
+                    <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
+                  </div>
+                <% end %>
+                <div class="row" id="article-index">
+                  <%= render "public/articles/index", post: @post, itinerary: @itinerary, articles: @articles %>
+                </div>
+              </div>
+            </div>
           </div>
-        <% end %>
-        <div class="row" id="article-index">
-          <%= render "public/articles/index", post: @post, itinerary: @itinerary, articles: @articles %>
         </div>
       </div>
+      
+      
+      
+      
     </div>
   </div>
 </div>

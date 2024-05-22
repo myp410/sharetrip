@@ -1,0 +1,18 @@
+<%= form_with(model: [post, itinerary, price], url: post_itinerary_prices_path(post_id: post.id, itinerary_id: itinerary.id) , local: false) do |f| %>
+  <div class="row m-3">
+    <table class="table table-borderless mx-auto">
+      <tr class="form-group">
+        <th><%= f.label :price, "費用" %></th>
+        <td><%= f.text_field :price, placeholder: "費用", class: "form-control", id: "price_price_textarea" %></td>
+      </tr>
+      <tr class="form-group">
+        <th><%= f.label :body, "内容" %></th>
+        <td><%= f.text_field :body, placeholder: "内容", class: "form-control", id: "price_body_textarea" %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="d-grid col-2 mx-auto">
+    <%= f.hidden_field :itinerary_id, value: itinerary.id %>
+    <%= f.submit "新規登録", class: "px-4 btn btn-success submit-btn" %>
+  </div>
+<% end %>
