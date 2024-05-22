@@ -4,21 +4,23 @@
     <div class="col">
       <div class="message">
         <% if @messages.present? %>
-        <% @messages.each do |message| %>
-          <% if current_user.id == message.user.id %>
-          
-            <%= render "public/messages/message", message: message %>
-          <% else %>
-            <div class="left-container d-flex">
-              <span><%= message.user.name %></span>
-            </div>
-            <div class="left-container d-flex">
-              <%= image_tag message.user.get_profile_image, size: '30x30', style: 'border-radius: 50%' %>
-              <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;"><%= message.content %></span></p>
-            </div>
-          <% end %>  
-        <% end %>
-      <% end %>  
+          <% @messages.each do |message| %>
+            <% if current_user.id == message.user_id %>
+            
+              <%= render "public/messages/message", message: message %>
+            <% else %>
+              <div class="left-container d-flex">
+                <span><%= message.user.name %></span>
+              </div>
+              <div class="left-container d-flex">
+                <%= image_tag message.user.get_profile_image, size: '30x30', style: 'border-radius: 50%' %>
+                <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;"><%= message.content %></span></p>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>メッセージなし</p>
+        <% end %>  
       </div>
     </div>
   </div>

@@ -3,10 +3,21 @@ class Public::MessagesController < ApplicationController
   
   def create
     @group = Group.find(params[:group_id])
-    if @message = Message.create(params.require(:message).permit(:content, :user_id, :room_id).merge(:user_id => current_user.id))
+    @room = @group.room
+    @message = @room.messages.new(message_params)
+    @message.user_id = current_user.id
+  
+    if @message.save
       redirect_to group_rooms_path(@group)
     else
       redirect_back(fallback_location: root_path)
-    end  
+    end
   end
+  
+  private
+  
+  def message_params
+    params.require(:message).permit(:content, :room_id)
+  end
+  
 end

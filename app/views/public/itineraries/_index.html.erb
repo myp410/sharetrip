@@ -33,15 +33,23 @@
                       </tr>
                       <tr>
                         <th>タイトル</th>
-                        <td colspan="3"><%= itinerary.title %></td>
+                        <td><%= itinerary.title %></td>
                       </tr>
                       <tr>
                         <th>場所</th>
-                        <td colspan="3"><%= itinerary.place %></td>
+                        <td><%= itinerary.place %></td>
                       </tr>
                       <tr>
                         <th>詳細</th>
-                        <td colspan="3"><%= itinerary.body %></td>
+                        <td><%= itinerary.body %></td>
+                      </tr>
+                      <tr>
+                        <th>費用</th>
+                        <td>
+                          <% itinerary.prices.each do |price| %>
+                            <p><%= price.price %></p>
+                          <% end %>  
+                        </td>
                       </tr>
                     </table>
                   </div>

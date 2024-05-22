@@ -4,9 +4,14 @@ class Public::RoomsController < ApplicationController
 
   def show
     @group = Group.find(params[:group_id])
-    @room = @group.room
+    user_rooms = Room.find_by(group_id: @group.id)
+    unless user_rooms.nil?
+      @room = @group.room
+    else
+      @room = Room.new
+    end  
     @messages = @room.messages
-    @message = Message.new
+    @message = @room.messages.new
     
   end
 

@@ -23,7 +23,12 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @owner = User.find(@group.owner_id)
-    @room = Room.new
+    user_rooms = Room.find_by(group_id: @group.id)
+    unless user_rooms.nil?
+      @room = @group.room
+    else
+      @room = Room.new
+    end  
   end
 
   def edit

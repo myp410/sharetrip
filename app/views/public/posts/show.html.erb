@@ -10,8 +10,8 @@
       <% if @post.user == current_user %>
         <div class="row">
           <h5 class="text-center">- 旅程追加</h5>
-          <%= render 'layouts/errors', obj: @itinerary %>
-          <%= render 'public/itineraries/form', post: @post, itinerary: @itinerary, duration: @duration %>
+          <%= render 'layouts/errors', obj: @new_itinerary %>
+          <%= render 'public/itineraries/form', post: @post, itinerary: @new_itinerary, duration: @duration %>
         </div>
       <% else %>
       <% end %>
