@@ -3,6 +3,7 @@ class Public::PricesController < ApplicationController
   
   def create
     @itinerary = Itinerary.find(params[:itinerary_id])
+    @post = @itinerary.post
     @price = Price.new(price_params)
     @price.save
     @prices = @itinerary.prices
@@ -10,6 +11,7 @@ class Public::PricesController < ApplicationController
   
   def destroy
     @itinerary = Itinerary.find(params[:itinerary_id])
+    @post = @itinerary.post
     @price = Price.find(params[:id])
     @price.destroy
     @prices = @itinerary.prices
