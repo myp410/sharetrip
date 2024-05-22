@@ -1,13 +1,13 @@
-<%= form_with(model: [post, itinerary, article], url: post_itinerary_articles_path(post_id: post.id, itinerary_id: itinerary.id) , local: true) do |f| %>
+<%= form_with(model: [post, itinerary, article], url: post_itinerary_articles_path(post_id: post.id, itinerary_id: itinerary.id) , local: false) do |f| %>
   <div class="row m-3">
     <table class="table table-borderless mx-auto">
       <tr class="form-group">
         <th><%= f.label :title, "タイトル" %></th>
-        <td><%= f.text_field :title, placeholder: "タイトル", class: "form-control" %></td>
+        <td><%= f.text_field :title, placeholder: "タイトル", class: "form-control", id: "article_title_textarea" %></td>
       </tr>
       <tr class="form-group">
         <th><%= f.label :link, "リンク" %></th>
-        <td><%= f.text_field :link, placeholder: "リンク", class: "form-control" %></td>
+        <td><%= f.text_field :link, placeholder: "リンク", class: "form-control", id: "article_body_textarea" %></td>
       </tr>
     </table>
   </div>
