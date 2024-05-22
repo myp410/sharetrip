@@ -3,19 +3,19 @@
     <div class="col">
       <table class="table ">
         <% if @model == "User" %>
-          <h2>"<%= @word %>"のユーザー検索結果</h2>
+          <h2 class="m-3">"<%= @word %>"のユーザー検索結果</h2>
           <%= render 'public/users/index', users: @users %>
         <% elsif @model == "Post" %>
-          <h2>"<%= @word %>"の投稿検索結果</h2>
+          <h2 class="m-3">"<%= @word %>"の投稿検索結果</h2>
           <%= render 'public/posts/index', posts: @posts %>
         <% elsif @model == "Itinerary" %>
-          <h2>"<%= @word %>"の旅程検索結果</h2>
+          <h2 class="m-3">"<%= @word %>"の旅程検索結果</h2>
           <%= render 'public/itineraries/index', itineraries: @itineraries %>
         <% elsif @model == "PostComment" %>
-          <h2>"<%= @word %>"のコメント検索結果</h2>
+          <h2 class="m-3">"<%= @word %>"のコメント検索結果</h2>
           <%= render 'public/post_comments/index', post_comments: @post_comments %>
         <% else %>
-          <h2>"<%= @word %>"のタグ</h2>
+          <h2 class="m-3">"<%= @word %>"のタグ</h2>
           <div class="row">
             <div class="col">
               <table class="table">

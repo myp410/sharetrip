@@ -1,35 +1,62 @@
-<table class="table table-hover text-center">
-  <thead>
-    <tr>
-      <th>日程</th>
-      <th>開始時間</th>
-      <th><p>~</p></th>
-      <th>終了時間</th>
-      <th>タイトル</th>
-      <th>場所</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody >
-    <% itineraries.each do |itinerary| %>
-    <tr>
-      <td><%= itinerary.what_day %></td>
-      <td><%= itinerary.start_time.strftime( "%H:%M" ) %></td>
-      <td><p>~</p></td>
-      <td><%= itinerary.finish_time.strftime( "%H:%M" ) %></td>
-      <td>
-        <%= link_to post_itinerary_path(itinerary.post_id, itinerary.id), class: "text-black" do %>
-          <%= itinerary.title %>
-        <% end %>
-      </td>
-      <td><%= itinerary.place %></td>
-      <td>
-        <% if itinerary.post.user == current_user %>
-          <%= link_to "削除", post_itinerary_path(itinerary.post_id, itinerary.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container-fluid d-flex flex-column">
+  <% itineraries.each do |itinerary| %>
+    <div class="card row m-2 d-flex" style="width: 100%;">
+        <div class="card-body d-flex">
+          <div class="itinerary-left col-md-3">
+            <div class="d-flex flex-column">
+              <span class="badge rounded-pill" style="background: #cd5c5c;"><%= itinerary.what_day %>days</span>
+              <p class="small text-center mt-3"><%= itinerary.start_time.strftime("%H:%M") %></p>
+            </div>
+          </div>
+          <div class="itinerary-right col-md-8 offset-1">
+            <h5 class="card-title"><%= itinerary.title %></h5>
+            <p><i class="fa-solid fa-location-dot"></i><%= itinerary.place %></p>
+            <!-- モーダルのボタン -->
+            <%= link_to("", "#exampleModalLong", class: "stretched-link", data: { toggle: "modal" }) %>
+
+            <!-- モーダルの設定 -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLongTitle">旅程詳細</h1>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table table-hover text-center">
+                      <tr>
+                        <th>開始時間</th>
+                        <td><%= itinerary.start_time.strftime( "%H:%M" ) %></td>
+                      </tr>
+                      <tr>
+                        <th>終了時間</th>
+                        <td><%= itinerary.finish_time.strftime( "%H:%M" ) %></td>
+                      </tr>
+                      <tr>
+                        <th>タイトル</th>
+                        <td colspan="3"><%= itinerary.title %></td>
+                      </tr>
+                      <tr>
+                        <th>場所</th>
+                        <td colspan="3"><%= itinerary.place %></td>
+                      </tr>
+                      <tr>
+                        <th>詳細</th>
+                        <td colspan="3"><%= itinerary.body %></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <% if itinerary.post.user == current_user %>
+                      <%= link_to "編集", edit_post_itinerary_path(itinerary.post_id, itinerary.id), class: "btn btn-block btn-info" %>
+                      <%= link_to "削除", post_itinerary_path(itinerary.post_id, itinerary.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+                      <%= link_to "詳細", post_itinerary_path(post) %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  <% end %>
+</div>

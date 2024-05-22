@@ -1,11 +1,14 @@
 <div class="container">
-  <div class="row m-3">
-    <h2>旅程詳細</h2>
-  </div>
+  
   <div class="row">
-    <div class="col-12">
+    <div class="col-4">
+      <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
+    </div>
+    <div class="col-7 offset-1">
+      <div class="row m-3">
+        <h2>旅程詳細</h2>
+      </div>
       <table class="table table-hover text-center">
-
         <tr>
           <th>時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
@@ -26,7 +29,7 @@
         </tr>
 
       </table>
-      <% if @itinerary.post.user == current_user %>
+      <% if @post.user == current_user %>
       <div class="container m-3">
         <div class="row d-flex">
           <div class="col m-3">
@@ -39,26 +42,13 @@
       </div>
       <% end %>
       <div class="container">
-        <% if @itinerary.post.user == current_user %>
-          <div class="row">
+        <% if @post.user == current_user %>
+          <div class="row" id="article-form">
             <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
           </div>
         <% end %>
-        <div class="row">
-          <% if @articles.present? %>
-          <div class="csrd">
-            <div class="card-body">
-              <% @articles.each do |article| %>
-                <%= link_to article.link do %>
-                  <%= article.title %>
-                <% end %>
-                <%= link_to "削除", post_itinerary_article_path(@post, @itinerary, article), method: :delete ,class:"btn btn-danger" %>
-              <% end %>
-            </div>
-          </div>
-
-          <% else %>
-          <% end %>
+        <div class="row" id="article-index">
+          <%= render "public/articles/index", post: @post, itinerary: @itinerary, articles: @articles %>
         </div>
       </div>
     </div>

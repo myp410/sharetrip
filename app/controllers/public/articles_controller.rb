@@ -3,19 +3,18 @@ class Public::ArticlesController < ApplicationController
 
   def create
     @itinerary = Itinerary.find(params[:itinerary_id])
+    @post = @itinerary.post
     @article = Article.new(article_params)
-    if @article.save
-      redirect_to post_itinerary_path(@itinerary.post_id, @itinerary)
-    else
-      render 'public/itineraries/show'
-    end
+    @article.save
+    @articles = @itinerary.articles
   end
 
   def destroy
-    article = Article.find(params[:id])
-    itinerary = Itinerary.find(params[:itinerary_id])
-    article.destroy
-    redirect_to post_itinerary_path(itinerary.post_id, itinerary)
+    @article = Article.find(params[:id])
+    @itinerary = Itinerary.find(params[:itinerary_id])
+    @post = @itinerary.post
+    @article.destroy
+    @articles = @itinerary.articles
   end
 
   private

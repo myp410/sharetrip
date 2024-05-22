@@ -1,50 +1,45 @@
-<table class="table table-hover text-center">
-  <thead>
-    <tr>
-      <th>投稿日時</th>
-      <th>投稿者</th>
-      <th>開始日</th>
-      <th><p>~</p></th>
-      <th>終了日</th>
-      <th>タイトル</th>
-      <th>いいね</th>
-      <th>タグ</th>
-    </tr>
-  </thead>
-  <tbody >
+<% if posts.present? %>
+  <div class="d-flex flex-wrap">
     <% posts.each do |post| %>
-    <tr>
-      <td><%= post.created_at.to_s(:datetime_jp) %></td>
-      <td class="align-middle">
-        <div class="row">
-          <div class="text-center">
-            <%= image_tag post.user.get_profile_image, size: '64x36', style: "object-fit: contain;" %>
-          </div>
-          <div class="text-center">
-            <%= post.user.name %>
-          </div>
+      <div class="card m-2" style="width: calc(25% - 1rem);">
+        <%= link_to "", post_path(post), class: "stretched-link text-dark" %>
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= post.title %></h5>
+            <div class="card-content d-flex justify-content-center">
+              <div class="card-left">
+                <div class="text-center">
+                  <%= image_tag post.user.get_profile_image, size: '50x50', style: "object-fit: contain; border-radius: 50%;" %>
+                </div>
+                <div class="text-center">
+                  <p class="small">
+                    <%= post.user.name %>
+                  </p>
+                </div>
+              </div>
+              <div class="card-right ml-2">
+                <span class="badge text-bg-light text-dark justify-content-center"><%= post.start_date %>~<%= post.finish_date %></span>
+                <div class="d-flex justify-content-center mt-2">
+                  <div>
+                    <% post.tags.each do |tag| %>
+                      <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light text-dark" do%>
+                        <i class="fa-solid fa-tag"></i><%= tag.name %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div id="favorite_buttons_<%= post.id %>" class="ml-2">
+                    <%= render 'public/favorites/btn', post: post %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-foot d-flex justify-content-center">
+              <p class="small">投稿日時:<%= post.created_at.to_s(:datetime_jp) %></p>
+            </div>
         </div>
-      </td>
-      <td><%= post.start_date %></td>
-      <td><p>~</p></td>
-      <td><%= post.finish_date %></td>
-      <td>
-        <%= link_to post_path(post), class: "text-black" do %>
-          <%= post.title %>
-        <% end %>
-      </td>
-      <td id="favorite_buttons_<%= post.id %>">
-        <%= render 'public/favorites/btn', post: post %>
-      </td>
-      <td>
-        <% post.tags.each do |tag| %>
-          <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light" do%>
-            <i class="fa-solid fa-tag"></i><%= tag.name %>
-          <% end %>
-        <% end %>
-      </td>
-    </tr>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<%= paginate posts %>
+  </div>
+  <%= paginate posts %>
+<% else %>
+  <p>投稿はありません</p>
+<% end %>  
