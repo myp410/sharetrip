@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-6 m-3 bg-user">
       <% if @user == current_user %>
-        <h2 class="m-3">プロフィール</h2>
+        <h2 class="m-3 text-center">プロフィール</h2>
       <% else %>
         <h2 class="m-3">ユーザー詳細</h2>
       <% end %>
@@ -16,15 +16,14 @@
     <div class="container">
       <div class="row">
         <div class="col d-flex justify-content-end">
-          <div>
-            <%= link_to new_post_path do %>
-              <i class="fa-solid fa-square-plus" style="color:gray; font-size: 30px;"></i>
-            <% end %>  
-          </div>
+          
           <div class="ml-3">
-            <%= link_to 'グループを作成する', new_group_path %>
-            |
-            <%= link_to 'グループ一覧', groups_path %>
+            <%= link_to  new_group_path ,class: "btn btn-secondary" do %>
+              <i class="fa-solid fa-handshake"> グループを作成する</i>
+            <% end %>  
+            <%= link_to  groups_path ,class: "btn btn-secondary" do%>
+              <i class="fa-solid fa-user-group"> グループ一覧</i>
+            <% end %>  
           </div>
         </div>
       </div>

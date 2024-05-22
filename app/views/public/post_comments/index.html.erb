@@ -5,20 +5,21 @@
     </div>
     <div class="col-7 offset-1">
       <h3 class="m-3">コメント投稿フォーム</h3>
-      <%= form_with model: [@post, @new_comment] ,url: post_post_comments_path, method: :post, local: false do |f| %>
-      <table class="table">
-        <tr>
-          <th>コメント</th>
-          <td><%= f.text_field :comment, placeholder: "コメントをここへ" ,class: "form-control", id: "comment_textarea" %></td>
-        </tr>
-      </table>
-      <div class="row">
-        <div class="col-12 mx-auto p-1">
-          <%= f.submit "コメント投稿", class: "btn btn-success" %>
+      <div class="bg-orange">
+        <%= form_with model: [@post, @new_comment] ,url: post_post_comments_path, method: :post, local: false do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <th>コメント</th>
+            <td><%= f.text_field :comment, placeholder: "コメントをここへ" ,class: "form-control", id: "comment_textarea" %></td>
+          </tr>
+        </table>
+        <div class="row">
+          <div class="col-12 text-center p-1">
+            <%= f.submit "コメント投稿", class: "btn btn-success" %>
+          </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
-
       <div class="container">
         <div class="row">
           <div class="col", id="comment_index">
