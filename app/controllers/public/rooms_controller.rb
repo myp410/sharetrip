@@ -4,15 +4,9 @@ class Public::RoomsController < ApplicationController
 
   def show
     @group = Group.find(params[:group_id])
-    user_rooms = Room.find_by(group_id: @group.id)
-    unless user_rooms.nil?
-      @room = @group.room
-    else
-      @room = Room.new
-    end  
+    @room = @group.room
+    @message = Message.new
     @messages = @room.messages
-    @message = @room.messages.new
-    
   end
 
   def create
