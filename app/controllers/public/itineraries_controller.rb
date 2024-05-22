@@ -7,6 +7,8 @@ class Public::ItinerariesController < ApplicationController
     @post = Post.find(params[:post_id])
     @article = Article.new
     @articles = @itinerary.articles
+    @tags = @post.tags.pluck(:name).join(',')
+    @post_tags = @post.tags
   end
   
   def create

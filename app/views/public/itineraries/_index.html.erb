@@ -8,7 +8,7 @@
               <p class="small text-center mt-3"><%= itinerary.start_time.strftime("%H:%M") %></p>
             </div>
           </div>
-          <div class="itinerary-right col-md-9">
+          <div class="itinerary-right col-md-8 offset-1">
             <h5 class="card-title"><%= itinerary.title %></h5>
             <p><i class="fa-solid fa-location-dot"></i><%= itinerary.place %></p>
             <!-- モーダルのボタン -->
@@ -24,9 +24,11 @@
                   <div class="modal-body">
                     <table class="table table-hover text-center">
                       <tr>
-                        <th>時間</th>
+                        <th>開始時間</th>
                         <td><%= itinerary.start_time.strftime( "%H:%M" ) %></td>
-                        <td>~</td>
+                      </tr>
+                      <tr>
+                        <th>終了時間</th>
                         <td><%= itinerary.finish_time.strftime( "%H:%M" ) %></td>
                       </tr>
                       <tr>

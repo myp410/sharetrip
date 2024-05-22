@@ -1,11 +1,14 @@
 <div class="container">
-  <div class="row m-3">
-    <h2>旅程詳細</h2>
-  </div>
+  
   <div class="row">
-    <div class="col-12">
+    <div class="col-4">
+      <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
+    </div>
+    <div class="col-7 offset-1">
+      <div class="row m-3">
+        <h2>旅程詳細</h2>
+      </div>
       <table class="table table-hover text-center">
-
         <tr>
           <th>時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
@@ -26,7 +29,7 @@
         </tr>
 
       </table>
-      <% if @itinerary.post.user == current_user %>
+      <% if @post.user == current_user %>
       <div class="container m-3">
         <div class="row d-flex">
           <div class="col m-3">
