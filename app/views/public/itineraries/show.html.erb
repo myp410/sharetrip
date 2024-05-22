@@ -46,7 +46,7 @@
         <% end %>
         <div class="row">
           <% if @articles.present? %>
-          <div class="csrd">
+          <div class="card">
             <div class="card-body">
               <% @articles.each do |article| %>
                 <%= link_to article.link do %>
@@ -59,6 +59,14 @@
 
           <% else %>
           <% end %>
+        </div>
+        <% if @post.user == current_user %>
+          <div class="row">
+            <%= render "public/prices/form", post: @post, itinerary: @itinerary, price: @price %>
+          </div>
+        <% end %>
+        <div class="row">
+          <%= render "public/prices/index", post: @post, itinerary: @itinerary, prices: @prices %>
         </div>
       </div>
     </div>

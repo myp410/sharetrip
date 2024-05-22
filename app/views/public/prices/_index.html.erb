@@ -1,0 +1,13 @@
+<% if prices.present? %>
+  <div class="card" style="width:20%;">
+    <div class="card-body">
+      <% prices.each do |price| %>
+        <p>¥ <%= price.price %></p>
+        <p><%= price.body %></p>
+        <%= link_to "削除", post_itinerary_price_path(post, itinerary, price), method: :delete ,class:"btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+
+<% else %>
+<% end %>

@@ -37,6 +37,7 @@ get "admin/search" => "admin/searches#search"
       delete 'itineraries/destroy_all' => "itineraries#destroy_all"
       resources :itineraries, only: [:show, :create, :edit, :update, :destroy] do
         resources :articles, only: [:create, :destroy]
+        resources :prices, only: [:create, :destroy]
       end
       resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
       resource :favorites, only: [:create, :destroy] #urlにID含めない
@@ -47,7 +48,7 @@ get "admin/search" => "admin/searches#search"
       resource :group_users, only: [:create, :destroy]
       resource :rooms, only: [:show, :create] do
         resources :messages, only: [:create]
-      
+
       end
     end
 

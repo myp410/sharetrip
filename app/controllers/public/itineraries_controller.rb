@@ -7,6 +7,8 @@ class Public::ItinerariesController < ApplicationController
     @post = Post.find(params[:post_id])
     @article = Article.new
     @articles = @itinerary.articles
+    @price = Price.new
+    @prices = @itinerary.prices
   end
   
   def create
