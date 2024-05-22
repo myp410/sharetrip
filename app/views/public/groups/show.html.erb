@@ -48,14 +48,14 @@
               <tr>
                 <% if @room.present? %>
                   <%= link_to "チャットルームへ",group_rooms_path(@group, @room), class: "btn btn-primary" %>
-                <% else %>  
+                <% else %>
                   <% if @group.include_user?(current_user)  %>
                     <%= form_with(model: [@group, @room],local: true) do |f| %>
                       <%= f.hidden_field :group_id, value: @group.id %>
                       <%= f.submit "チャットルームへ",class: "btn btn-primary" %>
                     <% end %>
                   <% end %>
-                <% end %>  
+                <% end %>
               </tr>
             </tbody>
           </table>

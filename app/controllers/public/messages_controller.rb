@@ -4,9 +4,8 @@ class Public::MessagesController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     @room = @group.room
-    @message = @room.messages.new(message_params)
-    @message.user_id = current_user.id
-  
+    @message = current_user.messages.new(message_params)
+
     if @message.save
       redirect_to group_rooms_path(@group)
     else
@@ -17,7 +16,7 @@ class Public::MessagesController < ApplicationController
   private
   
   def message_params
-    params.require(:message).permit(:content, :room_id)
+    params.require(:message).permit(:content, :room_id, :user_id)
   end
   
 end
