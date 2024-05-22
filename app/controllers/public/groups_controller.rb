@@ -23,7 +23,13 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @owner = User.find(@group.owner_id)
-    @room = Room.new
+    if Room.exists?(group_id: @group.id)
+      @room = Room.find_by(group_id: @group.id)
+    else
+      @room = Room.new
+      @room.group = @group
+      @room.save
+    end
   end
 
   def edit
