@@ -39,20 +39,22 @@
       </div>
       <% end %>
       <div class="container">
-        <% if @itinerary.post.user == current_user %>
+        <% if @post.user == current_user %>
           <div class="row">
             <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
           </div>
         <% end %>
         <div class="row">
           <% if @articles.present? %>
-          <div class="csrd">
+          <div class="card">
             <div class="card-body">
               <% @articles.each do |article| %>
                 <%= link_to article.link do %>
                   <%= article.title %>
                 <% end %>
-                <%= link_to "削除", post_itinerary_article_path(@post, @itinerary, article), method: :delete ,class:"btn btn-danger" %>
+                <%= link_to post_itinerary_article_path(@post, @itinerary, article), method: :delete  do %>
+                  <i class="fa-solid fa-trash-can text-dark"></i>
+                <% end %>  
               <% end %>
             </div>
           </div>
