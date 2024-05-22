@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 m-3">
+    <div class="col-6 m-3 bg-user">
       <% if @user == current_user %>
         <h2 class="m-3">プロフィール</h2>
       <% else %>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="row">
-        <h2 class="m-3">投稿一覧</h2>
+        <h2 class="m-3">各種一覧</h2>
       </div>
       <div class="row">
         <div class="col-12">
@@ -45,6 +45,15 @@
                 <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#unpublished">非公開</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#followers">フォロワー</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#followings">フォロー</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#likes">いいね</a>
+                </li>
               </ul>
             </div> 
             <div class="tab-content">
@@ -57,9 +66,47 @@
               <div id="unpublished" class="tab-pane fade">
                 <%= render "public/posts/index", posts: @unpublished_posts %>
               </div>
+              <div id="followers" class="tab-pane fade">
+                <%= render "public/users/index", users: @followers %>
+              </div>
+              <div id="followings" class="tab-pane fade">
+                <%= render "public/users/index", users: @followings %>
+              </div>
+              <div id="likes" class="tab-pane fade">
+                <%= render "public/posts/index", posts: @like_posts %>
+              </div>
             </div>
           <% else %>
-            <%= render "public/posts/index", posts: @published_posts %>
+            <div class="tabs d-flex justify-content-between align-items-center">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#published">公開中</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#followers">フォロワー</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#followings">フォロー</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#likes">いいね</a>
+                </li>
+              </ul>
+            </div> 
+            <div class="tab-content">
+              <div id="published" class="tab-pane fade show active">
+                <%= render "public/posts/index", posts: @published_posts %>
+              </div>
+              <div id="followers" class="tab-pane fade">
+                <%= render "public/users/index", users: @followers %>
+              </div>
+              <div id="followings" class="tab-pane fade">
+                <%= render "public/users/index", users: @followings %>
+              </div>
+              <div id="likes" class="tab-pane fade">
+                <%= render "public/posts/index", posts: @like_posts %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>

@@ -1,4 +1,6 @@
-@use '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+
+//all
 
 header {
   background-color: #3399FF;
@@ -25,3 +27,35 @@ footer {
   color: #fff;
 }
 
+.bg-orange {
+  background: #FAEBD7;
+  padding: 30px 70px;
+  margin: 20px 0;
+  border: solid 1px #DBB9B5;
+}
+
+.bg-user {
+  background: #FFFAFA;
+  margin: 20px 0;
+  border: solid 1px #D2B48C;
+}
+
+//post
+.card .card-body {
+  background:linear-gradient(
+      to right,
+      #FFEBCD,
+      #FFEBCD 33%,
+      transparent 66%,
+      transparent) 100% 0 / 300% 100%;
+  transition:background-position 0.3s;
+}
+ 
+.card .card-body:hover {
+  background-position:0 0;
+}
+
+//itinerary
+.itinerary-left {
+  background: #FFFAFA;
+}

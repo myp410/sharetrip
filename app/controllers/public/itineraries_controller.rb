@@ -9,6 +9,8 @@ class Public::ItinerariesController < ApplicationController
     @articles = @itinerary.articles
     @price = Price.new
     @prices = @itinerary.prices
+    @tags = @post.tags.pluck(:name).join(',')
+    @post_tags = @post.tags
   end
   
   def create

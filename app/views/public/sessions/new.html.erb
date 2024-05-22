@@ -1,49 +1,67 @@
 <div class="container">
-  <div class="row">
-    <h2 class="col mt-4">ログイン</h2>
-  </div>  
-  <div class="row">
-    <div class="mx-auto">
-　　　　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-        <table class="table table-borderless mt-4 mx-auto">
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %></td>
-          </tr>
-          <tr>
-            <th>パスワード</th>
-            <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class="active">
-                <%= f.submit "ログイン", class: "btn btn-success w-50 " %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class="row">
-                <%= link_to "ゲストログイン（閲覧用）",users_guest_sign_in_path, class: "btn btn-secondary btn-sm mb-3 sign_in", method: :post %>
-              </div>
-            </td>
-          </tr>
-        </table>
-       <% end %>
+
+    <div class="form bg-orange">
+      <div class="row">
+        <h2 class="col mt-4">ユーザーログイン</h2>
+      </div>
+      <div class="row">
+        <div class="mx-auto">
+    　　　　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= render "public/shared/error_messages", resource: resource %>
+            <table class="table table-borderless mt-4 mx-auto">
+              <tr>
+                <th>メールアドレス</th>
+                <td><%= f.email_field :email,autofocus: "true", autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %></td>
+              </tr>
+              <tr>
+                <th>パスワード</th>
+                <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <div class="active">
+                    <%= f.submit "ログイン", class: "btn btn-success w-50 " %>
+                  </div>
+                </td>
+              </tr>
+            </table>
+           <% end %>
+        </div>
+      </div>
+    </div>
+
+  <div class="container bg-orange">
+    <div class="row">
+      <h2 class="col mt-4">初めての方はこちら</h2>
+    </div>
+    <div class="row justify-content-center m-4">
+      <div class="col">
+        <h6 class="align-items-left">新規会員登録をしてサービス利用する方</h6>
+      </div>
+      <div class="col">
+        <%= link_to "新規登録",new_user_registration_path ,class: "btn btn-success ml-4"%>
+      </div>
+    </div>
+    <div class="row justify-content-center m-4">
+      <div class="col">
+        <h6 class="align-items-left">ゲストとしてサービス利用する方（一部機能制限されます）</h6>
+      </div>
+      <div class="col">
+        <%= link_to "ゲストログイン",users_guest_sign_in_path, class: "btn btn-secondary ml-4", method: :post %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <h2 class="col mt-4">初めての方はこちら</h2>
-  </div>
-  <div class="row justify-content-center mb-4">
-    <%= link_to "新規登録",new_user_registration_path ,class: "btn btn-success"%>
-  </div>
+
   <div class="row justify-content-end">
-    <h4 class="col mt-4">管理者</h4>
-    <%= link_to "管理者サインイン",new_admin_session_path ,class: "btn btn-sm btn-secondary"%>
+    <div class="col-1">
+      <p class="align-items-right">運営使用</p>
+    </div>
+    <div class="col-1">
+      <%= link_to new_admin_session_path do %>
+        <i class="fa-solid fa-user-tie"style="color:gray;"></i>
+      <% end %>
+    </div>
   </div>
 </div>
 
