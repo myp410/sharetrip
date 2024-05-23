@@ -1,7 +1,11 @@
-<div class="right-container d-flex justify-content-end">
-  <span><%= message.user.name %></span>
-</div>
-<div class="right-container d-flex justify-content-end">
-  <p id="message_<%= message.id %>" style="background-color: rgba(0, 185, 0, 0.6); padding: 5px; border-radius: 10px;"><%= message.content %></p>
-  <%= image_tag message.user.get_profile_image, size: '30x30', style: 'border-radius: 50%; margin-left: 10px;' %>
+<div class="container d-flex justify-content-end m-2">
+  <div class="row">
+    <div class="message-box col-auto d-flex align-items-center justify-content-center">
+      <p id="message_<%= message.id %>" style="background-color: rgba(0, 185, 0, 0.6); padding: 5px; border-radius: 10px;"><%= message.content %></p>
+    </div>
+    <div class="col d-flex flex-column">
+      <span><%= message.user.name %></span>
+      <%= image_tag message.user.get_profile_image, size: '30x30', style: 'border-radius: 50%; margin-left: 10px;' %>
+    </div>
+  </div>
 </div>

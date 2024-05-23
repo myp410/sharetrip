@@ -1,12 +1,12 @@
 <div class="container">
-  <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @group.name %> のチャットルーム</h2>
+  <h2 class="text-center mt-3" id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @group.name %> のチャットルーム</h2>
+  <div class="heading-line mx-2"></div>
   <div class="row">
     <div class="col">
       <div class="message">
         <% if @messages.present? %>
           <% @messages.each do |message| %>
-            <% if current_user.id == message.user_id %>
-            
+            <% if current_user.id == message.user_id %> 
               <%= render "public/messages/message", message: message %>
             <% else %>
               <div class="left-container d-flex">
@@ -19,7 +19,7 @@
             <% end %>
           <% end %>
         <% else %>
-          <p>メッセージなし</p>
+          <p class="fw-bold text-center m-5 bg-orange">メッセージなし</p>
         <% end %>  
       </div>
     </div>
@@ -27,7 +27,7 @@
   <div class="row">
     <%= render 'layouts/errors', obj: @message %>
   </div>
-  <div class="row">
+  <div class="row text-end m-5">
     <%= form_with(model: @message, url: group_rooms_messages_path(@group, @room), local: true) do |f| %>
       <%= f.text_field :content, placeholder: "メッセージを入力してください",size: 50, class: "form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>

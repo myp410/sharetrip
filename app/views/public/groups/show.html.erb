@@ -27,7 +27,7 @@
                 <td class="d-flex flex-wrap">
                   <% @group.users.each do |user| %>
                     <ul class="list-group">
-                      <li class="list-group-item d-flex justify-content-start align-items-center" style="list-style:none;">
+                      <li class="list-group-item ml-1 d-flex justify-content-start align-items-center" style="list-style:none;">
                         <%= image_tag user.get_profile_image, size: '50x50', style: "object-fit: contain; border-radius: 50%;" %>
                         <span><%= user.name %></span>
                       </li>

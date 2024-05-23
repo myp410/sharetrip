@@ -1,18 +1,21 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>グループ名</th>
-      <th>紹介文</th>
-      <th>メンバー数</th>
-    </tr>
-  </thead>
-  <tbody>
+<% if groups.present? %>
+  <div class="d-flex flex-wrap">
     <% groups.each do |group| %>
-      <tr>
-        <td><%= link_to group.name, group_path(group) %></td>
-        <td><%= group.introduction %></td>
-        <td><%= group.users.count %></td>
-      </tr>
+      <div class="card m-2" style="width: calc(25% - 1rem);">
+        <%= link_to "", group_path(group), class: "stretched-link text-dark" %>
+        <div class="card-body">
+          <h5 class="card-title text-center" style="background:#FFF5EE;"><%= group.name %></h5>
+          <div class="text-center">
+            <p><%= group.introduction %></p>
+          </div>
+          <div class="text-center">
+            <i class="fa-solid fa-user-group" style="font-size: 15px;">   <%= group.users.count %></i>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+<% else %>
+  <p>グループはありません</p>
+<% end %>  
+

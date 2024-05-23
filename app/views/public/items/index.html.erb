@@ -4,8 +4,10 @@
       <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
     </div>
     <div class="col-7 offset-1">
-      <h2 class="m-3">持ち物リスト</h2>
-      <div class="row">
+      
+      <div class="row bg-orange mx-auto">
+        <h2 class="text-center">持ち物リスト</h2>
+        <div class="heading-line"></div>
         <% if @post.user == current_user %>
           <%= render 'layouts/errors', obj: @item %>
           <%= form_with(model: [@post, @item], local: true) do |f| %>
@@ -40,7 +42,9 @@
                   <td><%= check_box_tag '', '', item.have, {'data-id' => item.id, 'data-post_id' => item.post_id } %> </td>
                   <td><%= item.name %></td>
                   <td>
-                    <%= link_to "削除", post_item_path(item.post_id,item.id), method: :delete, class: "btn btn-danger" %>
+                    <%= link_to post_item_path(item.post_id,item.id), method: :delete, class: "btn btn-danger" do %>
+                      <i class="fa-solid fa-trash-can"></i>
+                    <% end %>  
                   </td>
                 </tr>
                 <% end %>
