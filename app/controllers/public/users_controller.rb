@@ -14,6 +14,7 @@ class Public::UsersController < ApplicationController
     @followings = @user.followings.page(params[:page])
     likes = Favorite.where(user_id: @user.id).pluck(:post_id)
     @like_posts = Post.where(id: likes).page(params[:page])
+    @closest_post = @user.posts.where('start_date >= ?', Date.today).order(:start_date).first
   end
 
 

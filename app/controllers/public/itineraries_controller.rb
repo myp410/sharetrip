@@ -28,6 +28,7 @@ class Public::ItinerariesController < ApplicationController
   def edit
     @itinerary = Itinerary.find(params[:id])
     @post = Post.find(params[:post_id])
+    @duration = (@post.finish_date - @post.start_date).to_i + 1
   end
   
   def update

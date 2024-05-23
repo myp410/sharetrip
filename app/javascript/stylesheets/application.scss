@@ -40,14 +40,18 @@ footer {
   border: solid 1px #D2B48C;
 }
 
+.heading-line {
+  border : solid 2px #99CCFF;
+}
+
 //post
 .card .card-body {
   background:linear-gradient(
-      to right,
-      #FFEBCD,
-      #FFEBCD 33%,
-      transparent 66%,
-      transparent) 100% 0 / 300% 100%;
+    to right,
+    #FFEBCD,
+    #FFEBCD 33%,
+    transparent 66%,
+    transparent) 100% 0 / 300% 100%;
   transition:background-position 0.3s;
 }
  
@@ -60,4 +64,50 @@ footer {
   background: #FFFAFA;
 }
 
+//tab
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #99CCFF;
+  text-align: center;
+}
 
+.nav-tabs {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.nav-item {
+  flex-grow: 1;
+  flex-basis: 0;
+  border: solid 1px #C0C0C0;
+  
+}
+
+// タブ切り替え
+.nav-link {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+  color: black;
+  
+}
+.nav-link:first-child {
+  border-left: none;
+}
+// タブがactiveのときのデザイン
+.nav-link .active {
+  color: #33CCFF;
+  background: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+
+// hover時のアクション
+.nav-link:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}

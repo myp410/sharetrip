@@ -6,6 +6,7 @@ class Itinerary < ApplicationRecord
   
   validates :title, presence: true
   validates :start_time, presence: true
+  validates :what_day, presence: true
 
   def self.looks(word)
     if word == ""
