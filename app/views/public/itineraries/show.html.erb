@@ -7,12 +7,15 @@
     <div class="col-7 offset-1">
       <div class="row m-3">
         <h2>旅程詳細</h2>
+        <div class="heading-line"></div>
       </div>
       <table class="table table-hover text-center">
         <tr>
-          <th>時間</th>
+          <th>開始時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
-          <td>~</td>
+        </tr>
+        <tr>
+          <th>終了時間</th>
           <td><%= @itinerary.finish_time.strftime( "%H:%M" ) %></td>
         </tr>
         <tr>
@@ -58,20 +61,22 @@
               <div id="price" class="tab-pane fade show active">
                 <% if @post.user == current_user %>
                   <div class="row" id="price-form">
+                    <%= render 'layouts/errors', obj: @price %>
                     <%= render "public/prices/form", post: @post, itinerary: @itinerary, price: @price %>
                   </div>
                 <% end %>
-                <div class="row" id="price-index">
+                <div class="row m-4" id="price-index">
                   <%= render "public/prices/index", post: @post, itinerary: @itinerary, prices: @prices %>
                 </div>
               </div>
               <div id="article" class="tab-pane fade">
                 <% if @post.user == current_user %>
                   <div class="row" id="article-form">
+                    <%= render 'layouts/errors', obj: @article %>
                     <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
                   </div>
                 <% end %>
-                <div class="row" id="article-index">
+                <div class="row m-4" id="article-index">
                   <%= render "public/articles/index", post: @post, itinerary: @itinerary, articles: @articles %>
                 </div>
               </div>

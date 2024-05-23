@@ -4,10 +4,11 @@
       <%= render 'public/posts/index_bar', post: @post, post_tags: @post_tags %>
     </div>
     <div class="col-7 offset-1">
-      <h3 class="m-3">コメント投稿フォーム</h3>
       <div class="bg-orange">
+        <h3 class="text-center">コメント投稿フォーム</h3>
+        <div class="heading-line"></div>
         <%= form_with model: [@post, @new_comment] ,url: post_post_comments_path, method: :post, local: false do |f| %>
-        <table class="table table-borderless">
+        <table class="table mt-4 table-borderless">
           <tr>
             <th>コメント</th>
             <td><%= f.text_field :comment, placeholder: "コメントをここへ" ,class: "form-control", id: "comment_textarea" %></td>
