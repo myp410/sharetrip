@@ -8,20 +8,20 @@ class Public::PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     tags = params[:post][:name].split(',')
-    
+
     if params[:draft].present?
       @post.status = :draft
     else
       @post.status = :published
     end
-      
+
     if @post.save
       @post.save_tags(tags)
       if @post.draft?
         redirect_to users_my_page_path(current_user), notice: "下書きが保存されました"
       else
         redirect_to post_path(@post), notice: "投稿が公開されました"
-      end  
+      end
     else
       render 'new'
     end
@@ -52,7 +52,7 @@ class Public::PostsController < ApplicationController
     is_matching_login_user
     @post = Post.find(params[:id])
     tags = params[:post][:name].split(',')
-    
+
     if params[:draft].present?
       @post.status = :draft
       notice_message = "下書きを保存しました。"
@@ -66,12 +66,12 @@ class Public::PostsController < ApplicationController
       notice_message = "投稿を更新しました。"
       redirect_path = post_path(@post)
     end
-    
+
     if @post.update(post_params)
       @post.update_tags(tags)
       redirect_to redirect_path, notice: notice_message
     else
-      render 'edit' 
+      render 'edit'
     end
   end
 

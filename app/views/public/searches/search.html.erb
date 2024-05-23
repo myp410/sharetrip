@@ -24,13 +24,13 @@
           <div class="row">
             <div class="col">
               <table class="table">
-                <tr>
-                  <th>タグ名</th>
-                  <% @tags.each do |tag| %>
+                <% @tags.each do |tag| %>
+                  <tr>
+                    <th>タグ名</th>
                     <td><%= tag.name %></td>
                     <td><%= link_to "投稿一覧",search_tag_path(tag_id: tag.id) %></td>
-                  <% end %>
-                </tr>
+                  </tr>
+                <% end %>
               </table>
             </div>
           </div>
