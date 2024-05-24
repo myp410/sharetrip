@@ -3,62 +3,65 @@
     <div class="col-xl-12 col-md-12">
       <div class="container m-3">
         <div class="main-visual">
-          <div class="main-visual-content">
-            <span class="main-visual-name">
-              効率よく旅行を楽しむためのコミュニティサイト
-            </span>
-            <p class="main-visual-text">
-              このサイトは、旅行好きのためのコミュニティサイトになります。<br>
-              会員でない方も一部機能の使用はできますが、<br>
-              全ての機能を使用するためには会員登録が必要です。
-            </p>
-          </div>
         </div>
       </div>
-
-      
     </div>  
   </div>
   <div class="row d-flex justify-content-center align-items-center mt-3">
-    <h2>おすすめな理由</h2>
-    <div class="container d-flex m-3">
-      <div class="col-5">
-        <%= image_tag "map.jpg", :size => '500x250', class:"mt-2" %>
-      </div>
-      <div class="col-7 d-flex flex-column align-items-center justify-content-center">
-        <p>このアプリのおすすめポイントは以下の通りです！</p>
-        <ul>
-          <li>無料</li>
-          <li>多種多様な機能</li>
-        </ul>
-        <p>あなたの旅行のお供に最適なアプリケーションです。</p>
+    <div class="container">
+      <div class="row">
+        <!--左側-->
+        <div class="col-5">
+          <div class="row d-flex flex-wrap">
+            <div class="col-6">
+              <div class="card mt-1">
+                <div class="text-center" style="font-size: 50px;"> 
+                  <i class="fa-solid fa-thumbs-up"></i>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center">無料</h5>
+                  <p class="card-text text-center">会員登録すると無料で全ての機能を使用することができます。</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-6">
+              <div class="card mt-1">
+                <div class="text-center" style="font-size: 50px;"> 
+                  <i class="fa-solid fa-exclamation"></i>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center">わかりやすい</h5>
+                  <p class="card-text text-center">複雑な操作はありません</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card mt-1">
+                <div class="text-center" style="font-size: 50px;"> 
+                  <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center">複数の機能</h5>
+                  <p class="card-text text-center">共有するだけではなく、実際の旅行に役立つ機能もあります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--右側-->
+        <div class="col-6 offset-1 d-flex flex-column align-items-center justify-content-center">
+          <h4>-みんなの旅行計画を見てみませんか？</h4>
+          <p class="text-center">
+            旅行の計画を立てることができて、他のユーザーと共有することができる「シェアトリ」<br>
+            使用方法はシンプルであなたの旅行計画の手助けをします。
+          </p>
+          
+        </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="container d-flex justify-content-center align-items-center m-3">
-      <div class="col-5">
-        <%= image_tag "moment.jpg", :size => '500x250', class:"mt-2" %>
-      </div>
-      <div class="col-7 d-flex flex-column align-items-center justify-content-center text-center">
-        <span class="badge badge-pill badge-primary m-3", style="font-size:30px;">無料</span>
-        <p style="font-size: 15px; line-height: 30px;">
-          無料で使い放題！</br>
-          クレジットカードを登録する必要がありません！
-        </p>
-      </div>
-    </div>
-    <div class="container d-flex justify-content-center align-items-center m-3">
-      <div class="col-7 d-flex flex-column align-items-center justify-content-center text-center">
-        <span class="badge badge-pill badge-primary m-3", style="font-size:30px;">機能が豊富</span>
-        <p style="font-size: 15px; line-height: 30px;">
-          さまざまな機能が使用可能</br>
-          実用性バッチリです！
-        </p>
-      </div>
-      <div class="col-5">
-        <%= image_tag "time.jpg", :size => '500x250', class:"mt-2" %>
-      </div>
-    </div>
-  </div>
+  
+    
+
 </div>
