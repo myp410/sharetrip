@@ -17,8 +17,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :email, presence: true
-  validates :name, presence: true
+  validates :email, presence: true, length: { maximum: 300 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :name, presence: true, length: { maximum: 20 }
   #validates :is_active, presence: true ←is_activeがfalseの場合にもバリデーションがかかってしまう
 
   def get_profile_image

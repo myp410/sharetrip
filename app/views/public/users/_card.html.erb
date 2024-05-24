@@ -1,0 +1,40 @@
+<div class="card justify-content-center m-4">
+  <%= link_to "", post_path(post), class: "stretched-link text-dark" %>
+  <div class="card-body">
+    <h5 class="card-title text-center"><%= post.title %></h5>
+      <div class="card-content d-flex justify-content-center">
+        <div class="card-left col-4">
+          <div class="text-center">
+            <%= image_tag post.user.get_profile_image, size: '50x50', style: "object-fit: contain; border-radius: 50%;" %>
+          </div>
+          <div class="text-center">
+            <p class="small">
+              <%= post.user.name %>
+            </p>
+          </div>
+        </div>
+        <div class="card-right col-7 offset-1 ml-2">
+          <span class="badge text-bg-light text-dark justify-content-center"><%= post.start_date %>~<%= post.finish_date %></span>
+          <div class="d-flex justify-content-center mt-2">
+            <div>
+              <% post.tags.each do |tag| %>
+                <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light text-dark" do%>
+                  <i class="fa-solid fa-tag"></i><%= tag.name %>
+                <% end %>
+              <% end %>
+            </div>
+            <div id="favorite_buttons_<%= post.id %>" class="ml-2">
+              <%= render 'public/favorites/btn', post: post %>
+            </div>
+          </div>
+          <div>
+            <i class="fa-solid fa-clipboard"></i>  <%= post.body %>
+          </div>
+        </div>
+      </div>
+      <div class="card-foot d-flex justify-content-center" style="height: 15px;">
+        <p class="small">投稿日時:<%= post.created_at.to_s(:datetime_jp) %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -73,7 +73,7 @@ class Post < ApplicationRecord
     end  
   end
 
-  enum status: { published: 0, draft: 1,  unpublished: 2 }
+  enum status: { published: 0, draft: 1, unpublished: 2 }
 
 
 end

@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
     tags = params[:post][:name].split(',')
 
-    if params[:draft].present?
+    if params[:post][:status] == "draft"
       @post.status = :draft
     else
       @post.status = :published
@@ -53,11 +53,11 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     tags = params[:post][:name].split(',')
 
-    if params[:draft].present?
+    if params[:post][:status] == "draft"
       @post.status = :draft
       notice_message = "下書きを保存しました。"
       redirect_path = dashboard_posts_path
-    elsif params[:unpublished].present?
+    elsif params[:post][:status] == ":unpublished"
       @post.status = :unpublished
       notice_message = "非公開にしました。"
       redirect_path = dashboard_posts_path

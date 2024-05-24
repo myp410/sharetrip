@@ -4,7 +4,8 @@ class Group < ApplicationRecord
   has_one :room
   
   validates :name, presence: true
-  validates :introduction, presence: true
+  validates :name, uniqueness: true
+  validates :introduction, presence: true, length: { maximum: 75 }
   
   def include_user?(user)
     group_users.exists?(user_id: user.id)
