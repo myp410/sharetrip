@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-lg-4">
       <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
     </div>
-    <div class="col-7 offset-1">
-      
+    <div class="col-lg-7 offset-lg-1">
       <div class="row bg-orange mx-auto">
         <h2 class="text-center">持ち物リスト</h2>
         <div class="heading-line"></div>
@@ -44,7 +43,7 @@
                   <td>
                     <%= link_to post_item_path(item.post_id,item.id), method: :delete, class: "btn btn-danger" do %>
                       <i class="fa-solid fa-trash-can"></i>
-                    <% end %>  
+                    <% end %>
                   </td>
                 </tr>
                 <% end %>
