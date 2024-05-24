@@ -35,7 +35,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @duration = (@post.finish_date - @post.start_date).to_i + 1
     @itinerary = Itinerary.new
-    @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc)
+    @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc).page(params[:page])
     @tags = @post.tags.pluck(:name).join(',')
     @post_tags = @post.tags
     @search_day = params[:search_day]

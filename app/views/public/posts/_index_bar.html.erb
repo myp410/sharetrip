@@ -48,7 +48,7 @@
               <i class="fa-solid fa-tag"></i><%= tag.name %>
             <% end %>
           <% end %>
-        <% end %>  
+        <% end %>
       </td>
     </tr>
     <tr>
@@ -58,17 +58,21 @@
       </td>
     </tr>
   </table>
-  
-  
+
+
   <div class="container">
     <% if post.user == current_user %>
-    <div class="row m-3">
-      <%= link_to '編集する', edit_post_path(post), class: "btn btn-block btn-info" %>
-    </div>
-    <div class="row m-3">
-      <%= link_to '削除する', post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
-    </div>
+      <div class="row m-3">
+        <%= link_to '編集する', edit_post_path(post), class: "btn btn-block btn-info" %>
+      </div>
+      <div class="row m-3">
+        <%= link_to '削除する', post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+      </div>
+    <% else %>
+      <% unless current_user == post.user || post.user.guest_user? %>
+        <%= render "public/relationships/btn", user: post.user, options: { class: ""} %>
+      <% end %>
     <% end %>
   </div>
-  
+
 </div>

@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
   belongs_to :post
-  validates :name, presence: 
+  validates :name, presence: true
 end
