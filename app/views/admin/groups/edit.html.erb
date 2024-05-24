@@ -1,8 +1,9 @@
 <div class="container px-1 py-2">
   <%= render 'layouts/errors', obj: @group %>
-  <div class="row">
+  <div class="row bg-gray">
     <div class="col">
-      <h2>グループ情報編集</h2>
+      <h2 class="m-3 text-center">グループ情報編集</h2>
+      <div class="heading-line-admin"></div>
         <div class="mx-auto">
         <%= form_with model: @group,url: admin_group_path, method: :patch do |f| %>
           <table class="table table-borderless">

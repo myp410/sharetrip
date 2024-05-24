@@ -1,28 +1,37 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>登録日</th>
-      <th>グループ名</th>
-      <th>紹介文</th>
-      <th>メンバー数</th>
-      <th>グループステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% groups.each do |group| %>
+<% if groups.present? %>
+  <table class="table table-hover mt-3">
+    <thead>
       <tr>
-        <td><%= group.created_at.to_s(:datetime_jp) %></td>
-        <td><%= link_to group.name, admin_group_path(group) %></td>
-        <td><%= group.introduction %></td>
-        <td><%= group.users.count %></td>
-        <td>
-          <% if group.is_active %>
-            <div class="text-success"><b>有効</b></div>
-          <% else %>
-            <div class="text-secondary"><b>停止</b></div>
-          <% end %>
-        </td>
+        <th>登録日</th>
+        <th>グループ名</th>
+        <th>紹介文</th>
+        <th>メンバー数</th>
+        <th>グループステータス</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% groups.each do |group| %>
+        <tr>
+          <%= link_to "", admin_group_path(group), class: "stretched-link text-dark" %>
+          <td><%= group.created_at.to_s(:datetime_jp) %></td>
+          <td><%= group.name %></td>
+          <td><%= group.introduction %></td>
+          <td><%= group.users.count %></td>
+          <td>
+            <% if group.is_active %>
+              <div class="text-success"><b>有効</b></div>
+            <% else %>
+              <div class="text-secondary"><b>停止</b></div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="bg-orange">
+    <p class="fw-bold text-center m-5">グループはありません</p>
+  </div>
+<% end %>  
+  
+<%= paginate groups , theme: 'bootstrap-5'%>  

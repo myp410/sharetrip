@@ -2,13 +2,14 @@
 
     <div class="form bg-orange">
       <div class="row">
-        <h2 class="col mt-4">ユーザーログイン</h2>
+        <h2 class="col mt-4 text-center">ユーザーログイン</h2>
+        <div class="heading-line"></div>
       </div>
-      <div class="row">
+      <div class="row mx-5">
         <div class="mx-auto">
     　　　　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>
-            <table class="table table-borderless mt-4 mx-auto">
+            <table class="table table-borderless mt-4">
               <tr>
                 <th>メールアドレス</th>
                 <td><%= f.email_field :email,autofocus: "true", autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %></td>
@@ -33,9 +34,10 @@
 
   <div class="container bg-orange">
     <div class="row">
-      <h2 class="col mt-4">初めての方はこちら</h2>
+      <h2 class="col mt-4 text-center">初めての方はこちら</h2>
+      <div class="heading-line"></div>
     </div>
-    <div class="row justify-content-center m-4">
+    <div class="row justify-content-center m-5">
       <div class="col">
         <h6 class="align-items-left">新規会員登録をしてサービス利用する方</h6>
       </div>

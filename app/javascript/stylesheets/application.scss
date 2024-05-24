@@ -34,14 +34,26 @@ footer {
   border: solid 1px #DBB9B5;
 }
 
+.bg-gray {
+  background: #EEEEEE;
+  padding: 30px 70px;
+  margin: 20px 0;
+  border: solid 1px #B8B8B8;
+}
+
 .bg-user {
   background: #FFFAFA;
+  padding: 30px 70px;
   margin: 20px 0;
   border: solid 1px #D2B48C;
 }
 
 .heading-line {
   border : solid 2px #99CCFF;
+}
+
+.heading-line-admin {
+  border : solid 2px #777777;
 }
 
 //post

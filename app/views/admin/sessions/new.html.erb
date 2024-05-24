@@ -1,13 +1,14 @@
 
-<div class="container">
+<div class="container bg-orange mx-auto">
   <div class="row">
-    <h2 class="col mt-4">管理者ログイン</h2>
-  </div>  
-  <div class="row">
-    <div class="mx-auto">
+    <h2 class="col text-center mt-4">管理者ログイン</h2>
+    <div class="heading-line-admin "></div>
+  </div>
+  <div class="row mx-5">
+    <div>
 　　　　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= render "admin/shared/error_messages", resource: resource %>
-        <table class="table table-borderless mt-4 mx-auto">
+        <table class="table table-borderless mt-4 mx-5 mx-auto">
           <tr>
             <th>メールアドレス</th>
             <td><%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %></td>
@@ -20,7 +21,7 @@
             <td></td>
             <td>
               <div class="active">
-                <%= f.submit "ログイン", class: "btn btn-success w-50 " %>
+                <%= f.submit "ログイン", class: "btn btn-success w-50 mt-3" %>
               </div>
             </td>
           </tr>
