@@ -31,6 +31,11 @@ ja:
       price:
         price: "料金"
         body: "詳細"
+      post_comment:
+        comment: "コメント"
+      group:
+        name: "グループ名"
+        introduction: "紹介文"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

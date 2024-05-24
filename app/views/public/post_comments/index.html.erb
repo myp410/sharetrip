@@ -7,6 +7,9 @@
       <div class="bg-orange">
         <h3 class="text-center">コメント投稿フォーム</h3>
         <div class="heading-line"></div>
+        <div class="row" id="comment_error">
+          <%= render 'layouts/errors', obj: @new_comment %>
+        </div>
         <%= form_with model: [@post, @new_comment] ,url: post_post_comments_path, method: :post, local: false do |f| %>
         <table class="table mt-4 table-borderless">
           <tr>
