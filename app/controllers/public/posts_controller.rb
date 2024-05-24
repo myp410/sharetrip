@@ -28,13 +28,13 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page])
+    @posts = Post.published.order(created_at: :desc).page(params[:page])
   end
 
   def show
     @post = Post.find(params[:id])
     @duration = (@post.finish_date - @post.start_date).to_i + 1
-    @new_itinerary = @post.itineraries.build
+    @itinerary = Itinerary.new
     @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc)
     @tags = @post.tags.pluck(:name).join(',')
     @post_tags = @post.tags

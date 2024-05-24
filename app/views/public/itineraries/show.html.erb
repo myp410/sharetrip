@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <div class="row">
     <div class="col-4">
       <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
@@ -56,12 +56,14 @@
                   <a class="nav-link" data-toggle="tab" href="#article">参考記事</a>
                 </li>
               </ul>
-            </div> 
+            </div>
             <div class="tab-content">
               <div id="price" class="tab-pane fade show active">
                 <% if @post.user == current_user %>
-                  <div class="row" id="price-form">
+                  <div class="row" id="price_error">
                     <%= render 'layouts/errors', obj: @price %>
+                  </div>
+                  <div class="row" id="price-form">
                     <%= render "public/prices/form", post: @post, itinerary: @itinerary, price: @price %>
                   </div>
                 <% end %>
@@ -71,8 +73,10 @@
               </div>
               <div id="article" class="tab-pane fade">
                 <% if @post.user == current_user %>
-                  <div class="row" id="article-form">
+                  <div class="row" id="article_error">
                     <%= render 'layouts/errors', obj: @article %>
+                  </div>
+                  <div class="row" id="article-form">
                     <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
                   </div>
                 <% end %>

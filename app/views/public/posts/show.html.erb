@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      <%= render 'index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
+      <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags %>
     </div>
     <div class="col-7 offset-1">
       <div class="row m-3">
@@ -11,8 +11,8 @@
       <% if @post.user == current_user %>
         <div class="row">
           <h5 class="text-center">- 旅程追加</h5>
-          <%= render 'layouts/errors', obj: @new_itinerary %>
-          <%= render 'public/itineraries/form', post: @post, itinerary: @new_itinerary, duration: @duration %>
+          <%= render 'layouts/errors', obj: @itinerary %>
+          <%= render 'public/itineraries/form', post: @post, itinerary: @itinerary, duration: @duration %>
         </div>
       <% else %>
       <% end %>

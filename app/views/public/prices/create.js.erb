@@ -1,3 +1,4 @@
 $('#price-index').html("<%= j(render "public/prices/index", post: @post, itinerary: @itinerary, prices: @prices) %>");
+$("#price_error").html("<%= j(render 'layouts/errors', obj: @price) %>");
 $("#price_price_textarea").val('');
 $("#price_body_textarea").val('');
