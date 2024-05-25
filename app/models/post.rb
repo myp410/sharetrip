@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :start_date, presence: true
   validates :finish_date, presence: true
+  validate :finish_date_after_start_date
   
 
   
@@ -74,6 +75,9 @@ class Post < ApplicationRecord
   end
 
   enum status: { published: 0, draft: 1, unpublished: 2 }
-
+  
+  def finish_date_after_start_date
+    errors.add(:finish_date, "は開始日より後の日付にしてください") if finish_date <= start_date
+  end
 
 end

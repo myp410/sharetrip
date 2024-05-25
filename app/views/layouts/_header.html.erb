@@ -1,7 +1,7 @@
 <header class="header">
   <div class="container-fluid">
     <div class="row">
-      <h1 class="col-12 col-md-6 col-xl-4 my-4 text-center">
+      <h1 class="col-12 col-md-6 col-xl-4 my-3 text-center">
         <div class="container">
           <%= link_to root_path do %>
             <%= image_tag "logo.png", :size => '200x60' %>
@@ -16,7 +16,7 @@
         </div>
       <% end %>
 
-      <div class="col m-4">
+      <div class="col mt-2">
         <% if admin_signed_in? %>
           <div class="row text-white text-center justify-content-end header-button">
             <%= link_to 'ユーザー一覧', admin_users_path, class: "col-4 col-xl-2 btn header-btn mb-2" %>
