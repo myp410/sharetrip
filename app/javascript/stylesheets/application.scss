@@ -57,7 +57,7 @@ footer {
 }
 
 //post
-.card .card-body {
+.card {
   background:linear-gradient(
     to right,
     #FFEBCD,
@@ -65,10 +65,17 @@ footer {
     transparent 66%,
     transparent) 100% 0 / 300% 100%;
   transition:background-position 0.3s;
+  background-color: white;
 }
  
-.card .card-body:hover {
+.card:hover {
   background-position:0 0;
+}
+
+.post-card {
+  height: 220px;
+  overflow: hidden;
+  background-color: white;
 }
 
 //itinerary
@@ -163,6 +170,10 @@ footer {
   
   .footer-h6 {
     margin-top: 15px;
+  }
+  
+  .post-card {
+    height: auto; /* レスポンシブな場合は高さを自動調整する */
   }
 }
 
