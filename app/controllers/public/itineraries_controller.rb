@@ -16,7 +16,6 @@ class Public::ItinerariesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @itinerary = Itinerary.new(itinerary_params)
-    # @itinerary = @post.itineraries.new(itinerary_params)
     @itinerary.post_id = @post.id
     if @itinerary.save
       redirect_to post_path(@post),notice: "旅程の追加に成功しました"
@@ -28,7 +27,6 @@ class Public::ItinerariesController < ApplicationController
       @post_tags = @post.tags
       @search_day = params[:search_day]
       @search = @itineraries.where(what_day: @search_day)
-      flash.now[:alert] = "旅程の追加に失敗しました"
       render 'public/posts/show'
     end
   end

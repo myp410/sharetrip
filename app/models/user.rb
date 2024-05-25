@@ -21,12 +21,15 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   #validates :is_active, presence: true ←is_activeがfalseの場合にもバリデーションがかかってしまう
 
+  require 'mini_magick'
+
   def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [100, 100]).processed
+  
+    profile_image.variant(resize: "100x100^", gravity: "center", crop: "100x100+0+0").processed
   end
 
   def self.looks(word)
