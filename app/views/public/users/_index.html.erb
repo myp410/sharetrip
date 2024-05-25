@@ -5,8 +5,8 @@
         <%= link_to users_my_page_path(user), class: "stretched-link text-dark" do %>
           <div class="card-body">
             <div class="card-title text-center p-2" style="background-color:#FFFAFA;">
-              <div><%= image_tag(user.get_profile_image) %></div>
-              <h6 class="mt-2"><%= user.name %></h6>
+              <div><%= image_tag user.get_profile_image, style: "object-fit: cover;" %></div>
+              <h6 class="mt-1"><%= user.name %></h6>
             </div>
             <div class="card-content">
               <ul class="list-group list-group-flush">

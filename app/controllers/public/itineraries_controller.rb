@@ -15,11 +15,19 @@ class Public::ItinerariesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @itinerary = @post.itineraries.new(itinerary_params)
+    @itinerary = Itinerary.new(itinerary_params)
+    # @itinerary = @post.itineraries.new(itinerary_params)
+    @itinerary.post_id = @post.id
     if @itinerary.save
-      redirect_to post_path(@itinerary.post_id),notice: "旅程の追加に成功しました"
+      redirect_to post_path(@post),notice: "旅程の追加に成功しました"
     else
-      @itineraries = @post.itineraries.order(start_time: :asc)
+      @itinerary.post_id = nil
+      @itineraries = @post.itineraries.page(params[:page])
+      @tags = @post.tags.pluck(:name).join(',')
+      @duration = (@post.finish_date - @post.start_date).to_i + 1
+      @post_tags = @post.tags
+      @search_day = params[:search_day]
+      @search = @itineraries.where(what_day: @search_day)
       flash.now[:alert] = "旅程の追加に失敗しました"
       render 'public/posts/show'
     end
@@ -60,7 +68,7 @@ class Public::ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:post_id, :title, :body, :start_time, :finish_time, :place, :what_day)
+    params.require(:itinerary).permit(:title, :body, :start_time, :finish_time, :place, :what_day)
   end
 
   def ensure_correct_user

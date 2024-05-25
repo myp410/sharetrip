@@ -21,9 +21,9 @@
       </tr>
       <tr class="form-group">
         <th><%= f.label :start_time, "開始時間" %></th>
-        <td><%= f.time_select :start_time, {prompt: {hour: '--', minute: '--'}, ignore_date: true}, class: "form-control" %></td>
+        <td><%= f.time_select(:start_time, {class: "form-control",id:"start_time", prompt: '--', time_separator: ':', ignore_data: true, default: Time.current}) %></td>
         <th><%= f.label :finish_time, "終了時間" %></th>
-        <td><%= f.time_select :finish_time, {prompt: {hour: '--', minute: '--'}, ignore_date: true}, class: "form-control" %></td>
+        <td><%= f.time_select(:finish_time, {class: "form-control",id:"finish_time", prompt: '--', time_separator: ':', ignore_data: true, default: Time.current}) %></td>
       </tr>
     </table>
     <div class="d-grid col-2 mx-auto">

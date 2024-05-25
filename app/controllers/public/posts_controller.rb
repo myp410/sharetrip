@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   protect_from_forgery
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update]
+  before_action :check_access, only: [:show]
   def new
     @post = Post.new
   end
@@ -100,6 +101,15 @@ class Public::PostsController < ApplicationController
     user = post.user
     return if user == current_user
     redirect_to posts_path
+  end
+  
+  def check_access
+    if @post && (@post.status.draft || @post.status.unpublished)
+      if current_user != @post.user
+        redirect_to root_path, alert: "このページにアクセスする権限がありません"
+        return
+      end
+    end
   end
 
 end
