@@ -6,10 +6,13 @@ class Itinerary < ApplicationRecord
 
   validates :title, presence: true
   validates :start_time, presence: true
-  validates :finish_time, presence: true
-  validates :place, presence: true
-  validates :body, presence: true
   validates :what_day, presence: true
+  validate :start_finish_check
+
+  def start_finish_check
+    errors.add(:finish_time, "は開始時刻より遅い時間を選択してください") if self.start_time > self.finish_time
+  end
+
 
   def self.looks(word)
     if word == ""
