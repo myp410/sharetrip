@@ -24,12 +24,14 @@
                 <%= f.label :is_active_false, "停止" %>
               </td>
             </tr>
+            <tr>
+              <th></th>
+              <td>
+                <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+              </td>
+            </tr>
           </table>
-          <div class="row">
-            <div class="col-12 col-md-5 p-1">
-              <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-            </div>
-          </div>
+          
         <% end %>
         </div>
       </div>

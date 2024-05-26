@@ -11,7 +11,7 @@
           <div class="itinerary-right col-md-8 offset-1">
             <h5 class="card-title"><%= itinerary.title %></h5>
             <p><i class="fa-solid fa-location-dot"></i><%= itinerary.place %></p>
-            
+
             <!-- モーダルのボタン -->
             <%= link_to("", "#exampleModalLong", class: "stretched-link", data: { toggle: "modal" }) %>
 
@@ -46,11 +46,15 @@
                       </tr>
                       <tr>
                         <th>費用</th>
-                        <% itinerary.prices.each do |price| %>
-                          <td class="d-flex pl-5">
-                            <p>¥ <%= price.price %></p><p class="ml-3"><%= price.body %></p>
-                          </td>
-                        <% end %>  
+                        <% if itinerary.prices.present? %>
+                          <% itinerary.prices.each do |price| %>
+                            <td class="d-flex pl-5">
+                              <p>¥ <%= price.price %></p><p class="ml-3"><%= price.body %></p>
+                            </td>
+                          <% end %>
+                        <% else %>
+                          <td></td>
+                        <% end %>
                       </tr>
                     </table>
                   </div>
@@ -60,6 +64,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         <div class="card-footer d-flex justify-content-center" style="height: 25px; padding: 0;">
@@ -68,16 +73,16 @@
               <div class="edit-icon">
                 <%= link_to  edit_post_itinerary_path(itinerary.post_id, itinerary.id) do %>
                   <i class="fa-solid fa-pen-to-square text-dark"></i>
-                <% end %>  
+                <% end %>
               </div>
               <div class="delete-icon ml-3">
                 <%= link_to post_itinerary_path(itinerary.post_id, itinerary.id), method: :delete, remote: true, data: {"turbolinks" => false} do %>
                   <i class="fa-solid fa-trash-can text-dark"></i>
-                <% end %> 
+                <% end %>
               </div>
             <% end %>
           </div>
-        </div>  
+        </div>
     </div>
   <% end %>
 </div>

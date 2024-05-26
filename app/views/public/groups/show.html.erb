@@ -27,9 +27,9 @@
                 <td class="d-flex flex-wrap">
                   <% @group.users.each do |user| %>
                     <ul class="list-group">
-                      <li class="list-group-item ml-1 d-flex justify-content-start align-items-center" style="list-style:none;">
+                      <li class=" ml-1 d-flex justify-content-start align-items-center ml-3" style="list-style:none;">
                         <%= image_tag user.get_profile_image, size: '50x50', style: "object-fit: contain; border-radius: 50%;" %>
-                        <span><%= user.name %></span>
+                        <span class="ml-1"><%= user.name %></span>
                       </li>
                     </ul>
                   <% end %>
@@ -41,6 +41,7 @@
         <div class="row">
             <% if @group.owner_id == current_user.id %>
               <%= link_to '編集', edit_group_path(@group), class: "btn  btn-success" %>
+              <%= link_to '削除', group_path(@group), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn  btn-danger mt-3" %>
             <% else %>
               <% if @group.include_user?(current_user) %>
                 <%= link_to "グループから退会する", group_group_users_path(@group), method: :delete, class: "btn btn-danger" %>
@@ -50,14 +51,16 @@
             <% end %>
         </div>
         <div class="row mt-3">
-          <% if @room.present? %>
-            <%= link_to "チャットルームへ",group_rooms_path(@group, @room), class: "btn btn-primary" %>
-          <% else %>
-            <% if @group.include_user?(current_user)  %>
-              <%= form_with(model: [@group, @room],local: true) do |f| %>
-                <%= f.hidden_field :group_id, value: @group.id %>
-                <%= f.submit "チャットルームへ",class: "btn btn-primary" %>
-              <% end %>
+          <% if @group.include_user?(current_user)  %>
+            <% if @room.present? %>
+              <%= link_to group_rooms_path(@group, @room), class: "btn btn-primary" do %>
+                <p class="mb-0"><i class="fa-regular fa-comments mr-3 "></i>チャットルームへ</p>
+              <% end %>  
+            <% else %>
+                <%= form_with(model: [@group, @room],local: true) do |f| %>
+                  <%= f.hidden_field :group_id, value: @group.id %>
+                  <%= f.submit "チャットルームへ",class: "btn btn-primary" %>
+                <% end %>
             <% end %>
           <% end %>
         </div>

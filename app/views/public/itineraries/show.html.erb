@@ -60,7 +60,7 @@
             <div class="tab-content">
               <div id="price" class="tab-pane fade show active">
                 <% if @post.user == current_user %>
-                  <div class="row" id="price_error">
+                  <div class="row mt-3" id="price_error">
                     <%= render 'layouts/errors', obj: @price %>
                   </div>
                   <div class="row" id="price-form">
@@ -73,7 +73,7 @@
               </div>
               <div id="article" class="tab-pane fade">
                 <% if @post.user == current_user %>
-                  <div class="row" id="article_error">
+                  <div class="row mt-3" id="article_error">
                     <%= render 'layouts/errors', obj: @article %>
                   </div>
                   <div class="row" id="article-form">

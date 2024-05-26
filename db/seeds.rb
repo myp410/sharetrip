@@ -144,8 +144,8 @@ end
 
 #itineraryデータ作成
 itineraries = [
-  { post_id: 1, title: "出発", body: "関空からマクタン空港へ", start_time: DateTime.parse("2025-04-08 20:00:00"), finish_time: DateTime.parse("2025-04-09 7:00:00"), place: "関西空港", what_day: 1 },
-  { post_id: 1, title: "ホテル朝食", body: "ホテルビュッフェ", start_time: DateTime.parse("2025-04-09 7:00:00"), finish_time: DateTime.parse("2025-04-09 9:00:00"), place: "マクタン島ホテル", what_day: 2 },
+  { post_id: 1, title: "出発", body: "関空からマクタン空港へ", start_time: DateTime.parse("2025-04-08 20:00:00").in_time_zone, finish_time: DateTime.parse("2025-04-09 7:00:00").in_time_zone, place: "関西空港", what_day: 1 },
+  { post_id: 1, title: "ホテル朝食", body: "ホテルビュッフェ", start_time: DateTime.parse("2025-04-09 7:00:00").in_time_zone, finish_time: DateTime.parse("2025-04-09 9:00:00").in_time_zone, place: "マクタン島ホテル", what_day: 2 },
   { post_id: 1, title: "マクタン島ツアー", body: "マクタン島周遊ツアー。ショッピングセンターやギター工場まで", start_time: DateTime.parse("2025-04-09 9:00:00"), finish_time: DateTime.parse("2025-04-09 14:00:00"), place: "マクタン島", what_day: 2 },
   { post_id: 1, title: "ホテルのプール", body: "プールで遊びながらプールサイドバーでお酒", start_time: DateTime.parse("2025-04-09 14:00:00"), finish_time: DateTime.parse("2025-04-09 17:00:00"), place: "マクタン島ホテル", what_day: 2 },
   { post_id: 1, title: "ディナー", body: "現地で有名なステーキ屋へ！日本人オーナー", start_time: DateTime.parse("2025-04-09 18:00:00"), finish_time: DateTime.parse("2025-04-09 20:00:00"), place: "マクタン島", what_day: 2 },
@@ -257,6 +257,11 @@ Group.create!(
   owner_id: 6,
   is_active: "true"
   )
+
+GroupUser.create!(
+  user_id: 6,
+  group_id: 1
+  )
   
 Group.create!(
   name: "韓国旅行",
@@ -265,12 +270,17 @@ Group.create!(
   is_active: "true"
   )  
   
+GroupUser.create!(
+  user_id: 7,
+  group_id: 2
+  )  
+  
   
 #コメントデータ  
 user = User.find(Random.rand(1..7))
 post = Post.find(Random.rand(1..16))
 
-20.times do |n|
+30.times do |n|
   PostComment.create!(
     comment: "すごく参考になりました！",
     user_id: user.id,

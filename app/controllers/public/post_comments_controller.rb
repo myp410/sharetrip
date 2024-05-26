@@ -2,9 +2,9 @@ class Public::PostCommentsController < ApplicationController
   before_action :authenticate_user!
   def index
     @post = Post.find(params[:post_id])
-    @post_comments = @post.post_comments.page(params[:page])
     @new_comment = PostComment.new
     @post_tags = @post.tags
+    @post_comments = @post.post_comments.page(params[:page])
   end
 
   def create
@@ -12,6 +12,7 @@ class Public::PostCommentsController < ApplicationController
     @new_comment = current_user.post_comments.new(post_comment_params)
     @new_comment.post_id = @post.id
     @new_comment.save
+    @post_comments = @post.post_comments.page(params[:page])
   end
 
   def edit
@@ -34,9 +35,9 @@ class Public::PostCommentsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    @post_comments = @post.post_comments
     @post_comment = PostComment.find(params[:id])
     @post_comment.destroy
+    @post_comments = @post.post_comments.page(params[:page])
   end
 
   private
