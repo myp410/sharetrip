@@ -91,7 +91,7 @@ posts_data = [
     user_id: 7,
     title: "韓国",
     body: "韓国料理爆食旅",
-    status: 1,
+    status: 0,
     start_date: Date.new(2025, 5, 17),
     finish_date: Date.new(2025, 5, 20),
     tags: ["韓国", "韓国料理"]
@@ -277,13 +277,18 @@ GroupUser.create!(
   
   
 #コメントデータ  
-user = User.find(Random.rand(1..7))
-post = Post.find(Random.rand(1..16))
-
-30.times do |n|
+5.times do |n|
   PostComment.create!(
     comment: "すごく参考になりました！",
-    user_id: user.id,
-    post_id: post.id,
+    user_id: Random.rand(1..7),
+    post_id: 1,
+  )
+end
+
+5.times do |n|
+  PostComment.create!(
+    comment: "すごく参考になりました！",
+    user_id: Random.rand(1..7),
+    post_id: 5,
   )
 end

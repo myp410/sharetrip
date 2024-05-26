@@ -4,7 +4,7 @@ class Public::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @new_comment = PostComment.new
     @post_tags = @post.tags
-    @post_comments = @post.post_comments.page(params[:page])
+    @post_comments = @post.post_comments.order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def create

@@ -10,8 +10,7 @@
   </thead>
   <tbody>
     <% users.each do |user| %>
-      <tr>
-        <%= link_to "", admin_user_path(user), class: "stretched-link text-dark" %>
+      <tr onclick='window.location="<%= admin_user_path(user) %>"' role="link">
         <td><%= user.id %></td>
         <td><%= image_tag user.get_profile_image, size: '64x50' %></td>
         <td>
