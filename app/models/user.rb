@@ -31,7 +31,9 @@ class User < ApplicationRecord
   
     profile_image.variant(resize: "100x100^", gravity: "center", crop: "100x100+0+0").processed
   end
-
+  
+  
+  
   def self.looks(word)
     if word == ""
       User.all

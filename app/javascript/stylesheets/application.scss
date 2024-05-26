@@ -160,6 +160,33 @@ footer {
   .card-text {
     font-size: 14px; /* 大きな画面では24pxの文字サイズ */
   }
+  
+  .header-btn {
+    font-size: 10px;
+  }
+
+  .btn {
+    font-size: 12px;
+  }
+
+  .form-new th {
+    margin: 20px 0 10px;
+  }
+
+  // 新規登録フォームのレスポンシブ
+  .form-new  {
+    width: 100%;
+  }
+  table.form-new  th,
+  table.form-new  td {
+    display: block;
+    width: 100%;
+  }
+
+  .form-new th {
+    padding: 30px 0 10px;
+  }
+
 }
 
 /* 画面幅が768px以上992px未満の場合 */

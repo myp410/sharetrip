@@ -29,7 +29,8 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.published.order(created_at: :desc).page(params[:page])
+    # @posts = Post.published.order(created_at: :desc).page(params[:page])
+    @posts = Post.published.includes(user: { profile_image_attachment: [:blob] }).includes(:tags).includes(:favorites).order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -102,7 +103,7 @@ class Public::PostsController < ApplicationController
     return if user == current_user
     redirect_to posts_path
   end
-  
+
   def check_access
     if @post && (@post.status.draft || @post.status.unpublished)
       if current_user != @post.user

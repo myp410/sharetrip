@@ -14,24 +14,6 @@ Admin.create!(
    password: 'password'
 )
 
-User.create!(
-  user_id: 6,
-  name: "jade",
-  email: "sample6@example.com",
-  introduction: "関西在住の旅行好きです。",
-  password: "password",
-  is_active: "true"
-)
-
-User.create!(
-  user_id: 7,
-  name: "ruby",
-  email: "sample7@example.com",
-  introduction: "海外旅行大好き！",
-  password: "password",
-  is_active: "true"
-)
-
 5.times do |n|
   User.create!(
     name: "令和#{n + 1}",
@@ -42,10 +24,30 @@ User.create!(
   )
 end
 
+User.create!(
+  id: 6,
+  name: "jade",
+  email: "sample6@example.com",
+  introduction: "関西在住の旅行好きです。",
+  password: "password",
+  is_active: "true"
+)
+
+User.create!(
+  id: 7,
+  name: "ruby",
+  email: "sample7@example.com",
+  introduction: "海外旅行大好き！",
+  password: "password",
+  is_active: "true"
+)
+
+
+
 #postデータ作成
 posts_data = [
   {
-    post_id: 1,
+    id: 1,
     user_id: 6,
     title: "フィリピン",
     body: "自然を巡る家族旅行",
@@ -55,7 +57,7 @@ posts_data = [
     tags: ["自然", "フィリピン"]
   },
   {
-    post_id: 2,
+    id: 2,
     user_id: 6,
     title: "ハワイ",
     body: "ビーチでのんびりリラックス",
@@ -65,7 +67,7 @@ posts_data = [
     tags: ["ビーチ", "ハワイ"]
   },
   {
-    post_id: 3,
+    id: 3,
     user_id: 6,
     title: "北海道",
     body: "スノボメインの旅行",
@@ -75,7 +77,7 @@ posts_data = [
     tags: ["スノボ", "北海道"]
   },  
   {
-    post_id: 4,
+    id: 4,
     user_id: 7,
     title: "オーストラリア",
     body: "世界遺産のグレートバリアリーフをみに行く！",
@@ -85,7 +87,7 @@ posts_data = [
     tags: ["ケアンズ", "オーストラリア"]
   },
   {
-    post_id: 5,
+    id: 5,
     user_id: 7,
     title: "韓国",
     body: "韓国料理爆食旅",
@@ -95,7 +97,7 @@ posts_data = [
     tags: ["韓国", "韓国料理"]
   },
   {
-    post_id: 6,
+    id: 6,
     user_id: 7,
     title: "福岡",
     body: "福岡グルメ旅",
@@ -211,7 +213,7 @@ end
     finish_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
   end
 
-  post = Post.find(Random.rand(1..5))
+  post = Post.find(Random.rand(7..16))
   duration = (post.finish_date - post.start_date).to_i + 1
   what_day = Random.rand(1..duration)
 
@@ -235,14 +237,17 @@ Tag.create!(name: "自然満喫")
 # post_tagデータ
 # Tagデータの作成
 tags = Tag.all
+tag_post = Post.find(Random.rand(7..16))
 # 投稿ごとにタグを設定する
 10.times do |n|
+  tag_post = Post.find(Random.rand(7..16))
   # タグをランダムに選択するための配列を用意する
-  available_tags = tags.to_a
-  # 最低一つのタグを選択する
-  tag = available_tags.sample
-  PostTag.find_or_create_by!(tag_id: tag.id, post_id: Random.rand(1..10))
-
+  available_tags = tags.shuffle
+  # 最大3つのタグを選択する
+  selected_tags = available_tags.sample(3)
+  selected_tags.each do |tag|
+    PostTag.find_or_create_by!(tag_id: tag.id, post_id: tag_post.id )
+  end
 end
 
 #groupデータ
@@ -262,10 +267,13 @@ Group.create!(
   
   
 #コメントデータ  
+user = User.find(Random.rand(1..7))
+post = Post.find(Random.rand(1..16))
+
 20.times do |n|
   PostComment.create!(
     comment: "すごく参考になりました！",
-    user_id: Random.rand(1..7),
-    post_id: Random.rand(1..16),
+    user_id: user.id,
+    post_id: post.id,
   )
 end
