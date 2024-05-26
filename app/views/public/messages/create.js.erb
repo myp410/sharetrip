@@ -1,2 +1,3 @@
+$("#message_error").html("<%= j(render 'layouts/errors', obj: @message) %>");
 $('.message').append('<%= j(render "public/messages/message", message: @message) %>');
 $('input[type=text]').val("")

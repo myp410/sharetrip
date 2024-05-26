@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-lg-4">
       <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
     </div>
-    <div class="col-7 offset-1">
-      <h2 class="m-3">持ち物リスト</h2>
-      <div class="row">
+    <div class="col-lg-7 offset-lg-1">
+      <div class="row bg-orange mx-auto">
+        <h2 class="text-center">持ち物リスト</h2>
+        <div class="heading-line"></div>
         <% if @post.user == current_user %>
           <%= render 'layouts/errors', obj: @item %>
           <%= form_with(model: [@post, @item], local: true) do |f| %>
@@ -26,25 +27,20 @@
       </div>
       <div class="row mt-3">
         <% if @items.present? %>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>持ち物名</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @items.each do |item| %>
-                <tr>
+            <table class="table col-10 mx-auto">
+              <% @items.each do |item| %>
+              <tr>
+                <td class="text-center"><%= item.name %></td>
+                <% if current_user == @post.user %>
                   <td><%= check_box_tag '', '', item.have, {'data-id' => item.id, 'data-post_id' => item.post_id } %> </td>
-                  <td><%= item.name %></td>
                   <td>
-                    <%= link_to "削除", post_item_path(item.post_id,item.id), method: :delete, class: "btn btn-danger" %>
+                    <%= link_to post_item_path(item.post_id,item.id), method: :delete, class: "btn btn-danger" do %>
+                      <i class="fa-solid fa-trash-can"></i>
+                    <% end %>
                   </td>
-                </tr>
-                <% end %>
-              </tbody>
+                <% end %>  
+              </tr>
+              <% end %>
             </table>
           <script>
             $(function(){
@@ -56,8 +52,8 @@
             });
           </script>
         <% else %>
-          <div class="col justift-content-center">
-            <p>持ち物がありません</p>
+          <div class="bg-orange">
+            <p class="fw-bold text-center m-5">持ち物がありません</p>
           </div>
         <% end %>
       </div>

@@ -2,17 +2,55 @@
   <div class="container p-3">
   	<div class="justify-content-center" style="font-size :15px;">
   	  <div class="row d-flex justify-content-center text-center">
-    	  <div class="col-12 col-lg-3">
-    	    <p><%= link_to 'ABOUT', about_path, class: "text-white" %></p>
+    	  <div class="col-12 col-lg-5">
+    	    <div class="row">
+    	      <h6 class="footer-h6 text-decoration-underline">About Us</h6>
+    	    </div>
+    	    <div class="row">
+    	      <div>
+    	        <%= link_to root_path do %>
+                <%= image_tag "logo.png", :size => '230x80' %>
+              <% end %> 
+    	      </div>
+    	      <div>
+    	        <p>
+    	          旅行計画を無料で共有できる「シェアトリ」<br>
+    	          旅行などのイベントを作成・共有することができます。
+    	        </p>
+    	      </div>
+    	    </div>
+    	    
+    	  </div>
+    	  <div class="col-12 col-lg-4">
+    	    <div class="row">
+    	      <h6 class="footer-h6 text-decoration-underline mb-3">お問い合わせ</h6>
+    	    </div>
+    	    <div class="row">
+    	      <p class="m-0 p-0">運営元：株式会社sharetrip</p>
+    	      <p class="m-0 p-0">〒〇〇〇-〇〇〇〇</p>
+    	      <p class="m-0 p-0">東京都××××××××××××</p>
+    	      <p class="m-0 p-0">MAIL:sample@example.com</p>
+    	      <p class="m-0 p-0">TEL:123456789</p>
+    	     </div> 
     	  </div>
     	  <div class="col-12 col-lg-3">
-    	    <p>
-    	      <i class="fa-brands fa-instagram"></i>　利用者の声 
-    	    </p>
+    	    <div class="row">
+    	      <h6 class="footer-h6 text-decoration-underline mb-3">その他</h6>
+    	    </div>
+    	    <div class="row">
+    	      <p>
+      	      <i class="fa-brands fa-instagram" style="font-size: 30px;"></i>　Instagram 
+      	    </p>
+    	    </div>
+    	    <div class="row">
+    	      <p>
+      	      プライバシーポリシー
+      	    </p>
+    	    </div>
     	  </div>
   	  </div>
-    	<div class="row-12 mt-2 mx-auto text-white text-center">
-    		<p>Copyright © All Rights Reserved.</p>
+    	<div class="row-12 mt-3 mx-auto text-white text-center">
+    		<p>Copyright © Sharetrip All Rights Reserved.</p>
     	</div>
     </div>
   </div>

@@ -1,18 +1,21 @@
 <div class="container">
-  
+
   <div class="row">
-    <div class="col-4">
+    <div class="col-lg-4">
       <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
     </div>
-    <div class="col-7 offset-1">
+    <div class="col-lg-7 offset-lg-1">
       <div class="row m-3">
         <h2>旅程詳細</h2>
+        <div class="heading-line"></div>
       </div>
       <table class="table table-hover text-center">
         <tr>
-          <th>時間</th>
+          <th>開始時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
-          <td>~</td>
+        </tr>
+        <tr>
+          <th>終了時間</th>
           <td><%= @itinerary.finish_time.strftime( "%H:%M" ) %></td>
         </tr>
         <tr>
@@ -41,9 +44,6 @@
         </div>
       </div>
       <% end %>
-      
-      
-      
       <div class="container">
         <div class="row">
           <div class="col">
@@ -56,25 +56,31 @@
                   <a class="nav-link" data-toggle="tab" href="#article">参考記事</a>
                 </li>
               </ul>
-            </div> 
+            </div>
             <div class="tab-content">
               <div id="price" class="tab-pane fade show active">
                 <% if @post.user == current_user %>
+                  <div class="row mt-3" id="price_error">
+                    <%= render 'layouts/errors', obj: @price %>
+                  </div>
                   <div class="row" id="price-form">
                     <%= render "public/prices/form", post: @post, itinerary: @itinerary, price: @price %>
                   </div>
                 <% end %>
-                <div class="row" id="price-index">
+                <div class="row m-4" id="price-index">
                   <%= render "public/prices/index", post: @post, itinerary: @itinerary, prices: @prices %>
                 </div>
               </div>
               <div id="article" class="tab-pane fade">
                 <% if @post.user == current_user %>
+                  <div class="row mt-3" id="article_error">
+                    <%= render 'layouts/errors', obj: @article %>
+                  </div>
                   <div class="row" id="article-form">
                     <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
                   </div>
                 <% end %>
-                <div class="row" id="article-index">
+                <div class="row m-4" id="article-index">
                   <%= render "public/articles/index", post: @post, itinerary: @itinerary, articles: @articles %>
                 </div>
               </div>
@@ -82,10 +88,6 @@
           </div>
         </div>
       </div>
-      
-      
-      
-      
     </div>
   </div>
 </div>

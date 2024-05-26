@@ -1,13 +1,13 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc).page(params[:page])
   end
   
   def show
     @post = Post.find(params[:id])
     
-    @itineraries = @post.itineraries.order(start_time: :asc)
+    @itineraries = @post.itineraries.order(start_time: :asc).page(params[:page])
   end  
 
   def destroy

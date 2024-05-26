@@ -1,10 +1,10 @@
 ja:
   enums:
-      post:
-        status:
-          published: "公開"
-          draft: "下書き"
-          unpublished: "非公開"
+    post:
+      status:
+        published: "公開"
+        draft: "下書き"
+        unpublished: "非公開"
   activerecord:
     attributes:
       user:
@@ -16,12 +16,39 @@ ja:
         body: "詳細"
         start_date: "開始日"
         finish_date: "終了日"
+      item:
+        name: "持ち物名"
+      itinerary:
+        title: "タイトル"
+        body: "詳細"
+        start_time: "開始時間"
+        finish_time: "終了時間"
+        place: "場所"
+        what_day: "何日目"
+      article: 
+        title: "タイトル"
+        link: "リンク"
+      price:
+        price: "料金"
+        body: "詳細"
+      post_comment:
+        comment: "コメント"
+      group:
+        name: "グループ名"
+        introduction: "紹介文"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
   date:
     abbr_day_names:
     - 日

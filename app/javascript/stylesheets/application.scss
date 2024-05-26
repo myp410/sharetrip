@@ -34,28 +34,157 @@ footer {
   border: solid 1px #DBB9B5;
 }
 
+.bg-gray {
+  background: #EEEEEE;
+  padding: 30px 10px;
+  margin: 20px 0;
+  border: solid 1px #B8B8B8;
+}
+
 .bg-user {
   background: #FFFAFA;
+  padding: 30px;
   margin: 20px 0;
   border: solid 1px #D2B48C;
 }
 
+.heading-line {
+  border : solid 2px #99CCFF;
+}
+
+.heading-line-admin {
+  border : solid 2px #777777;
+}
+
+body {
+    font-family:  "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif;
+}
+
 //post
-.card .card-body {
+.card {
   background:linear-gradient(
-      to right,
-      #FFEBCD,
-      #FFEBCD 33%,
-      transparent 66%,
-      transparent) 100% 0 / 300% 100%;
+    to right,
+    #FFEBCD,
+    #FFEBCD 33%,
+    transparent 66%,
+    transparent) 100% 0 / 300% 100%;
   transition:background-position 0.3s;
+  background-color: white;
 }
  
-.card .card-body:hover {
+.card:hover {
   background-position:0 0;
+}
+
+.post-card {
+  height: 220px;
+  overflow: hidden;
+  background-color: white;
 }
 
 //itinerary
 .itinerary-left {
   background: #FFFAFA;
 }
+
+//tab
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #99CCFF;
+  text-align: center;
+}
+
+.nav-tabs {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.nav-item {
+  flex-grow: 1;
+  flex-basis: 0;
+  border: solid 1px #C0C0C0;
+  
+}
+
+// タブ切り替え
+.nav-link {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+  color: black;
+  
+}
+.nav-link:first-child {
+  border-left: none;
+}
+// タブがactiveのときのデザイン
+.nav-link .active {
+  color: #33CCFF;
+  background: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+
+// hover時のアクション
+.nav-link:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+/*//kaminari*/
+
+.pagination {
+  justify-content: center;
+  margin-top: 10px;
+}
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+
+/* 画面幅が992px以上の場合 */
+@media (min-width: 992px) {
+  .card-text {
+    font-size: 14px; /* 大きな画面では24pxの文字サイズ */
+  }
+}
+
+/* 画面幅が768px以上992px未満の場合 */
+@media (min-width: 768px) and (max-width: 991px) {
+  .card-text {
+    font-size: 12px; /* 中程度の画面では18pxの文字サイズ */
+  }
+  
+  .footer-h6 {
+    margin-top: 15px;
+  }
+  
+  .post-card {
+    height: auto; /* レスポンシブな場合は高さを自動調整する */
+  }
+}
+
+/* 画面幅が768px以下の場合 */
+@media (max-width: 767px) {
+  .card-text {
+    font-size: 12px; /* 小さな画面では14pxの文字サイズ */
+  }
+}
+

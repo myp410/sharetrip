@@ -5,9 +5,8 @@ class Public::RoomsController < ApplicationController
   def show
     @group = Group.find(params[:group_id])
     @room = @group.room
-    @messages = @room.messages
     @message = Message.new
-    
+    @messages = @room.messages
   end
 
   def create

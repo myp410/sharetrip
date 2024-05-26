@@ -4,9 +4,9 @@
       <div class="card m-2" style="width: calc(25% - 1rem);">
         <%= link_to users_my_page_path(user), class: "stretched-link text-dark" do %>
           <div class="card-body">
-            <div class="card-title text-center p-2" style="background-color:#D8BfD8;">
-              <div><%= image_tag(user.get_profile_image) %></div>
-              <h6 class="mt-2"><%= user.name %></h6>
+            <div class="card-title text-center p-2" style="background-color:#FFFAFA;">
+              <div><%= image_tag user.get_profile_image, style: "object-fit: cover;" %></div>
+              <h6 class="mt-1"><%= user.name %></h6>
             </div>
             <div class="card-content">
               <ul class="list-group list-group-flush">
@@ -21,10 +21,12 @@
           </div>
         <% end %>
       </div>
-    <% end %>  
+    <% end %>
   </div>
-<% else %>  
-  <p class="m-5">ユーザーはいません</p>
-<% end %> 
+<% else %>
+  <div class="row bg-orange">
+    <p class="fw-bold text-center my-5">ユーザーはいません</p>
+  </div>
+<% end %>
 
-<%= paginate users %>
+<%= paginate users , theme: 'bootstrap-5'%>

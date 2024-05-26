@@ -1,4 +1,6 @@
-<div class="bg-user ">
+<div class="bg-user">
+  <h3 class="text-center pt-2">投稿詳細</h3>
+  <div class="heading-line mx-2"></div>
   <table class="table text-center">
     <tr>
       <td colspan="2"><%= image_tag post.user.get_profile_image %></td>
@@ -40,9 +42,11 @@
     <tr>
       <th>タグ</th>
       <td>
-        <% post_tags.each do |tag| %>
-          <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light text-dark" do%>
-            <i class="fa-solid fa-tag"></i><%= tag.name %>
+        <% unless post_tags.nil? %>
+          <% post_tags.each do |tag| %>
+            <%= link_to search_tag_path(tag_id: tag.id), class: "badge rounded-pill text-bg-light text-dark" do%>
+              <i class="fa-solid fa-tag"></i><%= tag.name %>
+            <% end %>
           <% end %>
         <% end %>
       </td>
@@ -54,17 +58,21 @@
       </td>
     </tr>
   </table>
-  
-  
+
+
   <div class="container">
     <% if post.user == current_user %>
-    <div class="row m-3">
-      <%= link_to '編集する', edit_post_path(post), class: "btn btn-block btn-info" %>
-    </div>
-    <div class="row m-3">
-      <%= link_to '削除する', post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
-    </div>
+      <div class="row m-3">
+        <%= link_to '編集する', edit_post_path(post), class: "btn btn-block btn-info" %>
+      </div>
+      <div class="row m-3">
+        <%= link_to '削除する', post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+      </div>
+    <% else %>
+      <% unless current_user == post.user || post.user.guest_user? %>
+        <%= render "public/relationships/btn", user: post.user, options: { class: ""} %>
+      <% end %>
     <% end %>
   </div>
-  
+
 </div>

@@ -2,8 +2,9 @@
   <%= render 'layouts/errors', obj: @user %>
   <div class="row">
     <div class="col">
-      <h2>会員情報編集</h2>
-        <div class="mx-auto">
+      <h2 class="m-3 text-center">会員情報編集</h2>
+      <div class="heading-line-admin"></div>
+        <div class="mx-auto bg-gray">
         <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
           <table class="table table-borderless">
             <tr>
@@ -27,12 +28,15 @@
                 <%= f.label :is_active_false, "退会" %>
               </td>
             </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div class="active">
+                  <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+                </div>
+              </td>
+            </tr>
           </table>
-          <div class="row">
-            <div class="col-12 col-md-5 p-1">
-              <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-            </div>
-          </div>
         <% end %>
         </div>
       </div>

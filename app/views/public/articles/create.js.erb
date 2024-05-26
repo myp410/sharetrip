@@ -1,3 +1,4 @@
-$('#price-index').html("<%= j(render "public/prices/index", post: @post, itinerary: @itinerary, prices: @prices) %>");
-$("#price_price_textarea").val('');
-$("#price_body_textarea").val('');
+$('#article-index').html("<%= j(render "public/articles/index", post: @post, itinerary: @itinerary, articles: @articles) %>");
+$("#article_error").html("<%= j(render 'layouts/errors', obj: @article) %>");
+$("#article_title_textarea").val('');
+$("#article_body_textarea").val('');

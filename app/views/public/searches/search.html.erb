@@ -1,36 +1,40 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <table class="table ">
-        <% if @model == "User" %>
-          <h2 class="m-3">"<%= @word %>"のユーザー検索結果</h2>
-          <%= render 'public/users/index', users: @users %>
-        <% elsif @model == "Post" %>
-          <h2 class="m-3">"<%= @word %>"の投稿検索結果</h2>
-          <%= render 'public/posts/index', posts: @posts %>
-        <% elsif @model == "Itinerary" %>
-          <h2 class="m-3">"<%= @word %>"の旅程検索結果</h2>
-          <%= render 'public/itineraries/index', itineraries: @itineraries %>
-        <% elsif @model == "PostComment" %>
-          <h2 class="m-3">"<%= @word %>"のコメント検索結果</h2>
-          <%= render 'public/post_comments/index', post_comments: @post_comments %>
-        <% else %>
-          <h2 class="m-3">"<%= @word %>"のタグ</h2>
-          <div class="row">
-            <div class="col">
-              <table class="table">
+      <% if @model == "User" %>
+        <h2 class="m-3 text-center">"<%= @word %>"のユーザー検索結果</h2>
+        <div class="heading-line"></div>
+        <%= render 'public/users/index', users: @users %>
+      <% elsif @model == "Post" %>
+        <h2 class="m-3 text-center">"<%= @word %>"の投稿検索結果</h2>
+        <div class="heading-line"></div>
+        <%= render 'public/posts/index', posts: @posts %>
+      <% elsif @model == "Itinerary" %>
+        <h2 class="m-3 text-center">"<%= @word %>"の旅程検索結果</h2>
+        <div class="heading-line"></div>
+        <%= render 'public/itineraries/index', itineraries: @itineraries %>
+      <% elsif @model == "PostComment" %>
+        <h2 class="m-3 text-center">"<%= @word %>"のコメント検索結果</h2>
+        <div class="heading-line"></div>
+        <%= render 'public/post_comments/index', post_comments: @post_comments %>
+      <% else %>
+        <h2 class="m-3 text-center">"<%= @word %>"のタグ</h2>
+        <div class="heading-line"></div>
+        <div class="row">
+          <div class="col">
+            <table class="table">
+              <% @tags.each do |tag| %>
                 <tr>
                   <th>タグ名</th>
-                  <% @tags.each do |tag| %>
-                    <td><%= tag.name %></td>
-                    <td><%= link_to "投稿一覧",search_tag_path(tag_id: tag.id) %></td>
-                  <% end %>
+                  <td><%= tag.name %></td>
+                  <td><%= link_to "投稿一覧",search_tag_path(tag_id: tag.id) %></td>
                 </tr>
-              </table>
-            </div>
+              <% end %>
+            </table>
           </div>
-        <% end %>
-      </table>
+        </div>
+        <%= paginate @tags , theme: 'bootstrap-5'%>
+      <% end %>
     </div>
   </div>
 </div>

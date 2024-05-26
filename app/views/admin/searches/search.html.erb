@@ -1,16 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <table class="table ">
+      <table class="table table-hover">
         <% if @model == "User" %>
-          <h2>"<%= @word %>"のユーザー検索結果</h2>
+          <h2 class="col text-center mt-4">"<%= @word %>"のユーザー検索結果</h2>
+          <div class="heading-line-admin"></div>
           <%= render 'admin/users/index', users: @users %>
         <% elsif @model == "Post" %>
-          <h2>"<%= @word %>"の投稿検索結果</h2>
+          <h2 class="col text-center mt-4">"<%= @word %>"の投稿検索結果</h2>
+          <div class="heading-line-admin"></div>
           <%= render 'admin/posts/index', posts: @posts %>
-
         <% else %>
-          <h2>"<%= @word %>"のコメント検索結果</h2>
+          <h2 class="col text-center mt-4">"<%= @word %>"のコメント検索結果</h2>
+          <div class="heading-line-admin"></div>
           <%= render 'admin/post_comments/index', post_comments: @post_comments %>
         <% end %>
       </table>

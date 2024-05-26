@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <%= render 'index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
+    <div class="col-lg-4">
+      <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags %>
     </div>
-    <div class="col-7 offset-1">
+    <div class="col-lg-7 offset-lg-1">
       <div class="row m-3">
         <h2 class="text-center">投稿詳細</h2>
+        <div class="heading-line"></div>
       </div>
       <% if @post.user == current_user %>
         <div class="row">
@@ -22,14 +23,14 @@
               <div class="col">
                 <%= link_to '全て削除する', post_itineraries_destroy_all_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
               </div>
-              <div class="col">
-                <%= link_to post_items_path(@post) , class: "btn btn-secondary " do %>
-                  <i class="fa-solid fa-suitcase text-white">　持ち物</i>
-                <% end %>  
-              </div>
             <% end %>
             <div class="col">
-              <%= form_tag({ controller: "posts", action: "show" }, method: :get) do %>
+              <%= link_to post_items_path(@post) , class: "btn btn-secondary " do %>
+                <i class="fa-solid fa-suitcase text-white">　持ち物</i>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= form_tag("/posts/#{@post.id}", method: :get) do %>
                 <div class="d-flex">
                   <%= select_tag :search_day, options_for_select(1..@duration, include_blank: "日程選択"), class: 'custom-select', style: 'width: 100px;' %>
                   <%= submit_tag "絞り込み", class: 'ml-2' %>
@@ -48,8 +49,8 @@
             <% end %>
           </div>
         <% else %>
-          <div class="row justify-content-center">
-            <p>旅程がありません</p>
+          <div class="row justify-content-center bg-orange">
+            <p class="fw-bold text-center m-5">旅程がありません</p>
           </div>
         <% end %>
       </div>
