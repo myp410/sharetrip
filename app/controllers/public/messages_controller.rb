@@ -7,7 +7,7 @@ class Public::MessagesController < ApplicationController
     if @message = Message.create(params.require(:message).permit(:content, :user_id, :room_id).merge(:user_id => current_user.id))
       redirect_to group_rooms_path(@group)
     else
-      redirect_back(fallback_location: root_path)
+      render 'public/rooms/show'
     end  
   end
 end
