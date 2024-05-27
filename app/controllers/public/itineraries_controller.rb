@@ -19,7 +19,7 @@ class Public::ItinerariesController < ApplicationController
     @itinerary.post_id = @post.id
 
     #start_time,finish_timeの時間設定
-    if @itinerary.what_day.to_s  == params[:what_day]
+    if @itinerary.what_day.to_s == params[:what_day]
       start_date = @post.start_date.to_datetime + (@itinerary.what_day - 1).days
         @itinerary.start_time = DateTime.new(
           start_date.year,

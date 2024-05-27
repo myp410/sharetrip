@@ -76,6 +76,7 @@ class Post < ApplicationRecord
 
   enum status: { published: 0, draft: 1, unpublished: 2 }
   
+  #終了日が開始日より後に来ないようにバリデーション
   def finish_date_after_start_date
     return if start_date.nil? || finish_date.nil?
     errors.add(:finish_date, "は開始日より後の日付にしてください") if start_date >= finish_date
