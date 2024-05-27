@@ -11,6 +11,10 @@
       </div>
       <table class="table table-hover text-center">
         <tr>
+          <th>日付</th>
+          <td colspan="3"><%= @itinerary.what_day %></td>
+        </tr>
+        <tr>
           <th>開始時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
         </tr>
