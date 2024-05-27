@@ -59,20 +59,17 @@ class Public::PostsController < ApplicationController
     if params[:post][:status] == "draft"
       @post.status = :draft
       notice_message = "下書きを保存しました。"
-      redirect_path = dashboard_posts_path
     elsif params[:post][:status] == ":unpublished"
       @post.status = :unpublished
       notice_message = "非公開にしました。"
-      redirect_path = dashboard_posts_path
     else
       @post.status = :published
       notice_message = "投稿を更新しました。"
-      redirect_path = post_path(@post)
     end
 
     if @post.update(post_params)
       @post.update_tags(tags)
-      redirect_to redirect_path, notice: notice_message
+      redirect_to post_path(@post), notice: notice_message
     else
       render 'edit'
     end
