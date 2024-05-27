@@ -18,6 +18,24 @@ class Public::ItinerariesController < ApplicationController
     @itinerary = Itinerary.new(itinerary_params)
     @itinerary.post_id = @post.id
 
+
+    #start_time,finish_timeの時間設定
+    start_date = @post.start_date.to_datetime + (@itinerary.what_day - 1).days
+      @itinerary.start_time = Time.zone.local(
+        start_date.year,
+        start_date.month,
+        start_date.day,
+        @itinerary.start_time.hour,
+        @itinerary.start_time.min
+      )
+      @itinerary.finish_time = DateTime.new(
+        start_date.year,
+        start_date.month,
+        start_date.day,
+        @itinerary.finish_time.hour,
+        @itinerary.finish_time.min
+      )
+
     if @itinerary.save
       redirect_to post_path(@post),notice: "旅程の追加に成功しました"
     else

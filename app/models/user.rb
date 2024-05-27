@@ -21,6 +21,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   #validates :is_active, presence: true ←is_activeがfalseの場合にもバリデーションがかかってしまう
 
+#プロフィール写真
   require 'mini_magick'
 
   def get_profile_image
@@ -54,8 +55,8 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+#ゲスト機能
   GUEST_USER_EMAIL = "guest@example.com"
-
     def self.guest
       find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
         user.password = SecureRandom.urlsafe_base64

@@ -25,6 +25,7 @@ class Public::RoomsController < ApplicationController
     params.require(:room).permit(:group_id)
   end
 
+#グループメンバー以外がアクセスできないように制限
   def block_non_related_users
     group = Group.find(params[:group_id])
     unless current_user.groups.include?(group)
