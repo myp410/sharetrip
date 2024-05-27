@@ -1,7 +1,7 @@
 <% if users.exists? %>
   <div class="d-flex flex-wrap">
     <% users.each do |user| %>
-      <div class="card m-2" style="width: calc(25% - 1rem);">
+      <div class="card card-slide m-2" style="width: calc(25% - 1rem);">
         <%= link_to users_my_page_path(user), class: "stretched-link text-dark" do %>
           <div class="card-body">
             <div class="card-title text-center p-2" style="background-color:#FFFAFA;">
