@@ -11,8 +11,7 @@
     </thead>
     <tbody>
       <% groups.each do |group| %>
-        <tr>
-          <%= link_to "", admin_group_path(group), class: "stretched-link text-dark" %>
+        <tr onclick='window.location="<%= admin_group_path(group) %>"' role="link">
           <td><%= group.created_at.to_s(:datetime_jp) %></td>
           <td><%= group.name %></td>
           <td><%= group.introduction %></td>
