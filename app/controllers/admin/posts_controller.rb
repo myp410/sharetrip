@@ -6,7 +6,6 @@ class Admin::PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    
     @itineraries = @post.itineraries.order(start_time: :asc).page(params[:page])
   end  
 

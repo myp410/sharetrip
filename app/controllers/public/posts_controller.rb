@@ -37,7 +37,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @duration = (@post.finish_date - @post.start_date).to_i + 1
     @itinerary = Itinerary.new
-    
+
     @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc).page(params[:page])
     @tags = @post.tags.pluck(:name).join(',')
     @post_tags = @post.tags
@@ -79,7 +79,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_to posts_path
+    redirect_to users_my_page_path(@post.user)
   end
 
   def search_tag
@@ -99,7 +99,7 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])
     user = post.user
     return if user == current_user
-    redirect_to posts_path
+    redirect_to users_my_page_path(current_user), alert: "このページにアクセスする権限がありません"
   end
 
   def check_access
