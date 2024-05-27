@@ -12,7 +12,7 @@ class Public::PostCommentsController < ApplicationController
     @new_comment = current_user.post_comments.new(post_comment_params)
     @new_comment.post_id = @post.id
     @new_comment.save
-    @post_comments = @post.post_comments.page(params[:page])
+    @post_comments = @post.post_comments.order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def edit

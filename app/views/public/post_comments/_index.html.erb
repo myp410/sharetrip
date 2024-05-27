@@ -40,9 +40,7 @@
       </div>
     <% end %>  
   </div>
-  <div id="pagination">
-    <%= paginate post_comments , theme: 'bootstrap-5' %>
-  </div>
+  <%= paginate post_comments , theme: 'bootstrap-5' %>
 <% else %>
   <div class="bg-orange">
     <p class="fw-bold text-center my-5">コメントはありません</p>
