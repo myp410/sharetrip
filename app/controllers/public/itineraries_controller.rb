@@ -17,6 +17,7 @@ class Public::ItinerariesController < ApplicationController
     @post = Post.find(params[:post_id])
     @itinerary = Itinerary.new(itinerary_params)
     @itinerary.post_id = @post.id
+
     if @itinerary.save
       redirect_to post_path(@post),notice: "旅程の追加に成功しました"
     else
