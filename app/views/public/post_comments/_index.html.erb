@@ -25,7 +25,7 @@
           <div class="comment_info d-flex ml-5">
             <% if post_comment.user == current_user %>
               <div class="edit-icon">
-                <%= link_to edit_post_post_comment_path(id: post_comment.id) do %>
+                <%= link_to edit_post_post_comment_path(post_id: post_comment.post_id , id: post_comment.id) do %>
                   <i class="fa-solid fa-pen-to-square text-dark"></i>
                 <% end %>  
               </div>

@@ -8,7 +8,7 @@ class Public::SearchesController < ApplicationController
     if @model == "User"
       @users = User.looks(params[:word]).page(params[:page])
     elsif @model == "Post"
-      @posts = Post.looks(params[:word]).page(params[:page])
+      @posts = Post.published.looks(params[:word]).page(params[:page])
     elsif @model == "Itinerary"
       @itineraries = Itinerary.looks(params[:word]).page(params[:page])
     elsif @model == "PostComment"
