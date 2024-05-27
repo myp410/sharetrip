@@ -18,6 +18,7 @@ class Public::ItinerariesController < ApplicationController
     @itinerary = Itinerary.new(itinerary_params)
     @itinerary.post_id = @post.id
 
+
     #start_time,finish_timeの時間設定
     start_date = @post.start_date.to_datetime + (@itinerary.what_day - 1).days
       @itinerary.start_time = Time.zone.local(

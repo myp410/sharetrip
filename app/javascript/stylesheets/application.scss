@@ -6,7 +6,7 @@ header {
   background-color: #3399FF;
 }
 
-body { 
+body {
   background-color: #FFF5EE;
   font-family:  "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif;
 }
@@ -69,8 +69,10 @@ footer {
   transition:background-position 0.3s;
   background-color: white;
 }
+
  
 .card-slide:hover {
+
   background-position:0 0;
 }
 
@@ -104,7 +106,7 @@ footer {
   flex-grow: 1;
   flex-basis: 0;
   border: solid 1px #C0C0C0;
-  
+
 }
 
 // タブ切り替え
@@ -115,7 +117,7 @@ footer {
   border-left: solid 1px #CCC;
   border-bottom: solid 1px #CCC;
   color: black;
-  
+
 }
 .nav-link:first-child {
   border-left: none;
@@ -140,6 +142,7 @@ footer {
   margin-top: 10px;
 }
 /*ページネーション自体のデザイン*/
+
 .pagination>li>a {          
   border: none;     
   color: #696969;   
@@ -154,6 +157,7 @@ footer {
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {        
   border-radius: 15px;    
+
 }
 
 
@@ -169,11 +173,11 @@ footer {
   .card-text {
     font-size: 12px; 
   }
-  
+
   .footer-h6 {
     margin-top: 15px;
   }
-  
+
   .post-card {
     height: auto; /* レスポンシブな場合は高さを自動調整する */
   }
