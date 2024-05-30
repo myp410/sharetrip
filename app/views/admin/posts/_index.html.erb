@@ -1,5 +1,5 @@
-<table class="table table-hover mt-3 text-center">
-  <thead>
+<table class="table table-hover mt-3">
+  <thead class="text-center">
     <tr>
       <th>投稿日</th>
       <th>投稿者</th>
@@ -8,7 +8,7 @@
       <th>タイトル</th>
     </tr>
   </thead>
-  <tbody >
+  <tbody  class="text-center">
     <% posts.each do |post| %>
     <tr  onclick='window.location="<%= admin_post_path(post) %>"' role="link">
       <td><%= post.created_at.to_s(:datetime_jp) %></td>
@@ -24,8 +24,8 @@
           <% end %>  
         </div>
       </td>
-      <td><%= post.start_date %></td>
-      <td><%= post.finish_date %></td>
+      <td><%= post.start_date.strftime("%Y/%m/%d") %></td>
+      <td><%= post.finish_date.strftime("%Y/%m/%d") %></td>
       <td>
         <%= post.title %>
       </td>

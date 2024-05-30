@@ -21,7 +21,7 @@ get "admin/search" => "admin/searches#search"
 
   scope module: :public do
     root to: "homes#top"
-    get 'about' => "homes#about", as: "about"
+    get 'privacy' => "homes#privacy", as: "privacy"
     get "users/my_page/:id" => "users#show", as: "users_my_page"
     get "users/information/edit" => "users#edit", as: "users_information_edit"
     patch "users/information" => "users#update"
