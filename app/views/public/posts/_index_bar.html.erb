@@ -60,13 +60,17 @@
   </table>
 
 
-  <div class="container">
+  <div class="container d-flex">
     <% if post.user == current_user %>
-      <div class="row m-3">
-        <%= link_to '編集する', edit_post_path(post), class: "btn btn-block btn-info" %>
+      <div class="col text-center">
+        <%= link_to edit_post_path(post), class: "btn btn-block btn-info" do %>
+          <i class="fa-solid fa-pen-to-square text-white"> 編集</i>
+        <% end %>  
       </div>
-      <div class="row m-3">
-        <%= link_to '削除する', post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+      <div class="col text-center">
+        <%= link_to  post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" do %>
+          <i class="fa-solid fa-trash-can text-white"> 削除</i>
+        <% end %>  
       </div>
     <% else %>
       <% unless current_user == post.user || post.user.guest_user? %>
