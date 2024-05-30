@@ -85,7 +85,7 @@ class Public::PostsController < ApplicationController
   def search_tag
     @tag_list = Tag.page(params[:page])
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts.page(params[:page])
+    @posts = @tag.posts.published.page(params[:page])
   end
 
   private

@@ -13,10 +13,6 @@
         <h2 class="m-3 text-center">"<%= @word %>"の旅程検索結果</h2>
         <div class="heading-line"></div>
         <%= render 'public/itineraries/index', itineraries: @itineraries %>
-      <% elsif @model == "PostComment" %>
-        <h2 class="m-3 text-center">"<%= @word %>"のコメント検索結果</h2>
-        <div class="heading-line"></div>
-        <%= render 'public/post_comments/index', post_comments: @post_comments %>
       <% else %>
         <h2 class="m-3 text-center">"<%= @word %>"のタグ</h2>
         <div class="heading-line"></div>
