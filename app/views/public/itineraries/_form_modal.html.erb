@@ -1,9 +1,9 @@
-<%= form_with(model: [post, itinerary], local: true) do |f| %>
+<%= form_with(model: [post, itinerary], local: true, class:"was-validated") do |f| %>
 <%= render 'layouts/errors', obj: itinerary %>
 <div class="row m-3">
   <div class="form-group">
     <%= f.label :title, "タイトル" %>
-    <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
+    <%= f.text_field :title, placeholder: "タイトル", class: "form-control", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :body, "詳細" %>
@@ -15,13 +15,13 @@
   </div>
   <div class="form-group">
     <%= f.label :what_day, "日程" %>
-    <%= f.select :what_day, options_for_select(1..duration), {include_blank: "日程選択"}, class: 'custom-select' %>
+    <%= f.select :what_day, options_for_select(1..duration), {include_blank: "日程選択"}, class: 'custom-select', required: true %>
   </div>
   <div class="form-group d-flex">
     <%= f.label :start_time, "開始時間", class: "mr-3"  %>
-    <%= f.time_select(:start_time, {class: "form-control",id:"start_time", prompt: '--', time_separator: ':', ignore_data: true, default: Time.current}) %>
+    <%= f.time_select(:start_time, {class: "form-control" , required: true, id:"start_time", prompt: '--', time_separator: ':', ignore_data: true})%>
     <%= f.label :finish_time, "終了時間" , class: "ml-5 mr-3" %>
-    <%= f.time_select(:finish_time, {class: "form-control",id:"finish_time", prompt: '--', time_separator: ':', ignore_data: true, default: Time.current}) %>
+    <%= f.time_select(:finish_time, {class: "form-control",id:"finish_time", prompt: '--', time_separator: ':', ignore_data: true}) %>
   </div>
 
   <div class="d-grid col-2 mx-auto">
