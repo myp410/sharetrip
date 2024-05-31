@@ -11,7 +11,9 @@ class Itinerary < ApplicationRecord
 
 #終了時間が開始時間より後に来ないようにバリデーション
   def start_finish_check
-    errors.add(:finish_time, "は開始時刻より遅い時間を選択してください") if self.start_time > self.finish_time
+    if start_time.present? && finish_time.present?
+    　errors.add(:finish_time, "は開始時刻より遅い時間を選択してください") if self.start_time > self.finish_time
+    end
   end
 
 
