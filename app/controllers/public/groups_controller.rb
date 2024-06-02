@@ -19,6 +19,7 @@ class Public::GroupsController < ApplicationController
 
   def index
     @groups = Group.where(is_active: true).page(params[:page])
+    @group = Group.new
   end
 
 

@@ -30,6 +30,7 @@ class Public::PostsController < ApplicationController
 
   def index
     # @posts = Post.published.order(created_at: :desc).page(params[:page])
+    @post = Post.new
     @posts = Post.published.includes(user: { profile_image_attachment: [:blob] }).includes(:tags).includes(:favorites).order(created_at: :desc).page(params[:page])
   end
 

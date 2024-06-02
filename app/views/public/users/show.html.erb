@@ -22,12 +22,8 @@
             <div class="row">
               <div class="col d-flex justify-content-center mt-3">
                 <div class="ml-3">
-                  <%= link_to  new_group_path ,class: "btn btn-secondary" do %>
-                    <i class="fa-solid fa-handshake"> グループを作成する</i>
-                  <% end %>
-                  <%= link_to  groups_path ,class: "btn btn-secondary" do%>
-                    <i class="fa-solid fa-user-group"> グループ一覧</i>
-                  <% end %>
+                  <%= render "public/groups/btn_modal", group: @group %>
+                  <%= render "public/posts/btn_modal", post: @post, tags: @tags %>
                 </div>
               </div>
             </div>

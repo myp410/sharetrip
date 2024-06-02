@@ -2,6 +2,11 @@
   <h2 class="mt-3 text-center">グループ一覧</h2>
   <div class="heading-line"></div>
   <div class="row">
+    <div class="col m-3 text-end">
+      <%= render "public/groups/btn_modal", group: @group %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col">
       <%= render 'index', groups: @groups %>
     </div>

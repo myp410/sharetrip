@@ -17,18 +17,18 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <% if admin_signed_in? %>
-            <li>
-              <%= link_to 'ユーザー一覧', admin_users_path, class: " header-btn mb-2" %>
-            </li>
-            <li>
-              <%= link_to '投稿一覧', admin_posts_path, class: "header-btn mb-2" %>
-            </li>
-            <li>
-              <%= link_to 'グループ一覧', admin_groups_path, class: "header-btn mb-2" %>
-            </li>
-            <li>
-              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "header-btn mb-2" %>
-            </li>
+              <li>
+                <%= link_to 'ユーザー一覧', admin_users_path, class: " header-btn mb-2" %>
+              </li>
+              <li>
+                <%= link_to '投稿一覧', admin_posts_path, class: "header-btn mb-2" %>
+              </li>
+              <li>
+                <%= link_to 'グループ一覧', admin_groups_path, class: "header-btn mb-2" %>
+              </li>
+              <li>
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "header-btn mb-2" %>
+              </li>
             <% elsif user_signed_in? %>
               <li>
                 <%= link_to 'マイページ', users_my_page_path(current_user) , class: "header-btn" %>
@@ -37,7 +37,7 @@
                 <%= link_to '投稿一覧', posts_path, class: "header-btn" %>
               </li>
               <li>
-                <%= link_to '新規投稿', new_post_path, class: " header-btn" %>
+                <%= link_to 'グループ一覧', groups_path, class: " header-btn" %>
               </li>
               <li>
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: " header-btn" %>
