@@ -58,14 +58,29 @@
       </td>
     </tr>
   </table>
-
-
   <div class="container d-flex">
     <% if post.user == current_user %>
       <div class="col text-center">
-        <%= link_to edit_post_path(post), class: "btn btn-block btn-info" do %>
+        <!--# Button trigger modal-->
+        <%= link_to "#editpostModal",class: "btn btn-block btn-info", data: {toggle: "modal"} do %>
           <i class="fa-solid fa-pen-to-square text-white"> 編集</i>
         <% end %>  
+        <!--# Modal-->
+        <div class="modal fade" id="editpostModal" tabindex="-1" role="dialog" aria-labelledby="editpostModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editpostModalLabel">投稿編集</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render 'public/posts/form_modal', post: @post, tags: @tags %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col text-center">
         <%= link_to  post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" do %>

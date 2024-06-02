@@ -1,5 +1,5 @@
 <%= form_with(model: post, local: true, class:"was-validated") do |f| %>
-<div class="row m-3">
+<div class="row m-3 text-start">
   <div class="form-group">
     <%= f.label :title, "タイトル" %>
     <%= f.text_field :title, placeholder: "タイトル", class: "form-control", required: true %>
@@ -32,7 +32,7 @@
     <%= f.label :name, "タグ" %>
     <%= f.text_field :name, value: tags, placeholder: ",で区切ると複数タブ登録可能", class: 'form-control' %>
   </div>
-  <div class="form-group">
+  <div class="form-group text-center">
     <% if post.persisted? %>
       <% if post.draft? %>
         <%= f.radio_button :status, "draft" %>
@@ -58,7 +58,7 @@
     <% end %>
   </div>
   
-  <div class="d-grid col-2 mx-auto">
+  <div class="text-center">
     <% if f.object.new_record? %>
       <%= f.submit "新規登録", class: " px-4 btn btn-success submit-btn" %>
     <% else %>

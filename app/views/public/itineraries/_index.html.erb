@@ -81,9 +81,24 @@
         <div class="d-flex ml-5">
           <% if itinerary.post.user == current_user %>
             <div class="edit-icon">
-              <%= link_to  edit_post_itinerary_path(itinerary.post_id, itinerary.id) do %>
-                <i class="fa-solid fa-pen-to-square text-dark"></i>
-              <% end %>
+              <!--# Button trigger modal-->
+              <a data-toggle="modal" href="#editItineraryPostModal<%= itinerary.id %>"><i class="fa-solid fa-pen-to-square text-dark"></i></a>
+              <!--# Modal-->
+              <div class="modal fade" id="editItineraryPostModal<%= itinerary.id %>" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editPostModalLabel">旅程の編集</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= render 'public/itineraries/form_modal', post: post, itinerary: itinerary, duration: duration %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="delete-icon ml-3">
               <%= link_to post_itinerary_path(itinerary.post_id, itinerary.id), method: :delete, remote: true, data: {"turbolinks" => false} do %>

@@ -67,6 +67,15 @@ footer {
   border : solid 2px #777777;
 }
 
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
 
 //post
 .card-slide {
@@ -188,6 +197,8 @@ footer {
   .navbar-toggler:focus {
     box-shadow: none !important;
   }
+
+
 
 
 /* 画面幅が768px以上992px未満の場合 */

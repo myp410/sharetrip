@@ -62,7 +62,7 @@
                 <%= render 'public/itineraries/index', post: @post, itineraries: @search %>
               <% end %>
             <% else %>
-              <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries %>
+              <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries, duration: @duration %>
             <% end %>
           </div>
         <% else %>

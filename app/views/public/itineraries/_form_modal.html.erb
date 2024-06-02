@@ -25,9 +25,9 @@
   <div class="form-group d-flex">
     <div>
       <%= f.label :start_time, "開始時間", class: "mr-3"  %>
-      <%= f.time_select(:start_time, {class: "form-control" , id:"start_time", prompt: '--', ignore_date: true, time_separator: ':'}, :required => true)%>
+      <%= f.time_select(:start_time, {class: "form-control" , id:"start_time", prompt: '--', time_separator: ':'}, :required => true)%>
       <%= f.label :finish_time, "終了時間" , class: "ml-3 mr-3" %>
-      <%= f.time_select(:finish_time, {class: "form-control",id:"finish_time", prompt: '--', time_separator: ':', ignore_date: true }) %>
+      <%= f.time_select(:finish_time, {class: "form-control",id:"finish_time", prompt: '--', time_separator: ':' }) %>
       <div class="invalid-feedback">
         開始時間を入力してください
       </div>
