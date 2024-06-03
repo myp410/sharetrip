@@ -28,9 +28,15 @@
               </div>
             </div>
           <% else %>
-            <div class="row">
-              <%= render "card", post: @closest_post_published %>
-            </div>
+            <% if @published_posts.present? %>
+              <div class="row">
+                <%= render "card", post: @closest_post_published %>
+              </div>
+            <% else %>
+              <div class="bg-orange">
+                <p class="fw-bold text-center my-5">投稿されていません</p>
+              </div>
+            <% end %>  
           <% end %>  
         <% else %>
           <div class="bg-orange">

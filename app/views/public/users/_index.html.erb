@@ -4,19 +4,20 @@
       <div class="card card-slide m-2" style="width: calc(25% - 1rem);">
         <%= link_to users_my_page_path(user), class: "stretched-link text-dark" do %>
           <div class="card-body">
-            <div class="card-title text-center p-2" style="background-color:#FFFAFA;">
-              <div><%= image_tag user.get_profile_image, style: "object-fit: cover;" %></div>
-              <h6 class="mt-1"><%= user.name %></h6>
-            </div>
-            <div class="card-content">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <%= user.introduction %>
-                </li>
-                <li class="list-group-item">
-                  <%= user.followings.count %>フォロー  <%= user.followers.count %>フォロワー
-                </li>
-              </ul>
+            
+            <div class="card-content d-flex justify-content-center">
+              <div class="card-left">
+                <div class="text-center">
+                  <%= image_tag user.get_profile_image, size: '80x80', style: "object-fit: cover; border-radius: 50%; display: flex; justify-content: center; align-items: center;" %>
+                </div>
+              </div>
+              <div class="card-right ml-3">
+                <h5 class="text-center"><%= user.name %></h5>
+                <div class="pl-2">
+                  <p class="mb-0"><i class="fa-solid fa-users" style="font-size: 15px;"></i>  <%= user.followings.count %>フォロー</p>
+                  <p><i class="fa-solid fa-users" style="font-size: 15px;"></i>  <%= user.followers.count %>フォロワー</p>
+                </div>
+              </div>
             </div>
           </div>
         <% end %>
