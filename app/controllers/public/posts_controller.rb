@@ -2,9 +2,6 @@ class Public::PostsController < ApplicationController
   protect_from_forgery
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update]
   before_action :check_access, only: [:show]
-  def new
-    @post = Post.new
-  end
 
   def create
     @post = current_user.posts.new(post_params)
@@ -24,12 +21,15 @@ class Public::PostsController < ApplicationController
         redirect_to post_path(@post), notice: "投稿が公開されました"
       end
     else
-      render 'new'
+      @post = Post.new
+      @posts = Post.published.includes(user: { profile_image_attachment: [:blob] }).includes(:tags).includes(:favorites).order(created_at: :desc).page(params[:page])
+      render 'index'
     end
   end
 
   def index
     # @posts = Post.published.order(created_at: :desc).page(params[:page])
+    @post = Post.new
     @posts = Post.published.includes(user: { profile_image_attachment: [:blob] }).includes(:tags).includes(:favorites).order(created_at: :desc).page(params[:page])
   end
 
@@ -37,18 +37,12 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @duration = (@post.finish_date - @post.start_date).to_i + 1
     @itinerary = Itinerary.new
-
+    @edit_itinerary = Itinerary.find(params[:id])
     @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc).page(params[:page])
     @tags = @post.tags.pluck(:name).join(',')
     @post_tags = @post.tags
     @search_day = params[:search_day]
     @search = @itineraries.where(what_day: @search_day)
-  end
-
-  def edit
-    is_matching_login_user
-    @post = Post.find(params[:id])
-    @tags = @post.tags.pluck(:name).join(',') #nameを引き出してくれる
   end
 
   def update
@@ -71,7 +65,14 @@ class Public::PostsController < ApplicationController
       @post.update_tags(tags)
       redirect_to post_path(@post), notice: notice_message
     else
-      render 'edit'
+      @duration = (@post.finish_date - @post.start_date).to_i + 1
+      @itinerary = Itinerary.new
+      @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc).page(params[:page])
+      @tags = @post.tags.pluck(:name).join(',')
+      @post_tags = @post.tags
+      @search_day = params[:search_day]
+      @search = @itineraries.where(what_day: @search_day)
+      render 'show'
     end
   end
 

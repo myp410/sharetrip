@@ -15,6 +15,8 @@ class Public::UsersController < ApplicationController
     @like_posts = Post.where(id: likes).page(params[:page])
     @closest_post = @user.posts.where('start_date >= ?', Date.today).order(:start_date).first
     @closest_post_published = @user.posts.published.where('start_date >= ?', Date.today).order(:start_date).first
+    @group = Group.new
+    @post = Post.new
   end
 
 

@@ -5,14 +5,31 @@
     </div>
     <div class="col-lg-7 offset-lg-1">
       <div class="row m-3">
-        <h2 class="text-center">投稿詳細</h2>
+        <h2 class="text-center">旅程</h2>
         <div class="heading-line"></div>
       </div>
       <% if @post.user == current_user %>
-        <div class="row">
-          <h5 class="text-center">- 旅程追加</h5>
-          <%= render 'layouts/errors', obj: @itinerary %>
-          <%= render 'public/itineraries/form', post: @post, itinerary: @itinerary, duration: @duration %>
+        <div class="col text-end">
+          <!--# Button trigger modal-->
+          <%= link_to "#newItineraryPostModal", class: "btn btn-outline-secondary", data: {toggle: "modal"} do %>
+            <i class="fas fa-plus-circle"></i> 新しい旅程追加
+          <% end %>  
+        </div>
+        <!--# Modal-->
+        <div class="modal fade" id="newItineraryPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newPostModalLabel">新しい旅程追加</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render 'public/itineraries/form_modal', post: @post, itinerary: @itinerary, duration: @duration %>
+              </div>
+            </div>
+          </div>
         </div>
       <% else %>
       <% end %>
@@ -45,7 +62,7 @@
                 <%= render 'public/itineraries/index', post: @post, itineraries: @search %>
               <% end %>
             <% else %>
-              <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries %>
+              <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries, duration: @duration %>
             <% end %>
           </div>
         <% else %>

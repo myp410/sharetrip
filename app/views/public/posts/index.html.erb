@@ -2,6 +2,13 @@
   <div class="row">
     <h2 class="mt-3 text-center">タイムライン</h2>
     <div class="heading-line"></div>
+    <% if user_signed_in? %>
+      <div class="row">
+        <div class="col m-3 text-end">
+          <%= render "public/posts/btn_modal", post: @post, tags: @tags %>
+        </div>
+      </div>
+    <% end %>  
   </div>
   <div class="row">
     <div class="col">

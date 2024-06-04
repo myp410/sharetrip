@@ -5,6 +5,7 @@ class Public::ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
     @post = Post.find(params[:post_id])
+    @duration = (@post.finish_date - @post.start_date).to_i + 1
     @article = Article.new
     @articles = @itinerary.articles
     @price = Price.new
@@ -20,21 +21,23 @@ class Public::ItinerariesController < ApplicationController
 
 
     #start_time,finish_timeの時間設定
-    start_date = @post.start_date.to_datetime + (@itinerary.what_day - 1).days
-      @itinerary.start_time = Time.zone.local(
-        start_date.year,
-        start_date.month,
-        start_date.day,
-        @itinerary.start_time.hour,
-        @itinerary.start_time.min
-      )
-      @itinerary.finish_time = DateTime.new(
-        start_date.year,
-        start_date.month,
-        start_date.day,
-        @itinerary.finish_time.hour,
-        @itinerary.finish_time.min
-      )
+    # unless params[:what_day] == nil
+    #   start_date = @post.start_date.to_datetime + (@itinerary.what_day - 1).days
+    #     @itinerary.start_time = Time.zone.local(
+    #       start_date.year,
+    #       start_date.month,
+    #       start_date.day,
+    #       @itinerary.start_time.hour,
+    #       @itinerary.start_time.min
+    #     )
+    #     @itinerary.finish_time = DateTime.new(
+    #       start_date.year,
+    #       start_date.month,
+    #       start_date.day,
+    #       @itinerary.finish_time.hour,
+    #       @itinerary.finish_time.min
+    #     )
+    # end  
 
     if @itinerary.save
       redirect_to post_path(@post),notice: "旅程の追加に成功しました"
@@ -50,20 +53,21 @@ class Public::ItinerariesController < ApplicationController
     end
   end
 
-  def edit
-    @itinerary = Itinerary.find(params[:id])
-    @post = Post.find(params[:post_id])
-    @duration = (@post.finish_date - @post.start_date).to_i + 1
-  end
-
   def update
     @itinerary = Itinerary.find(params[:id])
     @post = Post.find(params[:post_id])
     if @itinerary.update(itinerary_params)
       redirect_to post_itinerary_path(@itinerary),notice: "旅程の更新に成功しました"
     else
+      @duration = (@post.finish_date - @post.start_date).to_i + 1
+      @article = Article.new
+      @articles = @itinerary.articles
+      @price = Price.new
+      @prices = @itinerary.prices
+      @tags = @post.tags.pluck(:name).join(',')
+      @post_tags = @post.tags
       flash.now[:alert] = "旅程の更新に失敗しました"
-      render 'edit'
+      render 'show'
     end
   end
 

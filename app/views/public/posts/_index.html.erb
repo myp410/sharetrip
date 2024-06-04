@@ -18,7 +18,7 @@
                 </div>
               </div>
               <div class="card-right ml-2">
-                <span class="badge text-bg-light text-dark justify-content-center"><%= post.start_date %>~<%= post.finish_date %></span>
+                <span class="badge text-bg-light text-dark justify-content-center"><%= post.start_date.strftime("%Y/%m/%d") %>~<%= post.finish_date.strftime("%Y/%m/%d") %></span>
                 <div class="d-flex flex-wrap justify-content-center mt-2">
                   <div>
                     <% post.tags.each do |tag| %>

@@ -4,16 +4,11 @@
 
 header {
   background-color: #3399FF;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
 }
 
 
 body {
   background-color: #FFF5EE;
-  margin-top: 130px;
   font-family:  "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif;
 }
 
@@ -59,7 +54,7 @@ footer {
 
 .bg-user {
   background: #FFFAFA;
-  padding: 30px;
+  padding: 15px;
   margin: 20px 0;
   border: solid 1px #D2B48C;
 }
@@ -72,6 +67,15 @@ footer {
   border : solid 2px #777777;
 }
 
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
 
 //post
 .card-slide {
@@ -97,11 +101,15 @@ footer {
   background-color: white;
 }
 
+.bar-th {
+  font-size: 13px;
+
+}
+
 //itinerary
 .itinerary-left {
   background: #FFFAFA;
 }
-
 
 //tab
 .tabs {
@@ -194,6 +202,8 @@ footer {
   .navbar-toggler:focus {
     box-shadow: none !important;
   }
+
+
 
 
 /* 画面幅が768px以上992px未満の場合 */

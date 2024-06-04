@@ -1,0 +1,45 @@
+<%= form_with(model: [post, itinerary], local: true, class:"was-validated") do |f| %>
+<div class="row m-3">
+  <div class="form-group">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, placeholder: "タイトル", class: "form-control", required: true %>
+    <div class="invalid-feedback">
+      タイトルを入力してください
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :body, "詳細" %>
+    <%= f.text_field :body, placeholder: "詳細", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :place, "場所" %>
+    <%= f.text_field :place, placeholder: "場所", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :what_day, "日程" %>
+    <%= f.select :what_day, options_for_select(1..duration), {include_blank: "日程選択"}, class: 'custom-select', required: true %>
+    <div class="invalid-feedback">
+      日程を選択してください
+    </div>
+  </div>
+  <div class="form-group d-flex">
+    <div>
+      <%= f.label :start_time, "開始時間", class: "mr-3"  %>
+      <%= f.time_select(:start_time, {class: "form-control" , id:"start_time", prompt: '--', time_separator: ':'}, :required => true)%>
+      <%= f.label :finish_time, "終了時間" , class: "ml-3 mr-3" %>
+      <%= f.time_select(:finish_time, {class: "form-control",id:"finish_time", prompt: '--', time_separator: ':' }) %>
+      <div class="invalid-feedback">
+        開始時間を入力してください
+      </div>
+    </div>
+  </div>
+  <div class="d-grid col-2 mx-auto">
+    <%= f.hidden_field :post_id, value: post.id %>
+    <% if f.object.new_record? %>
+      <%= f.submit "新規登録", class: " px-4 btn btn-success submit-btn" %>
+    <% else %>
+      <%= f.submit "変更を保存", class: " px-4 btn btn-success submit-btn" %>
+    <% end %>
+  </div>
+</div>
+<% end %>

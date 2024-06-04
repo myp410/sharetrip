@@ -8,10 +8,14 @@ class Itinerary < ApplicationRecord
   validates :start_time, presence: true
   validates :what_day, presence: true
   validate :start_finish_check
+  
+  before_validation :set_datetimes
 
 #終了時間が開始時間より後に来ないようにバリデーション
   def start_finish_check
-    errors.add(:finish_time, "は開始時刻より遅い時間を選択してください") if self.start_time > self.finish_time
+    if start_time.present? && finish_time.present?
+    　errors.add(:finish_time, "は開始時刻より遅い時間を選択してください") if self.start_time > self.finish_time
+    end
   end
 
 
@@ -23,5 +27,14 @@ class Itinerary < ApplicationRecord
     end
   end
 
-
+  private
+  
+  def set_datetimes
+    start_date = self.post.start_date.to_s
+    start_time = self.start_time.to_s.split[1]
+    finish_time = self.finish_time.to_s.split[1]
+    past_day = self.what_day - 1
+    self.start_time = Time.zone.parse("#{start_date} #{start_time}").since(past_day.day)
+    self.finish_time = Time.zone.parse("#{start_date} #{finish_time}").since(past_day.day)
+  end
 end
