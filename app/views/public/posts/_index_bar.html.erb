@@ -1,12 +1,31 @@
 <div class="bg-user">
+  <div class="dropdown text-end">
+    <a class="btn btn-outline-secondary dropdown-toggle m-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-solid fa-ellipsis"></i>
+    </a>
+  
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to  post_post_comments_path(post), class: "dropdown-item" do %>
+          <i class="fa-regular fa-comment-dots text-dark"></i> コメント一覧</i>
+        <% end %>  
+      </li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
   <h3 class="text-center pt-2">投稿詳細</h3>
   <div class="heading-line mx-2"></div>
   <table class="table text-center">
     <tr>
-      <td colspan="2"><%= image_tag post.user.get_profile_image %></td>
+      <td colspan="2">
+        <%= link_to users_my_page_path(post.user) , class: "text-dark" do %>
+          <%= image_tag post.user.get_profile_image %>
+        <% end %>
+      </td>
     </tr>
     <tr>
-      <th>投稿者</th>
+      <th class="bar-th">投稿者</th>
       <td>
         <%= link_to users_my_page_path(post.user) , class: "text-dark" do %>
           <%= post.user.name %>
@@ -14,33 +33,35 @@
       </td>
     </tr>
     <tr>
-      <th>開始日</th>
+      <th class="bar-th">開始日</th>
       <td><%= post.start_date.strftime("%Y/%m/%d") %></td>
     </tr>
     <tr>
-      <th>終了日</th>
+      <th class="bar-th">終了日</th>
       <td><%= post.finish_date.strftime("%Y/%m/%d") %></td>
     </tr>
+    <% if current_user == post.user %>
+      <tr>
+        <th class="bar-th">公開ステータス</th>
+        <td><%= post.status_i18n %></td>
+      </tr>
+    <% end %>  
     <tr>
-      <th>公開ステータス</th>
-      <td><%= post.status_i18n %></td>
-    </tr>
-    <tr>
-      <th>タイトル</th>
+      <th class="bar-th">タイトル</th>
       <td><%= post.title %></td>
     </tr>
     <tr>
-      <th>詳細</th>
+      <th class="bar-th text-wrap">詳細</th>
       <td><%= post.body %></td>
     </tr>
     <tr>
-      <th>いいね</th>
+      <th class="bar-th">いいね</th>
       <td id="favorite_buttons_<%= post.id %>">
         <%= render 'public/favorites/btn', post: post %>
       </td>
     </tr>
     <tr>
-      <th>タグ</th>
+      <th class="bar-th">タグ</th>
       <td>
         <% unless post_tags.nil? %>
           <% post_tags.each do |tag| %>
@@ -52,7 +73,7 @@
       </td>
     </tr>
     <tr>
-      <th>コメント数</th>
+      <th class="bar-th">コメント数</th>
       <td id="comment_counter">
         <%= render "public/post_comments/counter", post: post %>
       </td>
