@@ -8,9 +8,27 @@
             <p class="small text-center mt-3"><%= itinerary.start_time.strftime("%H:%M") %></p>
           </div>
         </div>
-        <div class="itinerary-right col-md-8 offset-1">
-          <h5 class="card-title"><%= itinerary.title %></h5>
-          <p><i class="fa-solid fa-location-dot"></i><%= itinerary.place %></p>
+        <div class="itinerary-right col-md-8 offset-1 d-flex">
+          <div class="col-8">
+            <h5 class="card-title"><%= itinerary.title %></h5>
+            <p><i class="fa-solid fa-location-dot"></i><%= itinerary.place %></p>
+          </div>
+          <div class="col-4 d-flex flex-column text-center">
+            <span class="badge rounded-pill" style="background: #cd5c5c;">next...</span>
+            <% if itinerary.traffic_method == "car" %>
+              <i class="fa-solid fa-car m-2"style="font-size: 30px;"></i>
+            <% elsif itinerary.traffic_method == "bus" %> 
+              <i class="fa-solid fa-bus m-2"style="font-size: 30px;"></i>
+            <% elsif itinerary.traffic_method == "bus" %> 
+              <i class="fa-solid fa-train-subway m-2"style="font-size: 30px;"></i>
+            <% elsif itinerary.traffic_method == "walk" %> 
+              <i class="fa-solid fa-person-walking m-2"style="font-size: 30px;"></i>
+            <% else %>
+              <i class="fa-solid fa-plane m-2"style="font-size: 30px;"></i>
+            <% end %>
+            <i class="fa-solid fa-diamond-turn-right m-2"></i>
+          </div>
+
 
           <!-- モーダルのボタン -->
           <a class="stretched-link" data-toggle="modal" href="#exampleModalLong<%= itinerary.id %>"></a>

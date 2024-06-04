@@ -7,6 +7,8 @@ class Itinerary < ApplicationRecord
   validates :title, presence: true
   validates :start_time, presence: true
   validates :what_day, presence: true
+  validates :traffic_method, presence: true
+  validates :traffic_time, presence: true
   validate :start_finish_check
   
   before_validation :set_datetimes
@@ -26,6 +28,8 @@ class Itinerary < ApplicationRecord
       Itinerary.where('title LIKE ?', "%#{word}%")
     end
   end
+  
+  enum traffic_method: { car: 0, bus: 1,  train: 2, plane: 3, walk: 4 }
 
   private
   
