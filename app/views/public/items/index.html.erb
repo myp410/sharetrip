@@ -8,13 +8,17 @@
         <h2 class="text-center">持ち物リスト</h2>
         <div class="heading-line"></div>
         <% if @post.user == current_user %>
-          <%= render 'layouts/errors', obj: @item %>
-          <%= form_with(model: [@post, @item], local: true) do |f| %>
+          <%= form_with(model: [@post, @item], local: true, class:"was-validated") do |f| %>
             <div class="row bg-orange m-3">
               <table class="table table-borderless mx-auto">
                 <tr class="form-group">
                   <th><%= f.label :name, "持ち物名" %></th>
-                  <td><%= f.text_field :name, placeholder: "持ち物名", class: "form-control" %></td>
+                  <td>
+                    <%= f.text_field :name, placeholder: "持ち物名", class: "form-control",required: true %>
+                    <div class="invalid-feedback">
+                      アイテム名を入力してください
+                    </div>
+                  </td>
                 </tr>
               </table>
             </div>
