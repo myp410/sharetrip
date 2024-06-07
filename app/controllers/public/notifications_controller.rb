@@ -7,6 +7,8 @@ class Public::NotificationsController < ApplicationController
     case notification.notifiable_type
     when "Post"
       redirect_to post_path(notification.notifiable)
+    when "Relationship"
+      redirect_to users_my_page_path(notification.notifiable.followed)
     else
       redirect_to users_my_page_path(notification.notifiable.user)
     end  
