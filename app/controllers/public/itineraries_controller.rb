@@ -98,4 +98,6 @@ class Public::ItinerariesController < ApplicationController
     return if user == current_user #trueならここで処理を終了
     redirect_to posts_path #falseならこの処理になる
   end
+  
+
 end
