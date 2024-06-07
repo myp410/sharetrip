@@ -9,7 +9,8 @@ class CreateItineraries < ActiveRecord::Migration[6.1]
       t.string :place 
       t.integer :what_day, null: false
       t.integer :traffic_method,null: false , default: 0
-      t.integer :traffic_time,null: false , default: 0
+      t.integer :traffic_time_hour
+      t.integer :traffic_time_min
 
       t.timestamps
     end

@@ -14,19 +14,21 @@
             <p><i class="fa-solid fa-location-dot"></i><%= itinerary.place %></p>
           </div>
           <div class="col-4 d-flex flex-column text-center">
-            <span class="badge rounded-pill" style="background: #cd5c5c;">next...</span>
+            <span class="badge rounded-pill" style="background: #cd5c5c;">移動時間</span>
             <% if itinerary.traffic_method == "car" %>
               <i class="fa-solid fa-car m-2"style="font-size: 30px;"></i>
-            <% elsif itinerary.traffic_method == "bus" %> 
+            <% elsif itinerary.traffic_method == "bus" %>
               <i class="fa-solid fa-bus m-2"style="font-size: 30px;"></i>
-            <% elsif itinerary.traffic_method == "bus" %> 
+            <% elsif itinerary.traffic_method == "bus" %>
               <i class="fa-solid fa-train-subway m-2"style="font-size: 30px;"></i>
-            <% elsif itinerary.traffic_method == "walk" %> 
+            <% elsif itinerary.traffic_method == "walk" %>
               <i class="fa-solid fa-person-walking m-2"style="font-size: 30px;"></i>
             <% else %>
               <i class="fa-solid fa-plane m-2"style="font-size: 30px;"></i>
             <% end %>
-            <i class="fa-solid fa-diamond-turn-right m-2"></i>
+            <i class="fa-solid fa-diamond-turn-right"style="font-size: 13px;">
+              <%= itinerary.traffic_time_display %>
+            </i>
           </div>
 
 
@@ -49,8 +51,8 @@
                       <%= render 'public/users/card', post: itinerary.post %>
                     <% end %>
                     <tr>
-                      <th>日付</th>
-                      <td colspan="3"><%= itinerary.what_day %></td>
+                      <th>日程</th>
+                      <td><%= itinerary.what_day %></td>
                     </tr>
                     <tr>
                       <th>開始時間</th>
@@ -71,6 +73,14 @@
                     <tr>
                       <th>詳細</th>
                       <td><%= itinerary.body %></td>
+                    </tr>
+                    <tr>
+                      <th>移動方法</th>
+                      <td><%= itinerary.traffic_method %></td>
+                    </tr>
+                    <tr>
+                      <th>移動時間</th>
+                      <td><%= itinerary.traffic_time_display %></td>
                     </tr>
                     <tr>
                       <th>費用</th>

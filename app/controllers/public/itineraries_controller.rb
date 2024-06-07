@@ -37,7 +37,7 @@ class Public::ItinerariesController < ApplicationController
     #       @itinerary.finish_time.hour,
     #       @itinerary.finish_time.min
     #     )
-    # end  
+    # end
 
     if @itinerary.save
       redirect_to post_path(@post),notice: "旅程の追加に成功しました"
@@ -89,7 +89,7 @@ class Public::ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:title, :body, :start_time, :finish_time, :place, :what_day)
+    params.require(:itinerary).permit(:title, :body, :start_time, :finish_time, :place, :what_day, :traffic_method, :traffic_time_hour, :traffic_time_min)
   end
 
   def ensure_correct_user
