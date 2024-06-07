@@ -48,9 +48,9 @@ get "admin/search" => "admin/searches#search"
       resource :group_users, only: [:create, :destroy]
       resource :rooms, only: [:show, :create] do
         resources :messages, only: [:create]
-
       end
     end
+    resources :notifications, only: [:update]
 
   end
 

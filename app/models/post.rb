@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags, dependent: :destroy #投稿画面で表示したいから中間テーブル経由でのこの記載をする
   has_many :items, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
 
   validates :title, presence: true
   validates :start_date, presence: true
@@ -71,6 +72,12 @@ class Post < ApplicationRecord
         self.tags.delete(tag) if tag.present?
       end  
       
+    end  
+  end
+  
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id, notifiable_type: "Post", notifiable_id: id)
     end  
   end
 
