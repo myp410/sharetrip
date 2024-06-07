@@ -109,7 +109,7 @@
       </div>
       <div class="card-footer d-flex justify-content-center" style="height: 25px; padding: 0;">
         <div class="d-flex ml-5">
-          <% if itinerary.post.user == current_user %>
+          <% if itinerary.post.user == current_user && controller_name != 'searches' %>
             <div class="edit-icon">
               <!--# Button trigger modal-->
               <a data-toggle="modal" href="#editItineraryPostModal<%= itinerary.id %>"><i class="fa-solid fa-pen-to-square text-dark"></i></a>

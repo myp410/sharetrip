@@ -20,10 +20,14 @@
           <div class="col">
             <table class="table">
               <% @tags.each do |tag| %>
-                <tr>
+                <tr class="text-center">
                   <th>タグ名</th>
                   <td><%= tag.name %></td>
-                  <td><%= link_to "投稿一覧",search_tag_path(tag_id: tag.id) %></td>
+                  <td>
+                    <%= link_to search_tag_path(tag_id: tag.id), class: "text-dark" do %>
+                      <i class="fa-solid fa-link"></i> 投稿一覧
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </table>
