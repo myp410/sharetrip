@@ -17,6 +17,8 @@
             <span class="badge rounded-pill" style="background: #cd5c5c;">移動時間</span>
             <% if itinerary.traffic_method == "car" %>
               <i class="fa-solid fa-car m-2"style="font-size: 30px;"></i>
+            <% elsif itinerary.traffic_method == "no" %>
+              <i class="fa-solid fa-minus m-2"style="font-size: 30px;"></i>
             <% elsif itinerary.traffic_method == "bus" %>
               <i class="fa-solid fa-bus m-2"style="font-size: 30px;"></i>
             <% elsif itinerary.traffic_method == "bus" %>
@@ -76,7 +78,7 @@
                     </tr>
                     <tr>
                       <th>移動方法</th>
-                      <td><%= itinerary.traffic_method %></td>
+                      <td><%= itinerary.traffic_method_i18n %></td>
                     </tr>
                     <tr>
                       <th>移動時間</th>

@@ -36,8 +36,10 @@
   <div class="form-group">
     <%= f.label :traffic_method, "この目的地までの交通手段" %>
     <div class="d-flex text-center">
+      <%= f.radio_button :traffic_method, "no" %>
+      <%= f.label :traffic_method_no, "なし", class: "ml-2 mr-2 mb-0" %>
       <%= f.radio_button :traffic_method, "car" %>
-      <%= f.label :traffic_method_car, "車（タクシー）", class: "ml-2 mr-2 mb-0" %>
+      <%= f.label :traffic_method_car, "車", class: "ml-2 mr-2 mb-0" %>
       <%= f.radio_button :traffic_method, "bus" %>
       <%= f.label :traffic_method_bus, "バス" , class: "ml-2 mr-2 mb-0"%>
       <%= f.radio_button :traffic_method, "train" %>
@@ -50,7 +52,7 @@
   </div>
   <div class="form-group d-flex text-center" style="height:25px;">
     <p class="mr-3">所要時間</p>
-    <%= f.select :traffic_time_hour, *[0..24] %>
+    <%= f.select :traffic_time_hour, *[00..24] %>
     <p> : </p>
     <%= f.select :traffic_time_min, [00,10,20,30,40,50] %>
   </div>

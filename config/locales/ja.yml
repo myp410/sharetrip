@@ -5,6 +5,14 @@ ja:
         published: "公開"
         draft: "下書き"
         unpublished: "非公開"
+    itinerary:
+      traffic_method:
+        no: "--"
+        car: "車"
+        bus: "バス"
+        train: "電車"
+        plane: "飛行機"
+        walk: "徒歩"
   activerecord:
     attributes:
       user:
@@ -25,7 +33,7 @@ ja:
         finish_time: "終了時間"
         place: "場所"
         what_day: "何日目"
-      article: 
+      article:
         title: "タイトル"
         link: "リンク"
       price:

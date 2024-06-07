@@ -11,34 +11,26 @@
       </div>
       <table class="table table-hover text-center">
         <tr>
+          <th>タイトル</th>
+          <td colspan="5"><%= @itinerary.title %></td>
+        </tr>
+        <tr>
+          <th>詳細</th>
+          <td colspan="5"><%= @itinerary.body %></td>
+        </tr>
+        <tr>
           <th>日程</th>
           <td><%= @itinerary.what_day %></td>
-        </tr>
-        <tr>
           <th>開始時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
-        </tr>
-        <tr>
           <th>終了時間</th>
           <td><%= @itinerary.finish_time.strftime( "%H:%M" ) %></td>
         </tr>
         <tr>
-          <th>タイトル</th>
-          <td colspan="3"><%= @itinerary.title %></td>
-        </tr>
-        <tr>
           <th>場所</th>
-          <td colspan="3"><%= @itinerary.place %></td>
-        </tr>
-        <tr>
-          <th>詳細</th>
-          <td colspan="3"><%= @itinerary.body %></td>
-        </tr>
-        <tr>
+          <td><%= @itinerary.place %></td>
           <th>移動方法</th>
-          <td><%= @itinerary.traffic_method %></td>
-        </tr>
-        <tr>
+          <td><%= @itinerary.traffic_method_i18n %></td>
           <th>移動時間</th>
           <td><%= @itinerary.traffic_time_display %></td>
         </tr>
