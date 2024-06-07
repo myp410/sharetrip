@@ -42,11 +42,6 @@
               </div>
             <% end %>
             <div class="col">
-              <%= link_to post_items_path(@post) , class: "btn btn-secondary " do %>
-                <i class="fa-solid fa-suitcase text-white">　持ち物</i>
-              <% end %>
-            </div>
-            <div class="col">
               <%= form_tag("/posts/#{@post.id}", method: :get) do %>
                 <div class="d-flex">
                   <%= select_tag :search_day, options_for_select(1..@duration, include_blank: "日程選択"), class: 'custom-select', style: 'width: 100px;' %>
