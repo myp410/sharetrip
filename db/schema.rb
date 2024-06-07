@@ -105,6 +105,9 @@ ActiveRecord::Schema.define(version: 2024_05_22_042148) do
     t.datetime "finish_time"
     t.string "place"
     t.integer "what_day", null: false
+    t.integer "traffic_method", default: 0, null: false
+    t.integer "traffic_time_hour"
+    t.integer "traffic_time_min"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_itineraries_on_post_id"

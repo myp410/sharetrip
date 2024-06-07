@@ -11,30 +11,29 @@
       </div>
       <table class="table table-hover text-center">
         <tr>
-          <th>日付</th>
-          <td colspan="3"><%= @itinerary.what_day %></td>
+          <th>タイトル</th>
+          <td colspan="5"><%= @itinerary.title %></td>
         </tr>
         <tr>
+          <th>詳細</th>
+          <td colspan="5"><%= @itinerary.body %></td>
+        </tr>
+        <tr>
+          <th>日程</th>
+          <td><%= @itinerary.what_day %></td>
           <th>開始時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
-        </tr>
-        <tr>
           <th>終了時間</th>
           <td><%= @itinerary.finish_time.strftime( "%H:%M" ) %></td>
         </tr>
         <tr>
-          <th>タイトル</th>
-          <td colspan="3"><%= @itinerary.title %></td>
-        </tr>
-        <tr>
           <th>場所</th>
-          <td colspan="3"><%= @itinerary.place %></td>
+          <td><%= @itinerary.place %></td>
+          <th>移動方法</th>
+          <td><%= @itinerary.traffic_method_i18n %></td>
+          <th>移動時間</th>
+          <td><%= @itinerary.traffic_time_display %></td>
         </tr>
-        <tr>
-          <th>詳細</th>
-          <td colspan="3"><%= @itinerary.body %></td>
-        </tr>
-
       </table>
       <% if @post.user == current_user %>
       <div class="container m-3">
@@ -85,9 +84,6 @@
             <div class="tab-content">
               <div id="price" class="tab-pane fade show active">
                 <% if @post.user == current_user %>
-                  <div class="row mt-3" id="price_error">
-                    <%= render 'layouts/errors', obj: @price %>
-                  </div>
                   <div class="row" id="price-form">
                     <%= render "public/prices/form", post: @post, itinerary: @itinerary, price: @price %>
                   </div>
@@ -98,9 +94,6 @@
               </div>
               <div id="article" class="tab-pane fade">
                 <% if @post.user == current_user %>
-                  <div class="row mt-3" id="article_error">
-                    <%= render 'layouts/errors', obj: @article %>
-                  </div>
                   <div class="row" id="article-form">
                     <%= render "public/articles/form", post: @post, itinerary: @itinerary, article: @article %>
                   </div>
