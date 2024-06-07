@@ -125,12 +125,14 @@ ActiveRecord::Schema.define(version: 2024_06_07_093632) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.string "notifiable_type", null: false
     t.integer "notifiable_id", null: false
     t.boolean "read", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -222,6 +224,7 @@ ActiveRecord::Schema.define(version: 2024_06_07_093632) do
   add_foreign_key "itineraries", "posts"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "posts"
   add_foreign_key "notifications", "users"
   add_foreign_key "post_comments", "posts"
   add_foreign_key "post_comments", "users"

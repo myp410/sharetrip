@@ -5,6 +5,8 @@ module Public::NotificationsHelper
     case notification.notifiable_type
     when "Post"
       "フォローしている#{notification.notifiable.user.name}さんが「#{notification.notifiable.title}」を投稿しました (#{time_ago}前)"
+    when "PostComment"
+      "#{notification.notifiable.user.name}さんが「#{notification.notifiable.post.title}」にコメントを投稿しました (#{time_ago}前)"
     when "Relationship"
       "#{notification.notifiable.follower.name}さんにフォローされました (#{time_ago}前)"
     else
