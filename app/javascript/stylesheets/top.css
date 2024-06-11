@@ -80,27 +80,3 @@
   height: auto;
 }
 
-.feature {
-  justify-content: center;
-}
-
-.bg-feature {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 100px;
-}
-
-.top-card {
-  height: 180px; /* このカードの高さを180pxに制限する */
-  overflow: hidden; /* コンテンツが高さを超えた場合には表示しない */
-}
-
-@media (max-width: 768px) {
-  .top-card {
-    height: auto; /* レスポンシブな場合は高さを自動調整する */
-  }
-}
