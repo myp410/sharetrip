@@ -37,20 +37,16 @@
       <h2 class="col mt-4 text-center">初めての方はこちら</h2>
       <div class="heading-line"></div>
     </div>
-    <div class="row justify-content-center m-5">
-      <div class="col">
-        <h6 class="align-items-left">新規会員登録をしてサービス利用する方</h6>
-      </div>
-      <div class="col">
-        <%= link_to "新規登録",new_user_registration_path ,class: "btn btn-success ml-4"%>
+    <div class="row justify-content-center m-4">
+      <div class="text-center">
+        <h5 class="align-items-left">新規会員登録をしてサービス利用する方</h5>
+        <%= link_to "新規登録",new_user_registration_path ,class: "btn btn-outline-success btn-block ml-4"%>
       </div>
     </div>
     <div class="row justify-content-center m-4">
-      <div class="col">
-        <h6 class="align-items-left">ゲストとしてサービス利用する方（一部機能制限されます）</h6>
-      </div>
-      <div class="col">
-        <%= link_to "ゲストログイン",users_guest_sign_in_path, class: "btn btn-secondary ml-4", method: :post %>
+      <div class="text-center">
+        <h5 class="align-items-left">ゲストとしてサービス利用する方</h5>
+        <%= link_to "ゲストログイン",users_guest_sign_in_path, class: "btn btn-outline-secondary btn-block ml-4", method: :post %>
       </div>
     </div>
   </div>
