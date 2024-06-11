@@ -1,5 +1,5 @@
 .main-visual {
-  background-image: url(../../assets/images/bg-masthead.jpg);
+  background-image:  linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(../../assets/images/sea.JPG);
   height: 600px;
   background-size: cover;
   background-position: center;

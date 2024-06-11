@@ -53,39 +53,39 @@
                       <%= render 'public/users/card', post: itinerary.post %>
                     <% end %>
                     <tr>
-                      <th>日程</th>
+                      <th class="bar-th">日程</th>
                       <td><%= itinerary.what_day %></td>
                     </tr>
                     <tr>
-                      <th>開始時間</th>
+                      <th class="bar-th">開始時間</th>
                       <td><%= itinerary.start_time.strftime( "%H:%M" ) %></td>
                     </tr>
                     <tr>
-                      <th>終了時間</th>
+                      <th class="bar-th">終了時間</th>
                       <td><%= itinerary.finish_time.strftime( "%H:%M" ) %></td>
                     </tr>
                     <tr>
-                      <th>タイトル</th>
+                      <th class="bar-th">タイトル</th>
                       <td><%= itinerary.title %></td>
                     </tr>
                     <tr>
-                      <th>場所</th>
+                      <th class="bar-th">場所</th>
                       <td><%= itinerary.place %></td>
                     </tr>
                     <tr>
-                      <th>詳細</th>
-                      <td><%= itinerary.body %></td>
+                      <th class="bar-th">詳細</th>
+                      <td><%= itinerary.body%></td>
                     </tr>
                     <tr>
-                      <th>移動方法</th>
+                      <th class="bar-th">移動方法</th>
                       <td><%= itinerary.traffic_method_i18n %></td>
                     </tr>
                     <tr>
-                      <th>移動時間</th>
+                      <th class="bar-th">移動時間</th>
                       <td><%= itinerary.traffic_time_display %></td>
                     </tr>
                     <tr>
-                      <th>費用</th>
+                      <th class="bar-th">費用</th>
                       <% if itinerary.prices.present? %>
                         <% itinerary.prices.each do |price| %>
                           <td class="d-flex pl-5">
