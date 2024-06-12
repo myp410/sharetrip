@@ -40,8 +40,8 @@
             <tr>
               <td class="text-center"><%= item.name %></td>
               <% if current_user == @post.user %>
-                <td><%= check_box_tag '', '', item.have, {'data-id' => item.id, 'data-post_id' => item.post_id } %> </td>
-                <td>
+                <td class="text-center"><%= check_box_tag '', '', item.have, {'data-id' => item.id, 'data-post_id' => item.post_id } %> </td>
+                <td class="text-center">
                   <%= link_to post_item_path(item.post_id,item.id), method: :delete, class: "btn btn-danger btn-sm" do %>
                     <i class="fa-solid fa-trash-can"></i>
                   <% end %>
