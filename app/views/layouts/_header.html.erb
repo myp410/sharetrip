@@ -1,7 +1,7 @@
 <header class="header sticky-top">
   <nav class="navbar navbar-expand-xl navbar-dark">
     <div class="container-fluid justify-content-center">
-      <a class="navbar-brand col-12 col-md-4 col-xl-4 mr-0 mt-2 text-center" href="/"><%= image_tag "logo.png", :size => '200x60' %></a>
+      <a class="navbar-brand col-12 col-md-4 col-xl-3 mr-0 mt-2 text-center" href="/"><%= image_tag "logo.png", :size => '200x60' %></a>
       <% unless admin_signed_in? %>
         <div class="col-12 col-md-4 col-xl-3 mt-4 d-flex align-items-center justify-content-center">
           <% if user_signed_in? %>
@@ -38,6 +38,22 @@
               </li>
               <li>
                 <%= link_to 'グループ一覧', groups_path, class: " header-btn" %>
+              </li>
+              <li class="dropdown">
+                <a class="header-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  通知
+                  <span class="badge badge-danger"><%= current_user.notifications.where(read: false).count %></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                  <% if current_user.notifications.where(read: false).any? %>
+                    <small class="dropdown-item disabled">直近5件の未読の通知を表示しています</small>
+                    <% current_user.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+                      <%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "dropdown-item" %>
+                    <% end %>
+                  <% else %>
+                    <span class="dropdown-item disabled">未読の通知はありません</span>
+                  <% end %>
+                </div>
               </li>
               <li>
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: " header-btn" %>
