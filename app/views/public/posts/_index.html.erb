@@ -3,7 +3,7 @@
     <% posts.each do |post| %>
       <div class="col-lg-3 col-md-6 px-0">
         <div class="card card-slide post-card mt-2 mx-1">
-          <%= link_to "", post_path(post), class: "stretched-link text-dark" %>
+          <%= link_to "", post_path(post), class: "stretched-link text-dark", data: { turbolinks: "false" } %>
           <div class="card-body pb-0">
             <h5 class="card-title text-center"><%= post.title %></h5>
             <div class="card-content d-flex justify-content-center">

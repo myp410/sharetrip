@@ -15,7 +15,7 @@ class Itinerary < ApplicationRecord
 #終了時間が開始時間より後に来ないようにバリデーション
   def start_finish_check
     if start_time.present? && finish_time.present?
-    　errors.add(:finish_time, "は開始時刻より遅い時間を選択してください") if self.start_time > self.finish_time
+      errors.add(:finish_time, "は開始時刻より遅い時間を選択してください") if self.start_time > self.finish_time
     end
   end
 
@@ -32,7 +32,7 @@ class Itinerary < ApplicationRecord
     '約 ' + traffic_time_hour.to_s + ' : ' + traffic_time_min.to_s
   end
 
-  enum traffic_method: { no: 0, car: 1, bus: 2,  train: 3, plane: 4, walk: 5 }
+  enum traffic_method: {noo: 0, car: 1, bus: 2,  train: 3, plane: 4, walk: 5 }
 
   private
 

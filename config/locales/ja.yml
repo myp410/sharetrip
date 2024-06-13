@@ -7,7 +7,7 @@ ja:
         unpublished: "非公開"
     itinerary:
       traffic_method:
-        no: "--"
+        noo: "--"
         car: "車"
         bus: "バス"
         train: "電車"
