@@ -67,56 +67,56 @@
   <div class="container-fluid p-0">
     <div class="row g-0">
       <div class="col-lg-4 col-sm-6 p-0">
-        <a class="portfolio-box" href="<%= image_path('1.jpg') %>" data-lightbox="fuga" title="Project Name">
-          <%= image_tag '1.jpg', class: "image-fluid"%>
+        <a class="portfolio-box" href="<%= image_path('2.jpg') %>" data-lightbox="fuga" title="旅行投稿">
+          <%= image_tag '2.jpg', class: "image-fluid"%>
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">Category</div>
-              <div class="project-name">Project Name</div>
+              <div class="project-name">旅行投稿</div>
             </div>
         </a>
       </div>
       <div class="col-lg-4 col-sm-6 p-0">
-        <a class="portfolio-box" href="<%= image_path('2.jpg') %>" data-lightbox="fuga" title="Project Name">
-        <%= image_tag '2.jpg', class: "image-fluid"%>
+        <a class="portfolio-box" href="<%= image_path('1.jpg') %>" data-lightbox="fuga" title="旅程組み">
+        <%= image_tag '1.jpg', class: "image-fluid"%>
           <div class="portfolio-box-caption">
             <div class="project-category text-white-50">Category</div>
-            <div class="project-name">Project Name</div>
+            <div class="project-name">旅程組み</div>
           </div>
         </a>
       </div>
       <div class="col-lg-4 col-sm-6 p-0">
-        <a class="portfolio-box" href="<%= image_path('3.jpg') %>" data-lightbox="fuga" title="Project Name">
-        <%= image_tag '3.jpg', class: "image-fluid"%>
-          <div class="portfolio-box-caption">
-            <div class="project-category text-white-50">Category</div>
-            <div class="project-name">Project Name</div>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-4 col-sm-6 p-0">
-        <a class="portfolio-box" href="<%= image_path('4.jpg') %>" data-lightbox="fuga" title="Project Name">
+        <a class="portfolio-box" href="<%= image_path('4.jpg') %>" data-lightbox="fuga" title="グループ">
         <%= image_tag '4.jpg', class: "image-fluid"%>
           <div class="portfolio-box-caption">
             <div class="project-category text-white-50">Category</div>
-            <div class="project-name">Project Name</div>
+            <div class="project-name">グループ</div>
           </div>
         </a>
       </div>
       <div class="col-lg-4 col-sm-6 p-0">
-        <a class="portfolio-box" href="<%= image_path('5.jpg') %>" data-lightbox="fuga" title="Project Name">
+        <a class="portfolio-box" href="<%= image_path('3.jpg') %>" data-lightbox="fuga" title="グループチャット">
+        <%= image_tag '3.jpg', class: "image-fluid"%>
+          <div class="portfolio-box-caption">
+            <div class="project-category text-white-50">Category</div>
+            <div class="project-name">グループチャット</div>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-sm-6 p-0">
+        <a class="portfolio-box" href="<%= image_path('5.jpg') %>" data-lightbox="fuga" title="費用管理">
         <%= image_tag '5.jpg', class: "image-fluid"%>
           <div class="portfolio-box-caption">
             <div class="project-category text-white-50">Category</div>
-            <div class="project-name">Project Name</div>
+            <div class="project-name">費用管理</div>
           </div>
         </a>
       </div>
       <div class="col-lg-4 col-sm-6 p-0">
-        <a class="portfolio-box" href="<%= image_path('6.jpg') %>"  data-lightbox="fuga" title="Project Name">
+        <a class="portfolio-box" href="<%= image_path('6.jpg') %>"  data-lightbox="fuga" title="参考記事管理">
         <%= image_tag '6.jpg', class: "image-fluid" %>
           <div class="portfolio-box-caption">
             <div class="project-category text-white-50">Category</div>
-            <div class="project-name">Project Name</div>
+            <div class="project-name">参考記事管理</div>
           </div>
         </a>
       </div>
@@ -127,7 +127,7 @@
 <section class="page-section bg-dark text-white">
   <div class="container px-4 px-lg-5 text-center">
     <h2 class="mb-4">旅行共有コミュニティサイト</h2>
-    <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">はじめる！</a>
+    <%= link_to 'はじめる！', new_user_registration_path, class: "btn btn-light btn-xl" %>
   </div>
 </section>
 
