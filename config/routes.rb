@@ -39,7 +39,7 @@ get "admin/search" => "admin/searches#search"
         resources :articles, only: [:create, :destroy]
         resources :prices, only: [:create, :destroy]
       end
-      resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
+      resources :post_comments, only: [:index, :create, :update, :destroy]
       resource :favorites, only: [:create, :destroy] #urlにID含めない
       resources :items ,only: [:index, :create, :destroy]
     end
