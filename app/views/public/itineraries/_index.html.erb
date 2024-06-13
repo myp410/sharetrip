@@ -88,7 +88,7 @@
                       <th class="bar-th">費用</th>
                       <% if itinerary.prices.present? %>
                         <% itinerary.prices.each do |price| %>
-                          <td class="d-flex pl-5">
+                          <td class="d-flex justify-content-center pl-5">
                             <p>¥ <%= price.price %></p><p class="ml-3"><%= price.body %></p>
                           </td>
                         <% end %>
