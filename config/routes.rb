@@ -22,7 +22,7 @@ get "admin/search" => "admin/searches#search"
 
   scope module: :public do
     root to: "homes#top"
-    get 'about' => "homes#about", as: "about"
+    get 'privacy' => "homes#privacy", as: "privacy"
     get "users/my_page/:id" => "users#show", as: "users_my_page"
     get "users/information/edit" => "users#edit", as: "users_information_edit"
     patch "users/information" => "users#update"
@@ -34,23 +34,24 @@ get "admin/search" => "admin/searches#search"
         get "followers" => "relationships#followers", as: "followers"
     end
     post '/post/:post_id/items/:id/toggle' => "items#toggle"
-    resources :posts, only:[:new, :index, :create, :show, :update, :edit, :destroy] do
+    resources :posts, only:[:index, :create, :show, :update, :destroy] do
       delete 'itineraries/destroy_all' => "itineraries#destroy_all"
-      resources :itineraries, only: [:show, :create, :edit, :update, :destroy] do
+      resources :itineraries, only: [:show, :create, :update, :destroy] do
         resources :articles, only: [:create, :destroy]
+        resources :prices, only: [:create, :destroy]
       end
-      resources :post_comments, only: [:index, :create, :edit, :update, :destroy]
+      resources :post_comments, only: [:index, :create, :update, :destroy]
       resource :favorites, only: [:create, :destroy] #urlにID含めない
       resources :items ,only: [:index, :create, :destroy]
     end
     #グループ一覧の表示
-    resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+    resources :groups, only: [:index, :show, :create, :update, :destroy] do
       resource :group_users, only: [:create, :destroy]
       resource :rooms, only: [:show, :create] do
         resources :messages, only: [:create]
-      
       end
     end
+    resources :notifications, only: [:update]
 
   end
 

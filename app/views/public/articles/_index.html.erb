@@ -1,0 +1,18 @@
+<% if articles.present? %>
+  <% articles.each do |article| %>
+    <div class="card mt-2">
+      <div class="card-body">
+        <%= link_to article.link do %>
+          <%= article.title %>
+        <% end %>
+        <%= link_to post_itinerary_article_path(post, itinerary, article), method: :delete ,remote: true, data: {"turbolinks" => false} do %>
+          <i class="fa-solid fa-trash-can text-dark"></i>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <div class="bg-orange">
+      <p class="fw-bold text-center m-5">データが投稿されていません</p>
+    </div>
+  <% end %>

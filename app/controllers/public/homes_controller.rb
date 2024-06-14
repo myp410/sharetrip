@@ -2,6 +2,7 @@ class Public::HomesController < ApplicationController
   def top
   end
 
-  def about
+  def privacy
+    
   end
 end

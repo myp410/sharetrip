@@ -1,0 +1,4 @@
+$('#article-index').html("<%= j(render "public/articles/index", post: @post, itinerary: @itinerary, articles: @articles) %>");
+$("#article_error").html("<%= j(render 'layouts/errors', obj: @article) %>");
+$("#article_title_textarea").val('');
+$("#article_body_textarea").val('');

@@ -1,5 +1,5 @@
-<table class="table">
-  <thead>
+<table class="table table-hover mt-3">
+  <thead class="text-center">
     <tr>
       <th>ID</th>
       <th>プロフォール画像</th>
@@ -8,15 +8,13 @@
       <th>会員ステータス</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="text-center">
     <% users.each do |user| %>
-      <tr>
+      <tr onclick='window.location="<%= admin_user_path(user) %>"' role="link">
         <td><%= user.id %></td>
-        <td><%= image_tag(user.get_profile_image) %></td>
+        <td><%= image_tag user.get_profile_image, size: '64x50' %></td>
         <td>
-          <%= link_to admin_user_path(user) do %>
-            <%= user.name %>
-          <% end %>
+          <%= user.name %>
         </td>
         <td><%= user.introduction %></td>
         <td>
@@ -30,3 +28,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate users , theme: 'bootstrap-5'%>

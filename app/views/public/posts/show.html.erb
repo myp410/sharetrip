@@ -1,32 +1,48 @@
 <div class="container">
-  <div class="row m-3">
-    <h2>投稿詳細</h2>
-  </div>
   <div class="row">
-    <div class="col-4">
-      <%= render 'index_bar', post: @post ,tags: @tags , post_tags: @post_tags%>
+    <div class="col-lg-4">
+      <%= render 'public/posts/index_bar', post: @post ,tags: @tags , post_tags: @post_tags %>
     </div>
-    <div class="col-7 offset-1">
-      <div class="row">
-        <% if @post.user == current_user %>
-          <%= render 'layouts/errors', obj: @itinerary %>
-          <%= render 'public/itineraries/form', post: @post, itinerary: @itinerary, duration: @duration %>
-        <% else %>
-        <% end %>
+    <div class="col-lg-7 offset-lg-1">
+      <div class="row m-3">
+        <h2 class="text-center">旅程</h2>
+        <div class="heading-line"></div>
       </div>
-      <div class="row mt-3">
+      <% if @post.user == current_user %>
+        <div class="col text-end">
+          <!--# Button trigger modal-->
+          <%= link_to "#newItineraryPostModal", class: "btn btn-outline-secondary", data: {toggle: "modal"} do %>
+            <i class="fas fa-plus-circle"></i> 新しい旅程追加
+          <% end %>  
+        </div>
+        <!--# Modal-->
+        <div class="modal fade" id="newItineraryPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newPostModalLabel">新しい旅程追加</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render 'public/itineraries/form_modal', post: @post, itinerary: @itinerary, duration: @duration %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+      <% end %>
+      <div class="container mt-3 flex-column">
         <% if @itineraries.present? %>
-          <div class="row m-3 d-flex">
+          <div class="row m-3">
             <% if @post.user == current_user %>
               <div class="col">
                 <%= link_to '全て削除する', post_itineraries_destroy_all_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary" %>
               </div>
-              <div class="col">
-                <%= link_to '持ち物一覧', post_items_path(@post) %>
-              </div>
             <% end %>
-            <div class="col d-flex">
-              <%= form_tag({ controller: "posts", action: "show" }, method: :get) do %>
+            <div class="col">
+              <%= form_tag("/posts/#{@post.id}", method: :get) do %>
                 <div class="d-flex">
                   <%= select_tag :search_day, options_for_select(1..@duration, include_blank: "日程選択"), class: 'custom-select', style: 'width: 100px;' %>
                   <%= submit_tag "絞り込み", class: 'ml-2' %>
@@ -41,12 +57,12 @@
                 <%= render 'public/itineraries/index', post: @post, itineraries: @search %>
               <% end %>
             <% else %>
-              <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries %>
+              <%= render 'public/itineraries/index', post: @post, itineraries: @itineraries, duration: @duration %>
             <% end %>
           </div>
         <% else %>
-          <div class="col justift-content-center">
-            <p>旅程がありません</p>
+          <div class="row justify-content-center bg-orange">
+            <p class="fw-bold text-center m-5">旅程がありません</p>
           </div>
         <% end %>
       </div>

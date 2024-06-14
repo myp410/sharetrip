@@ -2,7 +2,7 @@
 <div class="search_form">
   <%= form_with url: search_path, local: true, method: :get do |f| %>
     <%= f.text_field :word %>
-    <%= f.select :model, options_for_select([['User'],['Post'],['Itinerary'],['PostComment'],['Tag']]) %>
+    <%= f.select :model, options_for_select([['ユーザー', 'User'],['投稿', 'Post'],['旅程', 'Itinerary'],['タグ', 'Tag']]) %>
     <%= f.submit "検索", class: "btn-sm btn-secondary" %>
   <% end %>  
 </div>

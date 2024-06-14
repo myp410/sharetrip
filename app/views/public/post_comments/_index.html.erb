@@ -1,23 +1,78 @@
-<table class="table">
-  <tr>
-    <th>投稿日時</th>
-    <th>投稿者</th>
-    <th>コメント</th>
-    <th colspan="2"></th>
-  </tr>
-  <% post_comments.each do |post_comment| %>
-  <tr>
-    <td><%= post_comment.created_at.to_s(:datetime_jp) %></td>
-    <td>
-      <%= link_to users_my_page_path(post_comment.user) do %>
-        <%= post_comment.user.name %>
-      <% end %>  
-    </td>
-    <td><%= post_comment.comment %></td>
-    <% if post_comment.user == current_user %>
-      <td><%= link_to "編集", edit_post_post_comment_path(id: post_comment.id) %></td>
-      <td><%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: {"turbolinks" => false} %></td>
-    <% end %>
-  </tr>
-  <% end %>
-</table>
+<% if post_comments.present? %>
+  <div class="container-fluid d-flex flex-column">
+    <% post_comments.each do |post_comment| %>
+      <div class="card row m-2 d-flex">
+        <div class="card-body d-flex">
+          <div class="comment-user col-2">
+            <div class="text-center">
+              <%= image_tag post_comment.user.get_profile_image, size: '50x50', style: "object-fit: contain; border-radius: 50%;" %>
+            </div>
+            <div class="text-center">
+              <p class="small">
+                <%= post_comment.user.name %>
+              </p>
+            </div>
+          </div>
+          <div class="comment col-9 offset-1 d-flex flex-column">
+            <div>
+              <%= post_comment.comment %>
+            </div>
+            
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-center" style="height: 30px; padding: 0;">
+          <p class="small">投稿日時:<%= post_comment.created_at.to_s(:datetime_jp) %></p>
+          <div class="comment_info d-flex ml-5">
+            <% if post_comment.user == current_user %>
+              <div class="edit-icon">
+                <!--# Button trigger modal-->
+                <a data-toggle="modal" href="#editPostCommentModal<%= post_comment.id %>"><i class="fa-solid fa-pen-to-square text-dark"></i></a>
+                <!--# Modal-->
+                <div class="modal fade" id="editPostCommentModal<%= post_comment.id %>" tabindex="-1" role="dialog" aria-labelledby="editPostCommentModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editPostCommentModalLabel">コメントの編集</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <%= form_with model: [@post, post_comment], url: post_post_comment_path(post_id: post_comment.post_id, id: post_comment.id), method: :patch, local: false, class: "was-validated" do |f| %>
+                          <div class="row">
+                            <div class="form-group col-md-10 mb-0">
+                              <%= f.text_field :comment, placeholder: "コメントをここへ", class: "form-control", id: "comment_textarea", required: true %>
+                              <div class="invalid-feedback">
+                                コメントを入力してください
+                              </div>
+                            </div>
+                            <div class="form-group col-md-2 mb-0">
+                              <%= f.submit "投稿", class: "btn btn-success" %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="delete-icon ml-3">
+                <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+                  <i class="fa-solid fa-trash-can text-dark"></i>
+                <% end %> 
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>  
+  </div>
+  <%= paginate post_comments , theme: 'bootstrap-5' %>
+<% else %>
+  <div class="bg-orange">
+    <p class="fw-bold text-center my-5">コメントはありません</p>
+  </div>
+<% end %>  
+
+
+  

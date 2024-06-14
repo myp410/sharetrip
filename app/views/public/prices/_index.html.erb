@@ -1,0 +1,17 @@
+<% if prices.present? %>
+  <% prices.each do |price| %>
+    <div class="card mt-1">
+      <div class="card-body d-flex">
+        <p class="col">¥ <%= price.price %></p>
+        <p class="col"><%= price.body %></p>
+        <%= link_to post_itinerary_price_path(post, itinerary, price), method: :delete ,remote: true, data: {"turbolinks" => false} do %>
+          <i class="col fa-solid fa-trash-can text-dark"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>  
+<% else %>
+  <div class="bg-orange">
+    <p class="fw-bold text-center my-5">データが投稿されていません</p>
+  </div>
+<% end %>

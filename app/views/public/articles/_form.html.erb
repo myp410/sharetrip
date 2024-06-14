@@ -1,18 +1,40 @@
-<%= form_with(model: [post, itinerary, article], url: post_itinerary_articles_path(post_id: post.id, itinerary_id: itinerary.id) , local: true) do |f| %>
-  <div class="row m-3">
-    <table class="table table-borderless mx-auto">
-      <tr class="form-group">
-        <th><%= f.label :title, "タイトル" %></th>
-        <td><%= f.text_field :title, placeholder: "タイトル", class: "form-control" %></td>
-      </tr>
-      <tr class="form-group">
-        <th><%= f.label :link, "リンク" %></th>
-        <td><%= f.text_field :link, placeholder: "リンク", class: "form-control" %></td>
-      </tr>
-    </table>
+<p class="text-right m-2">
+  <a class="btn btn-outline-secondary btn-sm" data-toggle="collapse" href="#articleform" role="button" aria-expanded="false" aria-controls="articleform">
+    <i class="fa-solid fa-angle-down"> 記事追加フォーム</i>
+  </a>
+</p>
+<div class="collapse" id="articleform">
+  <div class="card card-body">
+    <%= form_with(model: [post, itinerary, article], url: post_itinerary_articles_path(post_id: post.id, itinerary_id: itinerary.id) , local: false, class: "was-validated") do |f| %>
+      <div class="row">
+        <table class="table table-borderless mx-auto">
+          <tr class="form-group mb-0">
+            <th class="text-center"><%= f.label :title, "タイトル" %></th>
+            <td>
+              <%= f.text_field :title, placeholder: "タイトル", class: "form-control", id: "article_title_textarea",required: true %>
+              <div class="invalid-feedback">
+                タイトルを入力してください
+              </div>
+            </td>
+          </tr>
+          <tr class="form-group mb-0">
+            <th class="text-center"><%= f.label :link, "リンク" %></th>
+            <td>
+              <%= f.text_field :link, placeholder: "リンク", class: "form-control", id: "article_body_textarea",required: true  %>
+              <div class="invalid-feedback">
+                リンクを入力してください
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="d-grid col-2 mx-auto">
+        <%= f.hidden_field :itinerary_id, value: itinerary.id %>
+        <%= f.submit "新規登録", class: "py-2 px-4 btn btn-success submit-btn" %>
+      </div>
+    <% end %>
   </div>
-  <div class="d-grid col-2 mx-auto">
-    <%= f.hidden_field :itinerary_id, value: itinerary.id %>
-    <%= f.submit "新規登録", class: "py-2 px-4 btn btn-success submit-btn" %>
-  </div>
-<% end %>
+</div>
+
+
+  
