@@ -51,7 +51,10 @@ get "admin/search" => "admin/searches#search"
       end
     end
     resources :notifications, only: [:update]
-
+    post 'contacts/confirm' => 'contacts#confirm', as: 'confirm'
+    post 'contacts/back' => 'contacts#back', as: 'back'
+    get 'done' => 'contacts#done', as: 'done'
+    resources :contacts, only: [:create]
   end
 
   namespace :admin do
