@@ -152,59 +152,25 @@
             <%= f.text_field :name, autofocus: true, class: 'form-control', required: true %>
             <div class="invalid-feedback">名前を入力してください</div>
           </div>
-          <!--<div class="form-floating mb-3">-->
-          <!--  <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" data-sb-can-submit="no">-->
-          <!--  <label for="name">お名前（フルネーム）</label>-->
-          <!--  <div class="invalid-feedback" data-sb-feedback="name:required">名前を入力してください</div>-->
-          <!--</div>-->
         <!-- Email address input-->
           <div class="form-group">
             <%= f.label :email, 'メールアドレス' %>
             <%= f.text_field :email,  placeholder: "name@example.com",class: 'form-control', required: true %>
             <div class="invalid-feedback">メールアドレスを入力してください</div>
           </div>
-          <!--<div class="form-floating mb-3">-->
-          <!--  <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" data-sb-can-submit="no">-->
-          <!--  <label for="email">メールアドレス</label>-->
-          <!--  <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>-->
-          <!--  <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>-->
-          <!--</div>-->
           <!-- Phone number input-->
           <div class="form-group">
             <%= f.label :phone_number, 'メールアドレス' %>
             <%= f.text_field :phone_number,  placeholder: "(123) 456-7890",class: 'form-control', required: true %>
             <div class="invalid-feedback">電話番号を入力してください</div>
           </div>
-          <!--<div class="form-floating mb-3">-->
-          <!--  <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" data-sb-can-submit="no">-->
-          <!--  <label for="phone">電話番号</label>-->
-          <!--  <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>-->
-          <!--</div>-->
-          <!-- Message input-->
           <div class="form-group">
             <%= f.label :message, '問い合わせ内容' %>
             <%= f.text_area :message, size: '10x10',placeholder: "問い合わせはこちら", class: 'form-control', required: true %>
             <div class="invalid-feedback">電話番号を入力してください</div>
           </div>
-          <!--<div class="form-floating mb-3">-->
-          <!--  <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required" data-sb-can-submit="no"></textarea>-->
-          <!--  <label for="message">問い合わせ内容</label>-->
-          <!--  <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>-->
-          <!--</div>-->
-          <!-- Submit success message-->
-          <!--<div class="d-none" id="submitSuccessMessage">-->
-          <!--  <div class="text-center mb-3">-->
-          <!--    <div class="fw-bolder">Form submission successful!</div>-->
-          <!--      To activate this form, sign up at<br>-->
-          <!--    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>-->
-          <!--  </div>-->
-          <!--</div>-->
-          <!-- Submit error message-->
-          <!--<div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>-->
-          <!-- Submit Button-->
-          <!--<div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Submit</button></div>-->
-          <div>
-            <%= f.submit '入力内容確認' %>
+          <div class="d-grid">
+            <%= f.submit '入力内容確認', class: "btn btn-primary btn-xl" %>
           </div>
         <% end %>
       </div>
