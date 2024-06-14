@@ -99,7 +99,9 @@
                   </table>
                 </div>
                 <div class="modal-footer">
-                    <%= link_to "詳細", post_itinerary_path(itinerary.post_id, itinerary.id), class: "btn btn-secondary" %>
+                  <% if controller_path == 'public/posts' %>
+                    <%= link_to "詳細", post_itinerary_path(itinerary.post_id, itinerary.id), { class: "btn btn-secondary", data: { turbolinks: false } } %>
+                  <% end %>
                 </div>
               </div>
             </div>
