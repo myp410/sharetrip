@@ -1,5 +1,5 @@
 <div class="card card-slide justify-content-center m-4">
-  <%= link_to "", post_path(post), class: "stretched-link text-dark" %>
+  <%= link_to "", post_path(post), class: "stretched-link text-dark", data: { turbolinks: "false" } %>
   <div class="card-body">
     <h5 class="card-title text-center"><%= post.title %></h5>
       <div class="card-content d-flex justify-content-center">

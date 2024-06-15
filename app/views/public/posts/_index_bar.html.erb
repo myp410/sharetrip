@@ -6,12 +6,12 @@
   
     <ul class="dropdown-menu">
       <li>
-        <%= link_to  post_post_comments_path(post), class: "dropdown-item" do %>
+        <%= link_to  post_post_comments_path(post), class: "dropdown-item", data: { turbolinks: "false" } do %>
           <i class="fa-regular fa-comment-dots text-dark"></i> コメント一覧</i>
         <% end %>  
       </li>
       <li>
-        <%= link_to post_items_path(post) , class: "dropdown-item" do %>
+        <%= link_to post_items_path(post) , class: "dropdown-item", data: { turbolinks: "false" } do %>
           <i class="fa-solid fa-suitcase text-dark"></i> 持ち物
         <% end %>
       </li>
