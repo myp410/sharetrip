@@ -3,19 +3,19 @@
 </div>
 <table class="table table-border">
   <tr>
-    <th>アカウント名</th>
+    <th class="bar-th text-center">アカウント名</th>
     <td><%= user.name %></td>
   </tr>
   <tr>
-    <th>紹介文</th>
+    <th class="bar-th text-center">紹介文</th>
     <td><%= user.introduction %></td>
   </tr>
   <tr>
-    <th>フォロー</th>
+    <th class="bar-th text-center">フォロー</th>
     <td><%= link_to user.followings.count, user_followings_path(user) %></td>
   </tr>
   <tr>
-    <th>フォロワー</th>
+    <th class="bar-th text-center">フォロワー</th>
     <td><%= link_to user.followers.count, user_followers_path(user) %></td>
   </tr>
 </table>

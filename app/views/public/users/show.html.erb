@@ -42,6 +42,14 @@
           <div class="bg-orange">
             <p class="fw-bold text-center my-5">投稿されていません</p>
           </div>
+          <div class="row">
+              <div class="col d-flex justify-content-center mt-3">
+                <div class="ml-3">
+                  <%= render "public/groups/btn_modal", group: @group %>
+                  <%= render "public/posts/btn_modal", post: @post, tags: @tags %>
+                </div>
+              </div>
+            </div>
         <% end %>
       </div>
     </div>
