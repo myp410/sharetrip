@@ -133,6 +133,56 @@
     <%= link_to 'はじめる！', new_user_registration_path, class: "btn btn-light btn-xl" %>
   </div>
 </section>
+<!-- Contact-->
+<section class="page-section" id="contact">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-lg-8 col-xl-6 text-center">
+        <h2 class="mt-0">お問い合わせ</h2>
+        <hr class="divider">
+        <p class="text-muted mb-5">何か不都合あればこちらまでお問い合わせをお願いします。</p>
+      </div>
+    </div>
+    <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+      <div class="col-lg-6">
+        <%= form_for(@contact, url: confirm_path ,class:"was-validated") do |f| %>
+        <!-- Name input-->
+          <div class="form-group">
+            <%= f.label :name, 'お名前（フルネーム）' %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control', required: true %>
+            <div class="invalid-feedback">名前を入力してください</div>
+          </div>
+        <!-- Email address input-->
+          <div class="form-group">
+            <%= f.label :email, 'メールアドレス' %>
+            <%= f.text_field :email,  placeholder: "name@example.com",class: 'form-control', required: true %>
+            <div class="invalid-feedback">メールアドレスを入力してください</div>
+          </div>
+          <!-- Phone number input-->
+          <div class="form-group">
+            <%= f.label :phone_number, 'メールアドレス' %>
+            <%= f.text_field :phone_number,  placeholder: "(123) 456-7890",class: 'form-control', required: true %>
+            <div class="invalid-feedback">電話番号を入力してください</div>
+          </div>
+          <div class="form-group">
+            <%= f.label :message, '問い合わせ内容' %>
+            <%= f.text_area :message, size: '10x10',placeholder: "問い合わせはこちら", class: 'form-control', required: true %>
+            <div class="invalid-feedback">電話番号を入力してください</div>
+          </div>
+          <div class="d-grid">
+            <%= f.submit '入力内容確認', class: "btn btn-primary btn-xl" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-lg-4 text-center mb-5 mb-lg-0">
+        <i class="bi-phone fs-2 mb-3 text-muted"></i>
+        <div>+1 (555) 123-4567</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
