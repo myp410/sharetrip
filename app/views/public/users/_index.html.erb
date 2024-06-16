@@ -1,26 +1,27 @@
 <% if users.exists? %>
-  <div class="d-flex flex-wrap">
+  <div class="row d-flex flex-wrap">
     <% users.each do |user| %>
-      <div class="card card-slide m-2" style="width: calc(25% - 1rem);">
-        <%= link_to users_my_page_path(user), class: "stretched-link text-dark" do %>
-          <div class="card-body">
-            
-            <div class="card-content d-flex justify-content-center">
-              <div class="card-left">
-                <div class="text-center">
-                  <%= image_tag user.get_profile_image, size: '80x80', style: "object-fit: cover; border-radius: 50%; display: flex; justify-content: center; align-items: center;" %>
+      <div class="col-lg-3 col-md-6 px-0">
+        <div class="card card-slide user-card m-2">
+          <%= link_to users_my_page_path(user), class: "stretched-link text-dark" do %>
+            <div class="card-body">
+              <div class="card-content d-flex justify-content-center">
+                <div class="card-left">
+                  <div class="text-center">
+                    <%= image_tag user.get_profile_image, size: '80x80', style: "object-fit: cover; border-radius: 50%; display: flex; justify-content: center; align-items: center;" %>
+                  </div>
                 </div>
-              </div>
-              <div class="card-right ml-3">
-                <h5 class="text-center"><%= user.name %></h5>
-                <div class="pl-2">
-                  <p class="mb-0"><i class="fa-solid fa-users" style="font-size: 15px;"></i>  <%= user.followings.count %>フォロー</p>
-                  <p><i class="fa-solid fa-users" style="font-size: 15px;"></i>  <%= user.followers.count %>フォロワー</p>
+                <div class="card-right ml-3">
+                  <h5 class="text-center"><%= user.name %></h5>
+                  <div class="pl-2">
+                    <p class="mb-0"><i class="fa-solid fa-users" style="font-size: 15px;"></i>  <%= user.followings.count %>フォロー</p>
+                    <p><i class="fa-solid fa-users" style="font-size: 15px;"></i>  <%= user.followers.count %>フォロワー</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
