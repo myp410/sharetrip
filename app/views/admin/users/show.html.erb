@@ -8,23 +8,23 @@
       </div>
       <table class="table table-border">
         <tr>
-          <th>ID</th>
+          <th class="bar-th">ID</th>
           <td><%= @user.id %></td>
         </tr>
         <tr>
-          <th>アカウント名</th>
+          <th class="bar-th">アカウント名</th>
           <td><%= @user.name %></td>
         </tr>
         <tr>
-          <th>紹介文</th>
+          <th class="bar-th">紹介文</th>
           <td><%= @user.introduction %></td>
         </tr>
         <tr>
-          <th>メールアドレス</th>
+          <th class="bar-th">メールアドレス</th>
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <th>会員ステータス</th>
+          <th class="bar-th">会員ステータス</th>
           <td>
             <% if @user.is_active %>
               <div class="text-success"><b>有効</b></div>
