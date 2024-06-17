@@ -8,23 +8,23 @@
       </div>
       <table class="table table-border">
         <tr>
-          <th>ID</th>
+          <th class="bar-th">ID</th>
           <td><%= @owner.id %></td>
         </tr>
         <tr>
-          <th>アカウント名</th>
+          <th class="bar-th">アカウント名</th>
           <td><%= @owner.name %></td>
         </tr>
         <tr>
-          <th>紹介文</th>
+          <th class="bar-th">紹介文</th>
           <td><%= @owner.introduction %></td>
         </tr>
         <tr>
-          <th>メールアドレス</th>
+          <th class="bar-th">メールアドレス</th>
           <td><%= @owner.email %></td>
         </tr>
         <tr>
-          <th>会員ステータス</th>
+          <th class="bar-th">会員ステータス</th>
           <td>
             <% if @owner.is_active %>
               <div class="text-success"><b>有効</b></div>
@@ -44,40 +44,45 @@
         <div class="row">
           <div class="col-12">
             <table class="table mt-2">
-                <tr>
-                  <th>グループ名</th>
-                  <td><%= @group.name %></td>
-                </tr>
-                <tr>
-                  <th>紹介文</th>
-                  <td><%= @group.introduction %></td>
-                </tr>
-                <tr>
-                  <th>メンバー</th>
-                  <td>
-                    <% @group.users.each do |user| %>
-                      <li style="list-style:none;"><%= user.name %></li>
-                    <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <th>グループステータス</th>
-                  <td>
-                    <% if @group.is_active %>
-                      <div class="text-success"><b>有効</b></div>
-                    <% else %>
-                      <div class="text-secondary"><b>停止</b></div>
-                    <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td>
-                    <%= link_to '編集', edit_admin_group_path(@group), class: "btn btn-sm btn-success" %>
-                    <%= link_to '削除', admin_group_path(@group), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
-                  </td>
-                </tr>
+              <tr>
+                <th class="bar-th">グループ名</th>
+                <td><%= @group.name %></td>
+              </tr>
+              <tr>
+                <th class="bar-th">紹介文</th>
+                <td><%= @group.introduction %></td>
+              </tr>
+              <tr>
+                <th class="bar-th">メンバー</th>
+                <td>
+                  <% @group.users.each do |user| %>
+                    <li>
+                      <%= link_to admin_user_path(user) do %>
+                        <%= user.name %>
+                      <% end %>  
+                    </li>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th class="bar-th">グループステータス</th>
+                <td>
+                  <% if @group.is_active %>
+                    <div class="text-success"><b>有効</b></div>
+                  <% else %>
+                    <div class="text-secondary"><b>停止</b></div>
+                  <% end %>
+                </td>
+              </tr>
             </table>
+            <div class="row mt-5">
+              <div class="col text-right">
+                <%= link_to '編集', edit_admin_group_path(@group), class: "btn btn-xl py-2 btn-success" %>
+              </div>
+              <div class="col">
+                <%= link_to '削除', admin_group_path(@group), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-xl py-2 btn-danger" %>
+              </div>
+            </div>
           </div>
         </div>
       </div>

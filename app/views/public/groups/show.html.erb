@@ -15,15 +15,15 @@
           <div class="col">
             <table class="table mt-2 table-borderless">
               <tr>
-                <th>グループ名</th>
+                <th class="bar-th">グループ名</th>
                 <td><%= @group.name %></td>
               </tr>
               <tr>
-                <th>紹介文</th>
+                <th class="bar-th">紹介文</th>
                 <td><%= @group.introduction %></td>
               </tr>
               <tr>
-                <th>メンバー</th>
+                <th class="bar-th">メンバー</th>
                 <td class="d-flex flex-wrap">
                   <% @group.users.each do |user| %>
                     <ul class="list-group">
