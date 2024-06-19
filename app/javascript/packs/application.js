@@ -13,6 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import "../stylesheets/top.css";
+import './custom-validation.js';
 
 Rails.start()
 Turbolinks.start()

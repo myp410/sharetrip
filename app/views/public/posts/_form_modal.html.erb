@@ -1,4 +1,4 @@
-<%= form_with(model: post, local: true, class:"was-validated") do |f| %>
+<%= form_with(model: post, local: true, :html => {class:"needs-validation", :novalidate => true}) do |f| %>
 <div class="row m-3 text-start">
   <div class="form-group">
     <%= f.label :title, "タイトル" %>

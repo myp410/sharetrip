@@ -3,13 +3,17 @@
     <div class="col">
       <h2 class="mt-3 text-center">会員情報編集</h2>
       <div class="heading-line"></div>
-      <%= render 'layouts/errors', obj: @user %>
         <div>
-        <%= form_with model: @user,url: users_information_path, method: :patch do |f| %>
+        <%= form_with model: @user,url: users_information_path, method: :patch, :html => {class:"needs-validation", :novalidate => true} do |f| %>
           <table class="table my-5 table-borderless">
             <tr>
               <th>アカウント名</th>
-              <td><%= f.text_field :name, autofocus: true, class: "form-control" %></td>
+              <td>
+                <%= f.text_field :name, autofocus: true, class: "form-control",required: true %>
+                <div class="invalid-feedback">
+                  アカウント名は必須です
+                </div>
+              </td>
             </tr>
             <tr>
               <th>プロフィール画像</th>
@@ -17,7 +21,12 @@
             </tr>
             <tr>
               <th>メールアドレス</th>
-              <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
+              <td>
+                <%= f.email_field :email, autocomplete: "email", class: "form-control",required: true %>
+                <div class="invalid-feedback">
+                  メールアドレスは必須です
+                </div>
+              </td>
             </tr>
             <tr>
               <th>自己紹介</th>
