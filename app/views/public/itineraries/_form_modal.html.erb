@@ -1,4 +1,4 @@
-<%= form_with(model: [post, itinerary], local: true, class:"was-validated") do |f| %>
+<%= form_with(model: [post, itinerary], local: true, :html => {class:"needs-validation", :novalidate => true}) do |f| %>
 <div class="row m-3">
   <div class="form-group">
     <%= f.label :title, "タイトル" %>
@@ -36,7 +36,7 @@
   <div class="form-group">
     <%= f.label :traffic_method, "この目的地までの交通手段" %>
     <div class="d-flex text-center">
-      <%= f.radio_button :traffic_method, "no" %>
+      <%= f.radio_button :traffic_method, "noo" %>
       <%= f.label :traffic_method_no, "なし", class: "ml-2 mr-2 mb-0" %>
       <%= f.radio_button :traffic_method, "car" %>
       <%= f.label :traffic_method_car, "車", class: "ml-2 mr-2 mb-0" %>
@@ -66,3 +66,4 @@
   </div>
 </div>
 <% end %>
+

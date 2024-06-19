@@ -14,7 +14,7 @@
         </p>
         <div class="collapse" id="postcommentform">
           <div class="card card-body">
-            <%= form_with model: [@post, @new_comment], url: post_post_comments_path, method: :post, local: false, class: "was-validated" do |f| %>
+            <%= form_with model: [@post, @new_comment], url: post_post_comments_path, method: :post, local: false, :html => {class:"needs-validation", :novalidate => true} do |f| %>
               <div class="row">
                 <div class="form-group col-md-10 mb-0">
                   <%= f.text_field :comment, placeholder: "コメントをここへ", class: "form-control", id: "comment_textarea", required: true %>

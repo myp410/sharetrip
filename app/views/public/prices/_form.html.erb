@@ -5,7 +5,7 @@
 </p>
 <div class="collapse" id="priceform">
   <div class="card card-body">
-    <%= form_with(model: [post, itinerary, price], url: post_itinerary_prices_path(post_id: post.id, itinerary_id: itinerary.id) , local: false, class: "was-validated") do |f| %>
+    <%= form_with(model: [post, itinerary, price], url: post_itinerary_prices_path(post_id: post.id, itinerary_id: itinerary.id) , local: false, :html => {class:"needs-validation", :novalidate => true}) do |f| %>
       <div class="row">
         <table class="table table-borderless mx-auto">
           <tr class="form-group mb-0">

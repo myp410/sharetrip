@@ -15,7 +15,7 @@
         </p>
         <div class="collapse" id="itemform">
           <div class="card card-body">
-            <%= form_with(model: [@post, @item], local: true, class: "was-validated") do |f| %>
+            <%= form_with(model: [@post, @item], local: true, :html => {class:"needs-validation", :novalidate => true}) do |f| %>
               <div class="row">
                 <div class="form-group col-md-10 mb-0">
                   <%= f.text_field :name, placeholder: "持ち物名", class: "form-control", required: true %>
