@@ -129,6 +129,5 @@ Rails.application.configure do
       enable_starttls_auto: true
   }
   
-  config.hosts << "sharetri.com"
-  
+
 end
