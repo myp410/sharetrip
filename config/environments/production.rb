@@ -128,4 +128,7 @@ Rails.application.configure do
       authentication: 'login',
       enable_starttls_auto: true
   }
+  
+  config.hosts << sharetri.com
+  
 end
