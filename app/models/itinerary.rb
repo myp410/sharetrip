@@ -11,6 +11,11 @@ class Itinerary < ApplicationRecord
   validate :start_finish_check
 
   before_validation :set_datetimes
+  
+  geocoded_by :place
+  # placeカラムの内容を緯度経度に変換を指定
+  after_validation :geocode
+  # バリデーションの実行後に変換処理を実行してlatitude、longitudeカラムに入力される
 
 #終了時間が開始時間より後に来ないようにバリデーション
   def start_finish_check

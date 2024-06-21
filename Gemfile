@@ -66,6 +66,7 @@ gem 'enum_help'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'whenever', require: false
+gem 'geocoder'
 
 group :production do
   gem 'mysql2'
