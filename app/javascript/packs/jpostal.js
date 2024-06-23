@@ -1,7 +1,7 @@
 function jpostal() {
   $('#zipcode').jpostal({
     postcode : ['#zipcode'],
-    place : {
+    address : {
       '#itinerary_place': '%3%4%5'
     }
   })
