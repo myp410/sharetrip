@@ -19,26 +19,6 @@ class Public::ItinerariesController < ApplicationController
     @itinerary = Itinerary.new(itinerary_params)
     @itinerary.post_id = @post.id
 
-
-    #start_time,finish_timeの時間設定
-    # unless params[:what_day] == nil
-    #   start_date = @post.start_date.to_datetime + (@itinerary.what_day - 1).days
-    #     @itinerary.start_time = Time.zone.local(
-    #       start_date.year,
-    #       start_date.month,
-    #       start_date.day,
-    #       @itinerary.start_time.hour,
-    #       @itinerary.start_time.min
-    #     )
-    #     @itinerary.finish_time = DateTime.new(
-    #       start_date.year,
-    #       start_date.month,
-    #       start_date.day,
-    #       @itinerary.finish_time.hour,
-    #       @itinerary.finish_time.min
-    #     )
-    # end
-
     if @itinerary.save
       redirect_to post_path(@post),notice: "旅程の追加に成功しました"
     else
@@ -57,7 +37,7 @@ class Public::ItinerariesController < ApplicationController
     @itinerary = Itinerary.find(params[:id])
     @post = Post.find(params[:post_id])
     if @itinerary.update(itinerary_params)
-      redirect_to post_itinerary_path(@itinerary),notice: "旅程の更新に成功しました"
+      redirect_to post_itinerary_path(@post,@itinerary),notice: "旅程の更新に成功しました"
     else
       @duration = (@post.finish_date - @post.start_date).to_i + 1
       @article = Article.new
@@ -89,7 +69,7 @@ class Public::ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:title, :body, :start_time, :finish_time, :place, :what_day, :traffic_method, :traffic_time_hour, :traffic_time_min)
+    params.require(:itinerary).permit(:post_id, :title, :body, :start_time, :finish_time, :address, :longitude, :latitude, :what_day, :traffic_method, :traffic_time_hour, :traffic_time_min)
   end
 
   def ensure_correct_user

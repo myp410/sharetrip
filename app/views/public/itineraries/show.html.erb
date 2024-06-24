@@ -11,64 +11,59 @@
       </div>
       <table class="table table-hover text-center">
         <tr>
-          <th>タイトル</th>
+          <th class="bar-th">タイトル</th>
           <td colspan="5"><%= @itinerary.title %></td>
         </tr>
         <tr>
-          <th>詳細</th>
+          <th class="bar-th">詳細</th>
           <td colspan="5"><%= @itinerary.body %></td>
         </tr>
         <tr>
-          <th>日程</th>
+          <th class="bar-th">日程</th>
           <td><%= @itinerary.what_day %></td>
-          <th>開始時間</th>
+          <th class="bar-th">開始時間</th>
           <td><%= @itinerary.start_time.strftime( "%H:%M" ) %></td>
-          <th>終了時間</th>
+          <th class="bar-th">終了時間</th>
           <td><%= @itinerary.finish_time.strftime( "%H:%M" ) %></td>
         </tr>
         <tr>
-          <th>場所</th>
-          <td><%= @itinerary.place %></td>
-          <th>移動方法</th>
+          <th class="bar-th">場所</th>
+          <td class="text-wrap"><%= @itinerary.address %></td>
+          <th class="bar-th">移動方法</th>
           <td><%= @itinerary.traffic_method_i18n %></td>
-          <th>移動時間</th>
+          <th class="bar-th">移動時間</th>
           <td><%= @itinerary.traffic_time_display %></td>
         </tr>
       </table>
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
           <div id="map"></div>
-      <script type="text/javascript">
-function initMap() {
-
-        var test = {lat: <%= @itinerary.latitude %>, lng: <%= @itinerary.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: test
-        });
-        var transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-
-        var contentString = '住所：<%= @itinerary.place %>';
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        var marker = new google.maps.Marker({
-            position:test,
-            map: map,
-            title: contentString
-        });
-
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
-    }
-</script>
-
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['Maps_API_Key'] %>&callback=initMap">
-</script>
+            <script type="text/javascript">
+              function initMap() {
+                var test = {lat: <%= @itinerary.latitude %>, lng: <%= @itinerary.longitude %>};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15,
+                    center: test
+                });
+                var transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+                var contentString = '住所：<%= @itinerary.address %>';
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                var marker = new google.maps.Marker({
+                    position:test,
+                    map: map,
+                    title: contentString
+                });
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+              }
+            </script>
+            <script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['Maps_API_Key'] %>&callback=initMap">
+            </script>
         </div>
       </div>
       

@@ -6,7 +6,7 @@ class CreateItineraries < ActiveRecord::Migration[6.1]
       t.text :body
       t.datetime :start_time, null: false
       t.datetime :finish_time
-      t.string :place ,null: false, default: ""
+      t.string :address ,null: false, default: ""
       t.float :latitude, null: false, default: 0
       t.float :longitude, null: false, default: 0
       t.integer :what_day, null: false

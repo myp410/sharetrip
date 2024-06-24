@@ -143,93 +143,93 @@ end
 end
 
 #itineraryデータ作成
-itineraries = [
-  { post_id: 1, title: "出発", body: "関空からマクタン空港へ", start_time: DateTime.parse("2025-04-08 20:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 7:00:00+09:00"), place: "関西空港", what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 1, title: "ホテル朝食", body: "ホテルビュッフェ", start_time: DateTime.parse("2025-04-09 7:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 9:00:00+09:00"), place: "マクタン島ホテル", what_day: 2, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 1, title: "マクタン島ツアー", body: "マクタン島周遊ツアー。ショッピングセンターやギター工場まで", start_time: DateTime.parse("2025-04-09 9:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 14:00:00+09:00"), place: "マクタン島", what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 1, title: "ホテルのプール", body: "プールで遊びながらプールサイドバーでお酒", start_time: DateTime.parse("2025-04-09 14:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 17:00:00+09:00"), place: "マクタン島ホテル", what_day: 2 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 1, title: "ディナー", body: "現地で有名なステーキ屋へ！日本人オーナー", start_time: DateTime.parse("2025-04-09 18:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 20:00:00+09:00"), place: "マクタン島", what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 1, title: "オスロブ", body: "ジンベイザメツアー", start_time: DateTime.parse("2025-04-10 2:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 10:00:00+09:00"), place: "セブ島、オスロブ", what_day: 3, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 1, title: "スミロン", body: "", start_time: DateTime.parse("2025-04-10 10:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 12:00:00+09:00"), place: "セブ島、スミロン島", what_day: 3, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 1, title: "カワサン滝", body: "キャニオニング", start_time: DateTime.parse("2025-04-10 12:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 15:00:00+09:00"), place: "セブ島、カワサン滝", what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 1, title: "ウミガメ", body: "シュノーケリング", start_time: DateTime.parse("2025-04-10 15:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 19:00:00+09:00"), place: "セブ島、モアルボアル", what_day: 3 , traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 1, title: "帰国", body: "", start_time: DateTime.parse("2025-04-10 20:00:00+09:00"), finish_time: DateTime.parse("2025-04-11 6:00:00+09:00"), place: "関西空港", what_day: 4, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
+# itineraries = [
+#   { post_id: 1, title: "出発", body: "関空からマクタン空港へ", start_time: DateTime.parse("2025-04-08 20:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 7:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 1, title: "ホテル朝食", body: "ホテルビュッフェ", start_time: DateTime.parse("2025-04-09 7:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 9:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 1, title: "マクタン島ツアー", body: "マクタン島周遊ツアー。ショッピングセンターやギター工場まで", start_time: DateTime.parse("2025-04-09 9:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 14:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 1, title: "ホテルのプール", body: "プールで遊びながらプールサイドバーでお酒", start_time: DateTime.parse("2025-04-09 14:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 17:00:00+09:00"), address: Faker::Address.full_address, what_day: 2 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 1, title: "ディナー", body: "現地で有名なステーキ屋へ！日本人オーナー", start_time: DateTime.parse("2025-04-09 18:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 20:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 1, title: "オスロブ", body: "ジンベイザメツアー", start_time: DateTime.parse("2025-04-10 2:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 10:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 1, title: "スミロン", body: "", start_time: DateTime.parse("2025-04-10 10:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 12:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 1, title: "カワサン滝", body: "キャニオニング", start_time: DateTime.parse("2025-04-10 12:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 15:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 1, title: "ウミガメ", body: "シュノーケリング", start_time: DateTime.parse("2025-04-10 15:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 19:00:00+09:00"), address: Faker::Address.full_address, what_day: 3 , traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 1, title: "帰国", body: "", start_time: DateTime.parse("2025-04-10 20:00:00+09:00"), finish_time: DateTime.parse("2025-04-11 6:00:00+09:00"), address: Faker::Address.full_address, what_day: 4, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
   
-  { post_id: 2, title: "朝食ビュッフェ", body: "ホテル", start_time: DateTime.parse("2025-05-10 08:00:00+09:00"), finish_time: DateTime.parse("2025-05-10 10:00:00+09:00"), place: "ホテル", what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 2, title: "ビーチ", body: "", start_time: DateTime.parse("2025-05-10 11:00:00+09:00"), finish_time: DateTime.parse("2025-05-10 15:00:00+09:00"), place: "ビーチ", what_day: 1, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 2, title: "ショッピング", body: "ショッピングセンターで買い物", start_time: DateTime.parse("2025-05-11 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-11 14:00:00+09:00"), place: "ショッピングセンター", what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 2, title: "ステーキディナー", body: "豪華な晩酌", start_time: DateTime.parse("2025-05-11 18:00:00+09:00"), finish_time: DateTime.parse("2025-05-11 21:00:00+09:00"), place: "ステーキハウス", what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 2, title: "山登り", body: "", start_time: DateTime.parse("2025-05-12 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-12 20:00:00+09:00"), place: "ハイキング", what_day: 3, traffic_method: 4 , traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 2, title: "飛行機", body: "", start_time: DateTime.parse("2025-05-13 8:00:00+09:00"), finish_time: DateTime.parse("2025-05-13 10:00:00+09:00"), place: "帰国", what_day: 4, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 2, title: "朝食ビュッフェ", body: "ホテル", start_time: DateTime.parse("2025-05-10 08:00:00+09:00"), finish_time: DateTime.parse("2025-05-10 10:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 2, title: "ビーチ", body: "", start_time: DateTime.parse("2025-05-10 11:00:00+09:00"), finish_time: DateTime.parse("2025-05-10 15:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 2, title: "ショッピング", body: "ショッピングセンターで買い物", start_time: DateTime.parse("2025-05-11 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-11 14:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 2, title: "ステーキディナー", body: "豪華な晩酌", start_time: DateTime.parse("2025-05-11 18:00:00+09:00"), finish_time: DateTime.parse("2025-05-11 21:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 2, title: "山登り", body: "", start_time: DateTime.parse("2025-05-12 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-12 20:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 4 , traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 2, title: "飛行機", body: "", start_time: DateTime.parse("2025-05-13 8:00:00+09:00"), finish_time: DateTime.parse("2025-05-13 10:00:00+09:00"), address: Faker::Address.full_address, what_day: 4, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
   
-  { post_id: 3, title: "キロロリゾート", body: "滑りまくり", start_time: DateTime.parse("2025-02-01 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-01 18:00:00+09:00"), place: "キロロリゾート", what_day: 1, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 3, title: "ススキノ飲み歩き", body: "美味しい海鮮居酒屋巡り", start_time: DateTime.parse("2025-02-01 19:00:00+09:00"), finish_time: DateTime.parse("2025-02-01 22:00:00+09:00"), place: "ススキノ", what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 3, title: "キロロリゾート", body: "滑りまくり", start_time: DateTime.parse("2025-02-02 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-02 18:00:00+09:00"), place: "キロロリゾート", what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 3, title: "ディナー", body: "ジンギスカン食べ放題", start_time: DateTime.parse("2025-02-02 19:00:00+09:00"), finish_time: DateTime.parse("2025-02-02 22:00:00+09:00"), place: "サッポロビール園", what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 3, title: "市内観光", body: "札幌市内観光、市場とか行きたい", start_time: DateTime.parse("2025-02-03 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-03 15:00:00+09:00"), place: "札幌市", what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 3, title: "飛行機", body: "", start_time: DateTime.parse("2025-02-03 15:00:00+09:00"), finish_time: DateTime.parse("2025-02-03 17:00:00+09:00"), place: "帰国", what_day: 3, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 3, title: "キロロリゾート", body: "滑りまくり", start_time: DateTime.parse("2025-02-01 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-01 18:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 3, title: "ススキノ飲み歩き", body: "美味しい海鮮居酒屋巡り", start_time: DateTime.parse("2025-02-01 19:00:00+09:00"), finish_time: DateTime.parse("2025-02-01 22:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 3, title: "キロロリゾート", body: "滑りまくり", start_time: DateTime.parse("2025-02-02 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-02 18:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 3, title: "ディナー", body: "ジンギスカン食べ放題", start_time: DateTime.parse("2025-02-02 19:00:00+09:00"), finish_time: DateTime.parse("2025-02-02 22:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 3, title: "市内観光", body: "札幌市内観光、市場とか行きたい", start_time: DateTime.parse("2025-02-03 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-03 15:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 3, title: "飛行機", body: "", start_time: DateTime.parse("2025-02-03 15:00:00+09:00"), finish_time: DateTime.parse("2025-02-03 17:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
   
-  { post_id: 4, title: "出発", body: "関空からケアンズ空港へ", start_time: DateTime.parse("2025-09-11 20:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 7:00:00+09:00"), place: "関西空港", what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 4, title: "市内ぶらり", body: "昼ごはんも済ませる", start_time: DateTime.parse("2025-09-12 7:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 9:00:00+09:00"), place: "市内", what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 4, title: "動物園", body: "カンガルー、ワニ、熱帯の鳥みれる", start_time: DateTime.parse("2025-09-12 9:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 14:00:00+09:00"), place: "動物園", what_day: 2 , traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 4, title: "ディナー", body: "ホテルのディナー弾き語りある", start_time: DateTime.parse("2025-09-12 18:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 20:00:00+09:00"), place: "ホテル", what_day: 2, traffic_method: 4 , traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 4, title: "グリーン島", body: "グレートバリアリーフ", start_time: DateTime.parse("2025-09-13 8:00:00+09:00"), finish_time: DateTime.parse("2025-09-13 17:00:00+09:00"), place: "グリーン島", what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 4, title: "ナイトマーケット", body: "", start_time: DateTime.parse("2025-09-10 18:00:00+09:00"), finish_time: DateTime.parse("2025-09-13 22:00:00+09:00"), place: "ナイトマーケット", what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 4, title: "ショッピング", body: "アウトレットでショッピング", start_time: DateTime.parse("2025-09-14 10:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 15:00:00+09:00"), place: "アウトレット", what_day: 4 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 4, title: "市内ぶらり", body: "市内ぶらり", start_time: DateTime.parse("2025-09-14 15:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 19:00:00+09:00"), place: "市内", what_day: 4, traffic_method: 2 , traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 4, title: "帰国", body: "", start_time: DateTime.parse("2025-09-14 20:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 6:00:00+09:00"), place: "関西空港", what_day: 4 , traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 4, title: "出発", body: "関空からケアンズ空港へ", start_time: DateTime.parse("2025-09-11 20:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 7:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 4, title: "市内ぶらり", body: "昼ごはんも済ませる", start_time: DateTime.parse("2025-09-12 7:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 9:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 4, title: "動物園", body: "カンガルー、ワニ、熱帯の鳥みれる", start_time: DateTime.parse("2025-09-12 9:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 14:00:00+09:00"), address: Faker::Address.full_address, what_day: 2 , traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 4, title: "ディナー", body: "ホテルのディナー弾き語りある", start_time: DateTime.parse("2025-09-12 18:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 20:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 4 , traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 4, title: "グリーン島", body: "グレートバリアリーフ", start_time: DateTime.parse("2025-09-13 8:00:00+09:00"), finish_time: DateTime.parse("2025-09-13 17:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 4, title: "ナイトマーケット", body: "", start_time: DateTime.parse("2025-09-10 18:00:00+09:00"), finish_time: DateTime.parse("2025-09-13 22:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 4, title: "ショッピング", body: "アウトレットでショッピング", start_time: DateTime.parse("2025-09-14 10:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 15:00:00+09:00"), address: Faker::Address.full_address, what_day: 4 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 4, title: "市内ぶらり", body: "市内ぶらり", start_time: DateTime.parse("2025-09-14 15:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 19:00:00+09:00"), address: Faker::Address.full_address, what_day: 4, traffic_method: 2 , traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 4, title: "帰国", body: "", start_time: DateTime.parse("2025-09-14 20:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 6:00:00+09:00"), address: Faker::Address.full_address, what_day: 4 , traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30},
   
-  { post_id: 5, title: "出発", body: "関空から仁川空港へ", start_time: DateTime.parse("2025-05-17 20:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 22:00:00+09:00"), place: "関西空港", what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "朝カフェ", body: "ギリシャヨーグルト有名。ジブリの世界観", start_time: DateTime.parse("2025-05-17 7:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 9:00:00+09:00"), place: "ドトリガーデン", what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "チマチョゴリ体験", body: "チマチョゴリ着てみる", start_time: DateTime.parse("2025-05-17 9:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 12:00:00+09:00"), place: "きょんぼっくん", what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "市場食べ歩き", body: "キンパ、トッポギ、クァベギ", start_time: DateTime.parse("2025-05-17 12:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 15:00:00+09:00"), place: "カンジャンシジャン", what_day: 2, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "明洞ぶらり", body: "ジェントルモンスターの店舗行きたい", start_time: DateTime.parse("2025-05-17 16:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 20:00:00+09:00"), place: "明洞", what_day: 2, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "ディナー", body: "", start_time: DateTime.parse("2025-05-17 20:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 22:00:00+09:00"), place: "ハムチョカンジャンケジャン", what_day: 2, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "タッカンマリ", body: "初めてのタッカンマリ、思ったより並んでいた", start_time: DateTime.parse("2025-05-18 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 12:00:00+09:00"), place: "トンデムン", what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "ソンスぶらり", body: "ショッピング。若者の街", start_time: DateTime.parse("2025-05-18 13:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 17:00:00+09:00"), place: "聖水", what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "サムギョプサル", body: "念願のサムギョプサル", start_time: DateTime.parse("2025-05-18 19:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 20:00:00+09:00"), place: "黄金食堂", what_day: 3 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 5, title: "ホテル晩酌", body: "韓国チキン大量買いする", start_time: DateTime.parse("2025-05-18 22:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 23:00:00+09:00"), place: "聖水", what_day: 3, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "帰国", body: "", start_time: DateTime.parse("2025-05-19 15:00:00+09:00"), finish_time: DateTime.parse("2025-05-19 17:00:00+09:00"), place: "聖水", what_day: 4, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "出発", body: "関空から仁川空港へ", start_time: DateTime.parse("2025-05-17 20:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 22:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "朝カフェ", body: "ギリシャヨーグルト有名。ジブリの世界観", start_time: DateTime.parse("2025-05-17 7:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 9:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "チマチョゴリ体験", body: "チマチョゴリ着てみる", start_time: DateTime.parse("2025-05-17 9:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 12:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "市場食べ歩き", body: "キンパ、トッポギ、クァベギ", start_time: DateTime.parse("2025-05-17 12:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 15:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "明洞ぶらり", body: "ジェントルモンスターの店舗行きたい", start_time: DateTime.parse("2025-05-17 16:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 20:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "ディナー", body: "", start_time: DateTime.parse("2025-05-17 20:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 22:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "タッカンマリ", body: "初めてのタッカンマリ、思ったより並んでいた", start_time: DateTime.parse("2025-05-18 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 12:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "ソンスぶらり", body: "ショッピング。若者の街", start_time: DateTime.parse("2025-05-18 13:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 17:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "サムギョプサル", body: "念願のサムギョプサル", start_time: DateTime.parse("2025-05-18 19:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 20:00:00+09:00"), address: Faker::Address.full_address, what_day: 3 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
+#   { post_id: 5, title: "ホテル晩酌", body: "韓国チキン大量買いする", start_time: DateTime.parse("2025-05-18 22:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 23:00:00+09:00"), address: Faker::Address.full_address, what_day: 3, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 5, title: "帰国", body: "", start_time: DateTime.parse("2025-05-19 15:00:00+09:00"), finish_time: DateTime.parse("2025-05-19 17:00:00+09:00"), address: Faker::Address.full_address, what_day: 4, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
   
-  { post_id: 6, title: "ランチ", body: "もつ鍋", start_time: DateTime.parse("2025-10-01 12:00:00+09:00"), finish_time: DateTime.parse("2025-10-01 15:00:00+09:00"), place: "やまや", what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 6, title: "飲み歩き", body: "屋台はしご", start_time: DateTime.parse("2025-10-01 18:00:00+09:00"), finish_time: DateTime.parse("2025-10-01 22:00:00+09:00"), place: "中洲", what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 6, title: "ランチ", body: "鉄鍋餃子", start_time: DateTime.parse("2025-10-02 12:00:00+09:00"), finish_time: DateTime.parse("2025-10-02 15:00:00+09:00"), place: "鉄鍋餃子", what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 6, title: "ラーメン", body: "とんこつラーメン", start_time: DateTime.parse("2025-10-02 18:00:00+09:00"), finish_time: DateTime.parse("2025-10-02 22:00:00+09:00"), place: "とんこつラーメン", what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
-]
+#   { post_id: 6, title: "ランチ", body: "もつ鍋", start_time: DateTime.parse("2025-10-01 12:00:00+09:00"), finish_time: DateTime.parse("2025-10-01 15:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 6, title: "飲み歩き", body: "屋台はしご", start_time: DateTime.parse("2025-10-01 18:00:00+09:00"), finish_time: DateTime.parse("2025-10-01 22:00:00+09:00"), address: Faker::Address.full_address, what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 6, title: "ランチ", body: "鉄鍋餃子", start_time: DateTime.parse("2025-10-02 12:00:00+09:00"), finish_time: DateTime.parse("2025-10-02 15:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
+#   { post_id: 6, title: "ラーメン", body: "とんこつラーメン", start_time: DateTime.parse("2025-10-02 18:00:00+09:00"), finish_time: DateTime.parse("2025-10-02 22:00:00+09:00"), address: Faker::Address.full_address, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
+# ]
 
-# itinerariesを作成する
-itineraries.each do |itinerary|
-  Itinerary.create(itinerary)
-end
+# # itinerariesを作成する
+# itineraries.each do |itinerary|
+#   Itinerary.create(itinerary)
+# end
 
 
 
-20.times do |n|
-  start_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
-  finish_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
+# 20.times do |n|
+#   start_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
+#   finish_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
 
-  while start_time >= finish_time
-    start_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
-    finish_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
-  end
+#   while start_time >= finish_time
+#     start_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
+#     finish_time = Time.new(2012, 1, 1, Random.rand(24), Random.rand(60), Random.rand(60))
+#   end
 
-  post = Post.find(Random.rand(7..16))
-  duration = (post.finish_date - post.start_date).to_i + 1
-  what_day = Random.rand(1..duration)
+#   post = Post.find(Random.rand(7..16))
+#   duration = (post.finish_date - post.start_date).to_i + 1
+#   what_day = Random.rand(1..duration)
 
-  Itinerary.create(
-    post_id: post.id,
-    title: "test#{n + 1}",
-    place: "test_place#{n + 1}",
-    start_time: start_time,
-    finish_time: finish_time,
-    body: "test_body#{n + 1}",
-    what_day: what_day,
-    traffic_method: Random.rand(0..5),
-    traffic_time_hour: 00,
-    traffic_time_min: 30
-  )
-end
+#   Itinerary.create(
+#     post_id: post.id,
+#     title: "test#{n + 1}",
+#     address: Faker::Address.full_address,
+#     start_time: start_time,
+#     finish_time: finish_time,
+#     body: "test_body#{n + 1}",
+#     what_day: what_day,
+#     traffic_method: Random.rand(0..5),
+#     traffic_time_hour: 00,
+#     traffic_time_min: 30
+#   )
+# end
 
 #tagデータ作成
 Tag.create!(name: "国内")
