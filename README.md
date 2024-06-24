@@ -34,7 +34,7 @@
 <img width="1151" alt="スクリーンショット 2024-06-14 14 16 27" src="https://github.com/myp410/sharetrip/assets/158814441/4c82510b-225f-4b9a-abff-4e1e26e6b0e6">
 
 #### AWS構成図  
-<img width="620" alt="スクリーンショット 2024-06-14 14 12 28" src="https://github.com/myp410/sharetrip/assets/158814441/77ae1c02-387b-41b1-b95a-e477deb7e1f2">
+<img width="631" alt="スクリーンショット 2024-06-24 21 33 33" src="https://github.com/myp410/sharetrip/assets/158814441/e975406f-4972-45e7-923b-d9d65ee241b5">
 
 ​
 ## 開発環境
