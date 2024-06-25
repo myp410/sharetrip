@@ -128,10 +128,6 @@ Rails.application.configure do
       authentication: 'login',
       enable_starttls_auto: true
   }
-  config.generators do |g|
-    g.factory_bot dir: 'test/factories'
-    g.fixture_replacement :faker
-  end
   
 
 end
