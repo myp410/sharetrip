@@ -112,7 +112,9 @@ ActiveRecord::Schema.define(version: 2024_06_14_070247) do
     t.text "body"
     t.datetime "start_time", null: false
     t.datetime "finish_time"
-    t.string "place"
+    t.string "address", default: "", null: false
+    t.float "latitude", default: 0.0, null: false
+    t.float "longitude", default: 0.0, null: false
     t.integer "what_day", null: false
     t.integer "traffic_method", default: 0, null: false
     t.integer "traffic_time_hour"

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'maps/show'
+  end
 devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -57,6 +60,7 @@ get "admin/search" => "admin/searches#search"
     post 'contacts/back' => 'contacts#back', as: 'back'
     get 'done' => 'contacts#done', as: 'done'
     resources :contacts, only: [:create]
+    resource :map, only: [:show]
   end
 
   namespace :admin do

@@ -194,8 +194,12 @@ main {
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {        
   border-radius: 15px;    
-
 }
+
+#map { 
+  height: 150px;
+  width: 270px;
+}  
 
 @media (max-width: 1200px) {
  .header-btn {
