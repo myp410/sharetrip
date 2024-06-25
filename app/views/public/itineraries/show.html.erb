@@ -32,7 +32,7 @@
           <th class="bar-th">移動方法</th>
           <td><%= @itinerary.traffic_method_i18n %></td>
           <th class="bar-th">移動時間</th>
-          <td><%= @itinerary.traffic_time_display %></td>
+          <td class="text-nowrap"><%= @itinerary.traffic_time_display %></td>
         </tr>
       </table>
       <div class="container">
@@ -42,7 +42,7 @@
               function initMap() {
                 var test = {lat: <%= @itinerary.latitude %>, lng: <%= @itinerary.longitude %>};
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 15,
+                    zoom: 10,
                     center: test
                 });
                 var transitLayer = new google.maps.TransitLayer();
