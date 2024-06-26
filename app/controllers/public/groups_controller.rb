@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :group_state, only: [:show, :edit, :update]
+  before_action :ensure_correct_user, only: [:destroy, :update, :permits]
+  before_action :group_state, only: [:show, :update]
 
   def create
     @group = Group.new(group_params)
@@ -56,6 +56,11 @@ class Public::GroupsController < ApplicationController
     group.destroy
     redirect_to groups_path, notice: "グループを削除しました"
   end
+  
+  def permits
+    @group = Group.find(params[:id])
+    @permits = @group.permits.page(params[:page])
+  end
 
   private
 
@@ -66,7 +71,7 @@ class Public::GroupsController < ApplicationController
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id
-      redirect_to groups_path
+      redirect_to groups_path, alert: "グループオーナーのみアクセス可能です"
     end
   end
 

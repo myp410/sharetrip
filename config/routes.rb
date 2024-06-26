@@ -47,8 +47,10 @@ get "admin/search" => "admin/searches#search"
       resources :items ,only: [:index, :create, :destroy]
     end
     #グループ一覧の表示
+    get "groups/:id/permits" => "groups#permits", as: "permits"
     resources :groups, only: [:index, :show, :create, :update, :destroy] do
       resource :group_users, only: [:create, :destroy]
+      resource :permits, only: [:create, :destroy]
       resource :rooms, only: [:show, :create] do
         resources :messages, only: [:create]
       end
