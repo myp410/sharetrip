@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_14_070247) do
+ActiveRecord::Schema.define(version: 2024_06_26_111303) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2024_06_14_070247) do
   create_table "group_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
+    t.boolean "cancelled", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_group_users_on_group_id"
@@ -145,6 +146,15 @@ ActiveRecord::Schema.define(version: 2024_06_14_070247) do
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
     t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "permits", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_permits_on_group_id"
+    t.index ["user_id"], name: "index_permits_on_user_id"
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -237,6 +247,8 @@ ActiveRecord::Schema.define(version: 2024_06_14_070247) do
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "posts"
   add_foreign_key "notifications", "users"
+  add_foreign_key "permits", "groups"
+  add_foreign_key "permits", "users"
   add_foreign_key "post_comments", "posts"
   add_foreign_key "post_comments", "users"
   add_foreign_key "post_tags", "posts"
