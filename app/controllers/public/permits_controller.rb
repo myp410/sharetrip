@@ -13,4 +13,15 @@ class Public::PermitsController < ApplicationController
     permit.destroy
     redirect_to request.referer, alert: "グループへの参加申請を取消しました"
   end
+  
+  def cancel_request
+    @group = Group.find(params[:group_id])
+    @permit = Permit.find(params[:id])
+    if current_user.id == @group.owner_id
+      @permit.destroy
+      redirect_to request.referer, notice: '加入申請をキャンセルしました'
+    else
+      redirect_to request.referer, alert: 'キャンセルに失敗しました'
+    end
+  end
 end
