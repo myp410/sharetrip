@@ -1,11 +1,17 @@
 # シェアトリ<!--ここにアプリ名を入力-->
 ​![Share trip](https://github.com/myp410/sharetrip/assets/158814441/06c3fd2c-1a39-45dd-83b5-51014a84649a)　　
+<img width="1460" alt="スクリーンショット 2024-06-29 12 07 28" src="https://github.com/myp410/sharetrip/assets/158814441/cefdeb5f-4c6b-4dc0-890a-d6b6c562f2ee">
 
 ## サイト概要
 ### サイトテーマ
 <!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
-効率よく旅行を楽しむための情報共有を行うコミュニティサイト  
+効率よく旅行を楽しむための情報共有を行うコミュニティサイトです。  
+旅行計画を投稿し、共有・参考にすることができます。  
+スマホでも使用いただけるようにレスポンシブ対応をしています。  
 ※著作権を考慮し、架空のデータを扱う予定です。なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します
+
+### URL
+https://sharetri.com/
 ​
 ### テーマを選んだ理由
 <!--なぜこのようなテーマにしたかを説明する-->
@@ -31,7 +37,7 @@
 ## 設計書
 <!--テーマを設定・提出する時点では不要です-->
 #### ER図
-<img width="1151" alt="スクリーンショット 2024-06-14 14 16 27" src="https://github.com/myp410/sharetrip/assets/158814441/4c82510b-225f-4b9a-abff-4e1e26e6b0e6">
+<img width="787" alt="スクリーンショット 2024-06-29 12 05 34" src="https://github.com/myp410/sharetrip/assets/158814441/fb131533-09a4-417b-9b0d-cf7ad177e4f4">
 
 #### AWS構成図  
 <img width="631" alt="スクリーンショット 2024-06-24 21 33 33" src="https://github.com/myp410/sharetrip/assets/158814441/e975406f-4972-45e7-923b-d9d65ee241b5">
@@ -42,7 +48,17 @@
 - 言語：HTML,CSS,JavaScript,Ruby,SQL  
 - フレームワーク：Ruby on Rails  
 - JSライブラリ：jQuery  
-- IDE：Cloud9  
+- IDE：Cloud9
+
+## 使用技術
+- Nginx
+- Puma
+- AWS
+  - VPC
+  - EC2
+  - RDS
+  - Route53
+- Google Maps API
 
 ## 機能一覧
 #### ユーザー
