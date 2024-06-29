@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require 'active_support/all'
+require "active_support/all"
 
-#userモデル
+# userモデル
 Admin.create!(
-   email: 'admin@admin',
-   password: 'password'
-)
+   email: "admin@admin",
+   password: "password"
+ )
 
 5.times do |n|
   User.create!(
@@ -44,7 +44,7 @@ User.create!(
 
 
 
-#postデータ作成
+# postデータ作成
 posts_data = [
   {
     id: 1,
@@ -75,7 +75,7 @@ posts_data = [
     start_date: Date.new(2025, 2, 1),
     finish_date: Date.new(2025, 2, 3),
     tags: ["スノボ", "北海道"]
-  },  
+  },
   {
     id: 4,
     user_id: 7,
@@ -105,7 +105,7 @@ posts_data = [
     start_date: Date.new(2025, 10, 1),
     finish_date: Date.new(2025, 10, 2),
     tags: ["福岡", "グルメ"]
-  },  
+  },
 ]
 
 posts_data.each do |post_data|
@@ -142,43 +142,43 @@ end
   )
 end
 
-#itineraryデータ作成
+# itineraryデータ作成
 itineraries = [
-  { post_id: 1, title: "出発", body: "関空からマクタン空港へ", start_time: DateTime.parse("2025-04-08 20:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 7:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
+  { post_id: 1, title: "出発", body: "関空からマクタン空港へ", start_time: DateTime.parse("2025-04-08 20:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 7:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 1, title: "ホテル朝食", body: "ホテルビュッフェ", start_time: DateTime.parse("2025-04-09 7:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 9:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 1, title: "マクタン島ツアー", body: "マクタン島周遊ツアー。ショッピングセンターやギター工場まで", start_time: DateTime.parse("2025-04-09 9:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 14:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 1, title: "ホテルのプール", body: "プールで遊びながらプールサイドバーでお酒", start_time: DateTime.parse("2025-04-09 14:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 17:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
+  { post_id: 1, title: "ホテルのプール", body: "プールで遊びながらプールサイドバーでお酒", start_time: DateTime.parse("2025-04-09 14:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 17:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 1, title: "ディナー", body: "現地で有名なステーキ屋へ！日本人オーナー", start_time: DateTime.parse("2025-04-09 18:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 20:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 1, title: "オスロブ", body: "ジンベイザメツアー", start_time: DateTime.parse("2025-04-10 2:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 10:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 1, title: "スミロン", body: "", start_time: DateTime.parse("2025-04-10 10:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 12:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30},
+  { post_id: 1, title: "スミロン", body: "", start_time: DateTime.parse("2025-04-10 10:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 12:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 1, title: "カワサン滝", body: "キャニオニング", start_time: DateTime.parse("2025-04-10 12:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 15:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 1, title: "ウミガメ", body: "シュノーケリング", start_time: DateTime.parse("2025-04-10 15:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 19:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3 , traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30},
+  { post_id: 1, title: "ウミガメ", body: "シュノーケリング", start_time: DateTime.parse("2025-04-10 15:00:00+09:00"), finish_time: DateTime.parse("2025-04-10 19:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 1, title: "帰国", body: "", start_time: DateTime.parse("2025-04-10 20:00:00+09:00"), finish_time: DateTime.parse("2025-04-11 6:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
-  
+
   { post_id: 2, title: "朝食ビュッフェ", body: "ホテル", start_time: DateTime.parse("2025-05-10 08:00:00+09:00"), finish_time: DateTime.parse("2025-05-10 10:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 2, title: "ビーチ", body: "", start_time: DateTime.parse("2025-05-10 11:00:00+09:00"), finish_time: DateTime.parse("2025-05-10 15:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 2, title: "ショッピング", body: "ショッピングセンターで買い物", start_time: DateTime.parse("2025-05-11 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-11 14:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 2, title: "ステーキディナー", body: "豪華な晩酌", start_time: DateTime.parse("2025-05-11 18:00:00+09:00"), finish_time: DateTime.parse("2025-05-11 21:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 2, title: "山登り", body: "", start_time: DateTime.parse("2025-05-12 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-12 20:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 4 , traffic_time_hour: 00, traffic_time_min: 30},
+  { post_id: 2, title: "山登り", body: "", start_time: DateTime.parse("2025-05-12 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-12 20:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 2, title: "飛行機", body: "", start_time: DateTime.parse("2025-05-13 8:00:00+09:00"), finish_time: DateTime.parse("2025-05-13 10:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
-  
+
   { post_id: 3, title: "キロロリゾート", body: "滑りまくり", start_time: DateTime.parse("2025-02-01 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-01 18:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 3, title: "ススキノ飲み歩き", body: "美味しい海鮮居酒屋巡り", start_time: DateTime.parse("2025-02-01 19:00:00+09:00"), finish_time: DateTime.parse("2025-02-01 22:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 3, title: "キロロリゾート", body: "滑りまくり", start_time: DateTime.parse("2025-02-02 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-02 18:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 3, title: "ディナー", body: "ジンギスカン食べ放題", start_time: DateTime.parse("2025-02-02 19:00:00+09:00"), finish_time: DateTime.parse("2025-02-02 22:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 3, title: "市内観光", body: "札幌市内観光、市場とか行きたい", start_time: DateTime.parse("2025-02-03 10:00:00+09:00"), finish_time: DateTime.parse("2025-02-03 15:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 3, title: "飛行機", body: "", start_time: DateTime.parse("2025-02-03 15:00:00+09:00"), finish_time: DateTime.parse("2025-02-03 17:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
-  
+
   { post_id: 4, title: "出発", body: "関空からケアンズ空港へ", start_time: DateTime.parse("2025-09-11 20:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 7:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 4, title: "市内ぶらり", body: "昼ごはんも済ませる", start_time: DateTime.parse("2025-09-12 7:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 9:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 4, title: "動物園", body: "カンガルー、ワニ、熱帯の鳥みれる", start_time: DateTime.parse("2025-09-12 9:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 14:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2 , traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 4, title: "ディナー", body: "ホテルのディナー弾き語りある", start_time: DateTime.parse("2025-09-12 18:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 20:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 4 , traffic_time_hour: 00, traffic_time_min: 30},
+  { post_id: 4, title: "動物園", body: "カンガルー、ワニ、熱帯の鳥みれる", start_time: DateTime.parse("2025-09-12 9:00:00+09:00"), finish_time: DateTime.parse("2025-04-09 14:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
+  { post_id: 4, title: "ディナー", body: "ホテルのディナー弾き語りある", start_time: DateTime.parse("2025-09-12 18:00:00+09:00"), finish_time: DateTime.parse("2025-09-12 20:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 4, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 4, title: "グリーン島", body: "グレートバリアリーフ", start_time: DateTime.parse("2025-09-13 8:00:00+09:00"), finish_time: DateTime.parse("2025-09-13 17:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 5, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 4, title: "ナイトマーケット", body: "", start_time: DateTime.parse("2025-09-10 18:00:00+09:00"), finish_time: DateTime.parse("2025-09-13 22:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 4, title: "ショッピング", body: "アウトレットでショッピング", start_time: DateTime.parse("2025-09-14 10:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 15:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 4, title: "市内ぶらり", body: "市内ぶらり", start_time: DateTime.parse("2025-09-14 15:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 19:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4, traffic_method: 2 , traffic_time_hour: 00, traffic_time_min: 30},
-  { post_id: 4, title: "帰国", body: "", start_time: DateTime.parse("2025-09-14 20:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 6:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4 , traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30},
-  
+  { post_id: 4, title: "ショッピング", body: "アウトレットでショッピング", start_time: DateTime.parse("2025-09-14 10:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 15:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
+  { post_id: 4, title: "市内ぶらり", body: "市内ぶらり", start_time: DateTime.parse("2025-09-14 15:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 19:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
+  { post_id: 4, title: "帰国", body: "", start_time: DateTime.parse("2025-09-14 20:00:00+09:00"), finish_time: DateTime.parse("2025-09-14 6:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
+
   { post_id: 5, title: "出発", body: "関空から仁川空港へ", start_time: DateTime.parse("2025-05-17 20:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 22:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 5, title: "朝カフェ", body: "ギリシャヨーグルト有名。ジブリの世界観", start_time: DateTime.parse("2025-05-17 7:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 9:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 5, title: "チマチョゴリ体験", body: "チマチョゴリ着てみる", start_time: DateTime.parse("2025-05-17 9:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 12:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 3, traffic_time_hour: 00, traffic_time_min: 30 },
@@ -187,10 +187,10 @@ itineraries = [
   { post_id: 5, title: "ディナー", body: "", start_time: DateTime.parse("2025-05-17 20:00:00+09:00"), finish_time: DateTime.parse("2025-05-17 22:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 5, title: "タッカンマリ", body: "初めてのタッカンマリ、思ったより並んでいた", start_time: DateTime.parse("2025-05-18 10:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 12:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 5, title: "ソンスぶらり", body: "ショッピング。若者の街", start_time: DateTime.parse("2025-05-18 13:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 17:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 1, traffic_time_hour: 00, traffic_time_min: 30 },
-  { post_id: 5, title: "サムギョプサル", body: "念願のサムギョプサル", start_time: DateTime.parse("2025-05-18 19:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 20:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3 , traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30},
+  { post_id: 5, title: "サムギョプサル", body: "念願のサムギョプサル", start_time: DateTime.parse("2025-05-18 19:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 20:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 5, title: "ホテル晩酌", body: "韓国チキン大量買いする", start_time: DateTime.parse("2025-05-18 22:00:00+09:00"), finish_time: DateTime.parse("2025-05-18 23:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 3, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 5, title: "帰国", body: "", start_time: DateTime.parse("2025-05-19 15:00:00+09:00"), finish_time: DateTime.parse("2025-05-19 17:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 4, traffic_method: 2, traffic_time_hour: 00, traffic_time_min: 30 },
-  
+
   { post_id: 6, title: "ランチ", body: "もつ鍋", start_time: DateTime.parse("2025-10-01 12:00:00+09:00"), finish_time: DateTime.parse("2025-10-01 15:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 6, title: "飲み歩き", body: "屋台はしご", start_time: DateTime.parse("2025-10-01 18:00:00+09:00"), finish_time: DateTime.parse("2025-10-01 22:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 1, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
   { post_id: 6, title: "ランチ", body: "鉄鍋餃子", start_time: DateTime.parse("2025-10-02 12:00:00+09:00"), finish_time: DateTime.parse("2025-10-02 15:00:00+09:00"), address: Faker::Address.full_address, latitude: Faker::Address.latitude.to_f, longitude: Faker::Address.longitude.to_f, what_day: 2, traffic_method: 0, traffic_time_hour: 00, traffic_time_min: 30 },
@@ -235,7 +235,7 @@ end
   )
 end
 
-#tagデータ作成
+# tagデータ作成
 Tag.create!(name: "国内")
 Tag.create!(name: "海外")
 Tag.create!(name: "市内観光")
@@ -253,37 +253,37 @@ tag_post = Post.find(Random.rand(7..16))
   # 最大3つのタグを選択する
   selected_tags = available_tags.sample(3)
   selected_tags.each do |tag|
-    PostTag.find_or_create_by!(tag_id: tag.id, post_id: tag_post.id )
+    PostTag.find_or_create_by!(tag_id: tag.id, post_id: tag_post.id)
   end
 end
 
-#groupデータ
+# groupデータ
 Group.create!(
   name: "国内旅行大好き",
   introduction: "旅行好きの中でも国内旅行が特に好きな方はぜひ",
   owner_id: 6,
   is_active: "true"
-  )
+)
 
 GroupUser.create!(
   user_id: 6,
   group_id: 1
-  )
-  
+)
+
 Group.create!(
   name: "韓国旅行",
   introduction: "今度韓国旅行しますのでおすすめ教えてください",
   owner_id: 7,
   is_active: "true"
-  )  
-  
+)
+
 GroupUser.create!(
   user_id: 7,
   group_id: 2
-  )  
-  
-  
-#コメントデータ  
+)
+
+
+# コメントデータ
 5.times do |n|
   PostComment.create!(
     comment: "すごく参考になりました！",

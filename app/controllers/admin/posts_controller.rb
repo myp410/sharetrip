@@ -3,11 +3,11 @@ class Admin::PostsController < ApplicationController
   def index
     @posts = Post.order(created_at: :desc).page(params[:page])
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @itineraries = @post.itineraries.order(start_time: :asc).page(params[:page])
-  end  
+  end
 
   def destroy
     @post = Post.find(params[:id])

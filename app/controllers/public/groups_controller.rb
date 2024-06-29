@@ -12,7 +12,7 @@ class Public::GroupsController < ApplicationController
     else
       @groups = Group.where(is_active: true).page(params[:page])
       @group = Group.new
-      render 'index'
+      render "index"
     end
   end
 
@@ -37,7 +37,7 @@ class Public::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to group_path(@group),notice: "グループの更新に成功しました"
+      redirect_to group_path(@group), notice: "グループの更新に成功しました"
     else
       @owner = User.find(@group.owner_id)
       if Room.exists?(group_id: @group.id)
@@ -47,40 +47,38 @@ class Public::GroupsController < ApplicationController
         @room.group = @group
         @room.save
       end
-      render 'show'
+      render "show"
     end
   end
-  
+
   def destroy
     group = Group.find(params[:id])
     group.destroy
     redirect_to groups_path, notice: "グループを削除しました"
   end
-  
+
   def permits
     @group = Group.find(params[:id])
     @permits = @group.permits.page(params[:page])
   end
 
   private
-
-  def group_params
-    params.require(:group).permit(:name, :introduction)
-  end
-
-  def ensure_correct_user
-    @group = Group.find(params[:id])
-    unless @group.owner_id == current_user.id
-      redirect_to groups_path, alert: "グループオーナーのみアクセス可能です"
+    def group_params
+      params.require(:group).permit(:name, :introduction)
     end
-  end
 
-  def group_state
-    @group = Group.find(params[:id])
-    if !@group.is_active
-    # グループがactiveであれば通常の表示をする
-      redirect_to groups_path, alert: "このグループは停止されています。運営に問い合わせください"
+    def ensure_correct_user
+      @group = Group.find(params[:id])
+      unless @group.owner_id == current_user.id
+        redirect_to groups_path, alert: "グループオーナーのみアクセス可能です"
+      end
     end
-  end
 
+    def group_state
+      @group = Group.find(params[:id])
+      if !@group.is_active
+        # グループがactiveであれば通常の表示をする
+        redirect_to groups_path, alert: "このグループは停止されています。運営に問い合わせください"
+      end
+    end
 end

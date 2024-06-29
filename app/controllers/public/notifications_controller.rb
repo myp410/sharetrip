@@ -1,6 +1,6 @@
 class Public::NotificationsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def update
     notification = current_user.notifications.find(params[:id])
     notification.update(read: true)
@@ -13,6 +13,6 @@ class Public::NotificationsController < ApplicationController
       redirect_to users_my_page_path(notification.notifiable.follower)
     else
       redirect_to users_my_page_path(notification.notifiable.user)
-    end  
+    end
   end
 end

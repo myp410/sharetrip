@@ -4,4 +4,3 @@ Geocoder.configure(
   api_key: ENV["Geocoding_API_Key"],
   units: :km
 )
-

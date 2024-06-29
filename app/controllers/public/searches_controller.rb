@@ -20,5 +20,4 @@ class Public::SearchesController < ApplicationController
       @tags = Tag.looks(params[:word]).page(params[:page])
     end
   end
-
 end
