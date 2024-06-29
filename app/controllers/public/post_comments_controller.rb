@@ -25,11 +25,11 @@ class Public::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post_comment = PostComment.find(params[:id])
     if @post_comment.update(post_comment_params)
-      flash[:notice] =  "コメントの更新に成功しました"
+      flash[:notice] = "コメントの更新に成功しました"
       redirect_to post_post_comments_path(@post)
     else
       @post_tags = @post.tags
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -41,8 +41,7 @@ class Public::PostCommentsController < ApplicationController
   end
 
   private
-
-  def post_comment_params
-    params.require(:post_comment).permit(:comment, :post_id, :user_id)
-  end
+    def post_comment_params
+      params.require(:post_comment).permit(:comment, :post_id, :user_id)
+    end
 end

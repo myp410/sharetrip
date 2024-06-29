@@ -18,8 +18,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   private
-
-  def article_params
-    params.require(:article).permit(:title, :link, :itinerary_id)
-  end
+    def article_params
+      params.require(:article).permit(:title, :link, :itinerary_id)
+    end
 end

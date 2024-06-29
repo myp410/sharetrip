@@ -8,5 +8,3 @@ module Batch
     end
   end
 end
-
-

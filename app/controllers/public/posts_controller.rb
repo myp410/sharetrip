@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    tags = params[:post][:name].split(',')
+    tags = params[:post][:name].split(",")
 
     if params[:post][:status] == "draft"
       @post.status = :draft
@@ -23,7 +23,7 @@ class Public::PostsController < ApplicationController
     else
       @post = Post.new
       @posts = Post.published.includes(user: { profile_image_attachment: [:blob] }).includes(:tags).includes(:favorites).order(created_at: :desc).page(params[:page])
-      render 'index'
+      render "index"
     end
   end
 
@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
     @duration = (@post.finish_date - @post.start_date).to_i + 1
     @itinerary = Itinerary.new
     @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc).page(params[:page])
-    @tags = @post.tags.pluck(:name).join(',')
+    @tags = @post.tags.pluck(:name).join(",")
     @post_tags = @post.tags
     @search_day = params[:search_day]
     @search = @itineraries.where(what_day: @search_day)
@@ -47,7 +47,7 @@ class Public::PostsController < ApplicationController
   def update
     is_matching_login_user
     @post = Post.find(params[:id])
-    tags = params[:post][:name].split(',')
+    tags = params[:post][:name].split(",")
 
     if params[:post][:status] == "draft"
       @post.status = :draft
@@ -67,11 +67,11 @@ class Public::PostsController < ApplicationController
       @duration = (@post.finish_date - @post.start_date).to_i + 1
       @itinerary = Itinerary.new
       @itineraries = @post.itineraries.order(what_day: :asc, start_time: :asc).page(params[:page])
-      @tags = @post.tags.pluck(:name).join(',')
+      @tags = @post.tags.pluck(:name).join(",")
       @post_tags = @post.tags
       @search_day = params[:search_day]
       @search = @itineraries.where(what_day: @search_day)
-      render 'show'
+      render "show"
     end
   end
 
@@ -89,26 +89,24 @@ class Public::PostsController < ApplicationController
   end
 
   private
+    def post_params
+      params.require(:post).permit(:title, :body, :start_date, :finish_date, :status)
+    end
 
-  def post_params
-    params.require(:post).permit(:title, :body, :start_date, :finish_date, :status)
-  end
 
+    def is_matching_login_user
+      post = Post.find(params[:id])
+      user = post.user
+      return if user == current_user
+      redirect_to users_my_page_path(current_user), alert: "このページにアクセスする権限がありません"
+    end
 
-  def is_matching_login_user
-    post = Post.find(params[:id])
-    user = post.user
-    return if user == current_user
-    redirect_to users_my_page_path(current_user), alert: "このページにアクセスする権限がありません"
-  end
-
-  def check_access
-    if @post && (@post.status.draft || @post.status.unpublished)
-      if current_user != @post.user
-        redirect_to root_path, alert: "このページにアクセスする権限がありません"
-        return
+    def check_access
+      if @post && (@post.status.draft || @post.status.unpublished)
+        if current_user != @post.user
+          redirect_to root_path, alert: "このページにアクセスする権限がありません"
+          nil
+        end
       end
     end
-  end
-
 end

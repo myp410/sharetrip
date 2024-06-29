@@ -14,13 +14,13 @@ class Itinerary < ApplicationRecord
   validates :longitude, presence: true
 
   before_validation :set_datetimes
-  
+
   geocoded_by :address
   # addressカラムの内容を緯度経度に変換を指定
   after_validation :geocode
   # バリデーションの実行後に変換処理を実行してlatitude、longitudeカラムに入力される
 
-#終了時間が開始時間より後に来ないようにバリデーション
+  # 終了時間が開始時間より後に来ないようにバリデーション
   def start_finish_check
     if start_time.present? && finish_time.present?
       errors.add(:finish_time, "は開始時刻より遅い時間を選択してください") if self.start_time > self.finish_time
@@ -32,26 +32,23 @@ class Itinerary < ApplicationRecord
     if word == ""
       Itinerary.all
     else
-      Itinerary.where('title LIKE ?', "%#{word}%")
+      Itinerary.where("title LIKE ?", "%#{word}%")
     end
   end
-  
+
   def traffic_time_display
-    '約 ' + traffic_time_hour.to_s + ' : ' + traffic_time_min.to_s
+    "約 " + traffic_time_hour.to_s + " : " + traffic_time_min.to_s
   end
 
-  enum traffic_method: {noo: 0, car: 1, bus: 2,  train: 3, plane: 4, walk: 5 }
+  enum traffic_method: { noo: 0, car: 1, bus: 2,  train: 3, plane: 4, walk: 5 }
 
   private
-
-  def set_datetimes
-    start_date = self.post.start_date.to_s
-    start_time = self.start_time.to_s.split[1]
-    finish_time = self.finish_time.to_s.split[1]
-    past_day = self.what_day - 1
-    self.start_time = Time.zone.parse("#{start_date} #{start_time}").since(past_day.day)
-    self.finish_time = Time.zone.parse("#{start_date} #{finish_time}").since(past_day.day)
-  end
-
-  
+    def set_datetimes
+      start_date = self.post.start_date.to_s
+      start_time = self.start_time.to_s.split[1]
+      finish_time = self.finish_time.to_s.split[1]
+      past_day = self.what_day - 1
+      self.start_time = Time.zone.parse("#{start_date} #{start_time}").since(past_day.day)
+      self.finish_time = Time.zone.parse("#{start_date} #{finish_time}").since(past_day.day)
+    end
 end

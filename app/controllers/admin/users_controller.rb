@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to admin_user_path(@user), notice: "ユーザー情報の更新に成功しました"
     else
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -23,8 +23,7 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-
-  def user_params
-    params.require(:user).permit(:name, :introduction, :email, :is_active, :profile_image)
-  end
+    def user_params
+      params.require(:user).permit(:name, :introduction, :email, :is_active, :profile_image)
+    end
 end

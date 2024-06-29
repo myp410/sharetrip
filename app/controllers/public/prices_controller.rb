@@ -1,6 +1,6 @@
 class Public::PricesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @itinerary = Itinerary.find(params[:itinerary_id])
     @post = @itinerary.post
@@ -8,7 +8,7 @@ class Public::PricesController < ApplicationController
     @price.save
     @prices = @itinerary.prices
   end
-  
+
   def destroy
     @itinerary = Itinerary.find(params[:itinerary_id])
     @post = @itinerary.post
@@ -16,10 +16,9 @@ class Public::PricesController < ApplicationController
     @price.destroy
     @prices = @itinerary.prices
   end
-  
+
   private
-  
-  def price_params
-    params.require(:price).permit(:price, :body, :itinerary_id)
-  end
+    def price_params
+      params.require(:price).permit(:price, :body, :itinerary_id)
+    end
 end

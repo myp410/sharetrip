@@ -13,8 +13,8 @@ class Public::UsersController < ApplicationController
     @followings = @user.followings.page(params[:page])
     likes = Favorite.where(user_id: @user.id).pluck(:post_id)
     @like_posts = Post.where(id: likes).page(params[:page])
-    @closest_post = @user.posts.where('start_date >= ?', Date.today).order(:start_date).first
-    @closest_post_published = @user.posts.published.where('start_date >= ?', Date.today).order(:start_date).first
+    @closest_post = @user.posts.where("start_date >= ?", Date.today).order(:start_date).first
+    @closest_post_published = @user.posts.published.where("start_date >= ?", Date.today).order(:start_date).first
     @group = Group.new
     @post = Post.new
   end
@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to users_my_page_path(@user), notice: "ユーザー情報の更新に成功しました"
     else
-      render 'edit', alert: "ユーザー情報の更新に失敗しました"
+      render "edit", alert: "ユーザー情報の更新に失敗しました"
     end
   end
 
@@ -47,22 +47,21 @@ class Public::UsersController < ApplicationController
 
 
   private
-
-  def user_params
-    params.require(:user).permit(:name, :introduction, :email, :is_active, :profile_image)
-  end
-
-
-  def move_to_index
-    unless user_signed_in? #userがサインインしてない場合
-      redirect_to action: :index
+    def user_params
+      params.require(:user).permit(:name, :introduction, :email, :is_active, :profile_image)
     end
-  end
 
-  def ensure_guest_user
-    @user = User.find(current_user.id)
-    if @user.guest_user?
-      redirect_to users_mypage_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません"
+
+    def move_to_index
+      unless user_signed_in? # userがサインインしてない場合
+        redirect_to action: :index
+      end
     end
-  end
+
+    def ensure_guest_user
+      @user = User.find(current_user.id)
+      if @user.guest_user?
+        redirect_to users_mypage_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません"
+      end
+    end
 end

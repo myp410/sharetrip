@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
     @post = Post.find(params[:post_id])
     @items = @post.items
     @item = Item.new
-    @tags = @post.tags.pluck(:name).join(',')
+    @tags = @post.tags.pluck(:name).join(",")
     @post_tags = @post.tags
   end
 
@@ -11,12 +11,12 @@ class Public::ItemsController < ApplicationController
     @post = Post.find(params[:post_id])
     @item = Item.new(item_params)
     if @item.save
-      redirect_to post_items_path ,notice: "持ち物を登録しました"
+      redirect_to post_items_path, notice: "持ち物を登録しました"
     else
-      @tags = @post.tags.pluck(:name).join(',')
+      @tags = @post.tags.pluck(:name).join(",")
       @post_tags = @post.tags
       @items = @post.items
-      render 'index'
+      render "index"
     end
   end
 
@@ -35,8 +35,7 @@ class Public::ItemsController < ApplicationController
   end
 
   private
-
-  def item_params
-    params.require(:item).permit(:name, :post_id)
-  end
+    def item_params
+      params.require(:item).permit(:name, :post_id)
+    end
 end
