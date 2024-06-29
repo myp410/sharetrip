@@ -160,14 +160,14 @@
           </div>
           <!-- Phone number input-->
           <div class="form-group">
-            <%= f.label :phone_number, 'メールアドレス' %>
+            <%= f.label :phone_number, '電話番号' %>
             <%= f.text_field :phone_number,  placeholder: "(123) 456-7890",class: 'form-control', required: true %>
             <div class="invalid-feedback">電話番号を入力してください</div>
           </div>
           <div class="form-group">
             <%= f.label :message, '問い合わせ内容' %>
             <%= f.text_area :message, size: '10x10',placeholder: "問い合わせはこちら", class: 'form-control', required: true %>
-            <div class="invalid-feedback">電話番号を入力してください</div>
+            <div class="invalid-feedback">問い合わせ内容を入力してください</div>
           </div>
           <div class="d-grid">
             <%= f.submit '入力内容確認', class: "btn btn-primary btn-xl" %>
