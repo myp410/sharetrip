@@ -16,7 +16,7 @@
         </tr>
         <tr>
           <th class="bar-th">詳細</th>
-          <td colspan="5"><%= @itinerary.body %></td>
+          <td class="text-wrap" colspan="5"><%= @itinerary.body %></td>
         </tr>
         <tr>
           <th class="bar-th">日程</th>
@@ -36,7 +36,7 @@
         </tr>
       </table>
       <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-3">
           <div id="map"></div>
             <script type="text/javascript">
               function initMap() {
@@ -68,7 +68,7 @@
       </div>
       
       <% if @post.user == current_user %>
-      <div class="container m-3">
+      <div class="container mb-3">
         <div class="row d-flex">
           <div class="col m-3">
             <!--# Button trigger modal-->

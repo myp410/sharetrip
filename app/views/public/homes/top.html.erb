@@ -145,7 +145,7 @@
     </div>
     <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
       <div class="col-lg-6">
-        <%= form_for(@contact, url: confirm_path ,class:"was-validated") do |f| %>
+        <%= form_for(@contact, url: confirm_path , local: false, :html => {class:"needs-validation", :novalidate => true}) do |f| %>
         <!-- Name input-->
           <div class="form-group">
             <%= f.label :name, 'お名前（フルネーム）' %>
