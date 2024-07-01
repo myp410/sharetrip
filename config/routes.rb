@@ -61,7 +61,6 @@ Rails.application.routes.draw do
     post "contacts/back" => "contacts#back", as: "back"
     get "done" => "contacts#done", as: "done"
     resources :contacts, only: [:create]
-    resource :map, only: [:show]
   end
 
   namespace :admin do
