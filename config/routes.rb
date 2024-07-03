@@ -12,14 +12,11 @@ Rails.application.routes.draw do
   devise_for :admin,  skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-
-  get "search" => "public/searches#search"
-  get "search_tag" => "public/posts#search_tag"
-  get "admin/search" => "admin/searches#search"
-
-
+  
   scope module: :public do
     root to: "homes#top"
+    get "search" => "searches#search"
+    get "search_tag" => "posts#search_tag"
     get "privacy" => "homes#privacy", as: "privacy"
     get "users/my_page/:id" => "users#show", as: "users_my_page"
     get "users/information/edit" => "users#edit", as: "users_information_edit"
@@ -62,6 +59,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get "search" => "searches#search"
     resources :users, only: [:index, :edit, :show, :update]
     resources :posts, only: [:index, :show, :destroy] do
       resources :post_comments, only: [:index, :destroy]
